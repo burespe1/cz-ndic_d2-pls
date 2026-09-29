@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<d2:payload xmlns:d2="http://datex2.eu/schema/3/d2Payload" xmlns:com="http://datex2.eu/schema/3/common" xmlns:loc="http://datex2.eu/schema/3/locationReferencing" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="loc:PredefinedLocationsPublication" lang="cs" modelBaseVersion="3" profileName="cz-ndic_d2-pls" profileVersion="2.0">
+  <com:feedType>x-source:cz-ndic_d2-pls-weather-pull-v2</com:feedType>
+  <com:publicationTime>2017-08-15T10:09:22+02:00</com:publicationTime>
+  <com:publicationCreator>
+    <com:country>cz</com:country>
+    <com:nationalIdentifier>NDIC</com:nationalIdentifier>
+  </com:publicationCreator>
+  <loc:headerInformation>
+    <com:confidentiality>noRestriction</com:confidentiality>
+    <com:informationStatus>real</com:informationStatus>
+  </loc:headerInformation>
+  <loc:predefinedLocationReference xsi:type="loc:PredefinedLocationGroup" id="73D74C70-BFA8-408F-86CD-49B3689D9F5D" version="1">
+    <loc:predefinedLocation id="dde51831-2f37-4f07-8429-286a9d08106c" version="1">
+      <loc:predefinedLocationName>
+        <com:values>
+          <com:value lang="cs">Podolské nábřeží: Podolská &gt; zúžení U Podolského sanatoria</com:value>
+        </com:values>
+      </loc:predefinedLocationName>
+      <loc:location xsi:type="loc:SingleRoadLinearLocation">
+        <loc:externalReferencing>
+          <loc:externalLocationCode>2378840</loc:externalLocationCode>
+          <loc:externalReferencingSystem>CZ-RSD-GlobalNetwork:15.06</loc:externalReferencingSystem>
+        </loc:externalReferencing>
+        <loc:linearWithinLinearElement>
+          <loc:directionRelativeOnLinearSection>aligned</loc:directionRelativeOnLinearSection>
+          <loc:linearElement xsi:type="loc:LinearElementByCode">
+            <loc:linearElementReferenceModel>CZ-RSD-GlobalNetwork</loc:linearElementReferenceModel>
+            <loc:linearElementReferenceModelVersion>15.06</loc:linearElementReferenceModelVersion>
+            <loc:linearElementIdentifier>2378839</loc:linearElementIdentifier>
+          </loc:linearElement>
+          <loc:fromPoint xsi:type="loc:DistanceFromLinearElementReferent">
+            <loc:distanceAlong>0</loc:distanceAlong>
+            <loc:fromReferent>
+              <loc:referentIdentifier>2378839-start</loc:referentIdentifier>
+              <loc:referentType>referenceMarker</loc:referentType>
+              <loc:pointCoordinates>
+                <loc:latitude>50.059207</loc:latitude>
+                <loc:longitude>14.419564</loc:longitude>
+              </loc:pointCoordinates>
+            </loc:fromReferent>
+          </loc:fromPoint>
+          <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
+            <loc:percentageDistanceAlong>100</loc:percentageDistanceAlong>
+          </loc:toPoint>
+        </loc:linearWithinLinearElement>
+        <loc:linearWithinLinearElement>
+          <loc:directionRelativeOnLinearSection>aligned</loc:directionRelativeOnLinearSection>
+          <loc:linearElement xsi:type="loc:LinearElementByCode">
+            <loc:linearElementReferenceModel>CZ-RSD-GlobalNetwork</loc:linearElementReferenceModel>
+            <loc:linearElementReferenceModelVersion>15.06</loc:linearElementReferenceModelVersion>
+            <loc:linearElementIdentifier>713522</loc:linearElementIdentifier>
+          </loc:linearElement>
+          <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
+            <loc:percentageDistanceAlong>0</loc:percentageDistanceAlong>
+          </loc:fromPoint>
+          <loc:toPoint xsi:type="loc:DistanceFromLinearElementReferent">
+            <loc:distanceAlong>0</loc:distanceAlong>
+            <loc:fromReferent>
+              <loc:referentIdentifier>713522-end</loc:referentIdentifier>
+              <loc:referentType>referenceMarker</loc:referentType>
+              <loc:pointCoordinates>
+                <loc:latitude>50.060925</loc:latitude>
+                <loc:longitude>14.418972</loc:longitude>
+              </loc:pointCoordinates>
+            </loc:fromReferent>
+          </loc:toPoint>
+        </loc:linearWithinLinearElement>
+      </loc:location>
+    </loc:predefinedLocation>
+    <loc:predefinedLocation id="da0a5990-530c-426a-a6fd-ce88aeeb8aab" version="1">
+      <loc:predefinedLocationName>
+        <com:values>
+          <com:value lang="cs">P+R Chodov, D1 0 km</com:value>
+        </com:values>
+      </loc:predefinedLocationName>
+      <loc:location xsi:type="loc:SingleRoadLinearLocation">
+        <loc:externalReferencing>
+          <loc:externalLocationCode>822310</loc:externalLocationCode>
+          <loc:externalReferencingSystem>CZ-RSD-GlobalNetwork:16.12</loc:externalReferencingSystem>
+        </loc:externalReferencing>
+        <loc:alertCLinear xsi:type="loc:AlertCMethod2Linear">
+          <loc:alertCLocationCountryCode>2</loc:alertCLocationCountryCode>
+          <loc:alertCLocationTableNumber>25</loc:alertCLocationTableNumber>
+          <loc:alertCLocationTableVersion>6.0</loc:alertCLocationTableVersion>
+          <loc:alertCDirection>
+            <loc:alertCDirectionCoded>positive</loc:alertCDirectionCoded>
+            <loc:alertCAffectedDirection>aligned</loc:alertCAffectedDirection>
+          </loc:alertCDirection>
+          <loc:alertCMethod2PrimaryPointLocation>
+            <loc:alertCLocation>
+              <loc:specificLocation>23078</loc:specificLocation>
+            </loc:alertCLocation>
+          </loc:alertCMethod2PrimaryPointLocation>
+          <loc:alertCMethod2SecondaryPointLocation>
+            <loc:alertCLocation>
+              <loc:specificLocation>23078</loc:specificLocation>
+            </loc:alertCLocation>
+          </loc:alertCMethod2SecondaryPointLocation>
+        </loc:alertCLinear>
+        <loc:linearWithinLinearElement>
+          <loc:directionRelativeOnLinearSection>aligned</loc:directionRelativeOnLinearSection>
+          <loc:linearElement xsi:type="loc:LinearElementByCode">
+            <loc:linearElementReferenceModel>CZ-RSD-GlobalNetwork</loc:linearElementReferenceModel>
+            <loc:linearElementReferenceModelVersion>16.12</loc:linearElementReferenceModelVersion>
+            <loc:linearElementIdentifier>822309</loc:linearElementIdentifier>
+          </loc:linearElement>
+          <loc:fromPoint xsi:type="loc:DistanceFromLinearElementReferent">
+            <loc:distanceAlong>0</loc:distanceAlong>
+            <loc:fromReferent>
+              <loc:referentIdentifier>822309-start</loc:referentIdentifier>
+              <loc:referentType>referenceMarker</loc:referentType>
+              <loc:pointCoordinates>
+                <loc:latitude>50.032769</loc:latitude>
+                <loc:longitude>14.490757</loc:longitude>
+              </loc:pointCoordinates>
+            </loc:fromReferent>
+          </loc:fromPoint>
+          <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
+            <loc:percentageDistanceAlong>100</loc:percentageDistanceAlong>
+          </loc:toPoint>
+        </loc:linearWithinLinearElement>
+        <loc:linearWithinLinearElement>
+          <loc:directionRelativeOnLinearSection>aligned</loc:directionRelativeOnLinearSection>
+          <loc:linearElement xsi:type="loc:LinearElementByCode">
+            <loc:linearElementReferenceModel>CZ-RSD-GlobalNetwork</loc:linearElementReferenceModel>
+            <loc:linearElementReferenceModelVersion>16.12</loc:linearElementReferenceModelVersion>
+            <loc:linearElementIdentifier>822311</loc:linearElementIdentifier>
+          </loc:linearElement>
+          <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
+            <loc:percentageDistanceAlong>0</loc:percentageDistanceAlong>
+          </loc:fromPoint>
+          <loc:toPoint xsi:type="loc:DistanceFromLinearElementReferent">
+            <loc:distanceAlong>0</loc:distanceAlong>
+            <loc:fromReferent>
+              <loc:referentIdentifier>822311-end</loc:referentIdentifier>
+              <loc:referentType>referenceMarker</loc:referentType>
+              <loc:pointCoordinates>
+                <loc:latitude>50.031777</loc:latitude>
+                <loc:longitude>14.492066</loc:longitude>
+              </loc:pointCoordinates>
+            </loc:fromReferent>
+          </loc:toPoint>
+        </loc:linearWithinLinearElement>
+      </loc:location>
+    </loc:predefinedLocation>
+  </loc:predefinedLocationReference>
+</d2:payload>

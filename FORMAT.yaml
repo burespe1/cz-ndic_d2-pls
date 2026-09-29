@@ -1,0 +1,39 @@
+# Metadata formátu – součást vydání specifikace (tag v2.0).
+uri: cz-ndic_d2-pls
+version: '2.0'
+name:
+  cs: DATEX II Predefined Locations Publication – Sady předdefinovaných poloh
+  en: DATEX II Predefined Locations Publication – Predefined location sets
+description:
+  cs: Sady předdefinovaných poloh (segmenty FCD, meteostanice) s popisem GlobalNetwork, ALERT-C a OpenLR.
+  en: Predefined location sets (FCD segments, weather stations) with GlobalNetwork, ALERT-C and OpenLR.
+publisher:
+  cs: Národní dopravní informační centrum
+  en: National Traffic Information Centre
+model:
+  name: DATEX II
+  version: '3.7'
+  publication: PredefinedLocationsPublication
+  extensions: []
+schema:
+  dir: schema
+  entry: DATEXII_3_D2Payload.xsd
+selection: sel/cz-ndic_d2-pls.sel
+samples: samples
+ndic:
+  action: upgrade
+  previous: cz-ndic_d2-predefined-location-set-v1.2 (DATEX II 2.3)
+  source: NDIC (GlobalNetwork ŘSD)
+  distributions:
+  - x-source:cz-ndic_d2-pls-fcd-pull-v2 (pull)
+  - x-source:cz-ndic_d2-pls-weather-pull-v2 (pull)
+  legislation:
+  - RTTI
+  - SRTI
+  profiles: []
+  profileName: cz-ndic_d2-pls
+  profileVersion: '2.0'
+maintainer:
+  name: Petr Bureš
+  company: TamTam Research s.r.o.
+  url: https://www.tamtamresearch.com

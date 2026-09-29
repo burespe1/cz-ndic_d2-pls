@@ -1,0 +1,15 @@
+# Metadata dokumentace. Verze dokumentace = <format_version>.<revision>
+format_version: '2.0'
+revision: 0
+date: '2026-09-28'
+languages:
+- cs
+- en
+cs:
+  perex: Sady předdefinovaných poloh (segmenty FCD, meteostanice) s popisem GlobalNetwork,
+    ALERT-C a OpenLR.
+  keywords: DATEX II, NDIC, PredefinedLocationsPublication
+en:
+  perex: Predefined location sets (FCD segments, weather stations) with GlobalNetwork,
+    ALERT-C and OpenLR.
+  keywords: DATEX II, NDIC, PredefinedLocationsPublication
