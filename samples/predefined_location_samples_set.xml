@@ -81,6 +81,7 @@
       <!-- end::loc-gn[] -->
     </loc:location>
   </loc:predefinedLocationReference>
+  <!-- tag::pl-linear[] -->
   <loc:predefinedLocationReference id="7438904d-755a-45af-9645-8a4cb5bd1844" version="1" xsi:type="loc:PredefinedLocation">
     <loc:predefinedLocationName>
       <com:values>
@@ -111,6 +112,7 @@
       <!-- end::loc-alertc[] -->
     </loc:location>
   </loc:predefinedLocationReference>
+  <!-- end::pl-linear[] -->
   <loc:predefinedLocationReference id="2e8817ee-cb23-46f4-ad82-8023acf7a20b" version="1" xsi:type="loc:PredefinedLocation">
     <loc:predefinedLocationName>
       <com:values>
@@ -134,43 +136,6 @@
       <!-- end::loc-station[] -->
     </loc:location>
   </loc:predefinedLocationReference>
-  <loc:predefinedLocationReference id="9ef32b39-ff37-41a4-9696-33e6b62b209c" version="1" xsi:type="loc:PredefinedLocation">
-    <loc:predefinedLocationName>
-      <com:values>
-        <com:value lang="cs">Sample of pointAlongLinearElement</com:value>
-      </com:values>
-    </loc:predefinedLocationName>
-    <loc:location xsi:type="loc:PointLocation">
-      <!-- tag::loc-point-along[] -->
-      <loc:pointAlongLinearElement>
-        <loc:directionRelativeAtPoint>aligned</loc:directionRelativeAtPoint>
-        <loc:linearElement>
-          <loc:roadNumber>D1</loc:roadNumber>
-        </loc:linearElement>
-        <loc:distanceAlongLinearElement xsi:type="loc:DistanceFromLinearElementStart">
-          <loc:distanceAlong>4500</loc:distanceAlong>
-        </loc:distanceAlongLinearElement>
-      </loc:pointAlongLinearElement>
-      <!-- end::loc-point-along[] -->
-    </loc:location>
-  </loc:predefinedLocationReference>
-  <!-- tag::pl-point[] -->
-  <loc:predefinedLocationReference id="1ae44abc-0f58-4141-8795-2af192874c54" version="1" xsi:type="loc:PredefinedLocation">
-    <loc:predefinedLocationName>
-      <com:values>
-        <com:value lang="cs">Sample of pointByCoordinates</com:value>
-      </com:values>
-    </loc:predefinedLocationName>
-    <loc:location xsi:type="loc:PointLocation">
-      <loc:pointByCoordinates>
-        <loc:pointCoordinates>
-          <loc:latitude>50.00998</loc:latitude>
-          <loc:longitude>14.54135</loc:longitude>
-        </loc:pointCoordinates>
-      </loc:pointByCoordinates>
-    </loc:location>
-  </loc:predefinedLocationReference>
-  <!-- end::pl-point[] -->
   <loc:predefinedLocationReference id="7abadcc4-b142-4535-abfd-663f8467f575" version="1" xsi:type="loc:PredefinedLocation">
     <loc:predefinedLocationName>
       <com:values>

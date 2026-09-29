@@ -1,0 +1,359 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<d2:payload xmlns:d2="http://datex2.eu/schema/3/d2Payload" xmlns:com="http://datex2.eu/schema/3/common" xmlns:loc="http://datex2.eu/schema/3/locationReferencing" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="loc:PredefinedLocationsPublication" lang="cs" modelBaseVersion="3" profileName="cz-ndic_d2-pls" profileVersion="2.0">
+  <!-- tag::header[] -->
+  <com:feedType>x-source:cz-ndic_d2-pls-weather-pull-v2</com:feedType>
+  <com:publicationTime>2026-09-29T22:32:51+02:00</com:publicationTime>
+  <com:publicationCreator>
+    <com:country>cz</com:country>
+    <com:nationalIdentifier>NDIC</com:nationalIdentifier>
+  </com:publicationCreator>
+  <!-- end::header[] -->
+  <loc:headerInformation>
+    <com:confidentiality>noRestriction</com:confidentiality>
+    <com:informationStatus>real</com:informationStatus>
+  </loc:headerInformation>
+  <!-- tag::both-mirror[] -->
+  <loc:predefinedLocationReference id="69b546ec-f13d-5452-bd6b-24d0c168429c" version="251201" xsi:type="loc:PredefinedLocation">
+    <loc:predefinedLocationName>
+      <com:values>
+        <com:value lang="cs">I/50 Bystřice pod Lopeníkem</com:value>
+      </com:values>
+    </loc:predefinedLocationName>
+    <loc:location xsi:type="loc:SingleRoadLinearLocation">
+      <loc:externalReferencing>
+        <loc:externalLocationCode>3618184</loc:externalLocationCode>
+        <loc:externalReferencingSystem>CZ-RSD-GlobalNetwork:25.12</loc:externalReferencingSystem>
+      </loc:externalReferencing>
+      <loc:openlrLinear>
+        <loc:firstDirection>
+          <loc:openlrLocationReferencePoint>
+            <loc:openlrCoordinates>
+              <loc:latitude>48.970588715793191</loc:latitude>
+              <loc:longitude>17.764370982694484</loc:longitude>
+            </loc:openlrCoordinates>
+            <loc:openlrLineAttributes>
+              <loc:openlrFunctionalRoadClass>frc1</loc:openlrFunctionalRoadClass>
+              <loc:openlrFormOfWay>singleCarriageway</loc:openlrFormOfWay>
+              <loc:openlrBearing>297</loc:openlrBearing>
+            </loc:openlrLineAttributes>
+            <loc:openlrPathAttributes>
+              <loc:openlrLowestFrcToNextLRPoint>frc1</loc:openlrLowestFrcToNextLRPoint>
+              <loc:openlrDistanceToNextLRPoint>864</loc:openlrDistanceToNextLRPoint>
+            </loc:openlrPathAttributes>
+          </loc:openlrLocationReferencePoint>
+          <loc:openlrLastLocationReferencePoint>
+            <loc:openlrCoordinates>
+              <loc:latitude>48.9742246833614</loc:latitude>
+              <loc:longitude>17.753854549154031</loc:longitude>
+            </loc:openlrCoordinates>
+            <loc:openlrLineAttributes>
+              <loc:openlrFunctionalRoadClass>frc1</loc:openlrFunctionalRoadClass>
+              <loc:openlrFormOfWay>singleCarriageway</loc:openlrFormOfWay>
+              <loc:openlrBearing>117</loc:openlrBearing>
+            </loc:openlrLineAttributes>
+          </loc:openlrLastLocationReferencePoint>
+          <loc:openlrOffsets>
+            <loc:openlrPositiveOffset>608</loc:openlrPositiveOffset>
+            <loc:openlrNegativeOffset>97</loc:openlrNegativeOffset>
+          </loc:openlrOffsets>
+        </loc:firstDirection>
+        <loc:oppositeDirection>
+          <loc:openlrLocationReferencePoint>
+            <loc:openlrCoordinates>
+              <loc:latitude>48.9742246833614</loc:latitude>
+              <loc:longitude>17.753854549154031</loc:longitude>
+            </loc:openlrCoordinates>
+            <loc:openlrLineAttributes>
+              <loc:openlrFunctionalRoadClass>frc1</loc:openlrFunctionalRoadClass>
+              <loc:openlrFormOfWay>singleCarriageway</loc:openlrFormOfWay>
+              <loc:openlrBearing>117</loc:openlrBearing>
+            </loc:openlrLineAttributes>
+            <loc:openlrPathAttributes>
+              <loc:openlrLowestFrcToNextLRPoint>frc1</loc:openlrLowestFrcToNextLRPoint>
+              <loc:openlrDistanceToNextLRPoint>864</loc:openlrDistanceToNextLRPoint>
+            </loc:openlrPathAttributes>
+          </loc:openlrLocationReferencePoint>
+          <loc:openlrLastLocationReferencePoint>
+            <loc:openlrCoordinates>
+              <loc:latitude>48.970588715793191</loc:latitude>
+              <loc:longitude>17.764370982694484</loc:longitude>
+            </loc:openlrCoordinates>
+            <loc:openlrLineAttributes>
+              <loc:openlrFunctionalRoadClass>frc1</loc:openlrFunctionalRoadClass>
+              <loc:openlrFormOfWay>singleCarriageway</loc:openlrFormOfWay>
+              <loc:openlrBearing>297</loc:openlrBearing>
+            </loc:openlrLineAttributes>
+          </loc:openlrLastLocationReferencePoint>
+          <loc:openlrOffsets>
+            <loc:openlrPositiveOffset>97</loc:openlrPositiveOffset>
+            <loc:openlrNegativeOffset>608</loc:openlrNegativeOffset>
+          </loc:openlrOffsets>
+        </loc:oppositeDirection>
+      </loc:openlrLinear>
+      <loc:alertCLinear xsi:type="loc:AlertCMethod2Linear">
+        <loc:alertCLocationCountryCode>2</loc:alertCLocationCountryCode>
+        <loc:alertCLocationTableNumber>25</loc:alertCLocationTableNumber>
+        <loc:alertCLocationTableVersion>11.0</loc:alertCLocationTableVersion>
+        <loc:alertCDirection>
+          <loc:alertCDirectionCoded>positive</loc:alertCDirectionCoded>
+          <loc:alertCAffectedDirection>both</loc:alertCAffectedDirection>
+        </loc:alertCDirection>
+        <loc:alertCMethod2PrimaryPointLocation>
+          <loc:alertCLocation>
+            <loc:specificLocation>24092</loc:specificLocation>
+          </loc:alertCLocation>
+        </loc:alertCMethod2PrimaryPointLocation>
+        <loc:alertCMethod2SecondaryPointLocation>
+          <loc:alertCLocation>
+            <loc:specificLocation>26366</loc:specificLocation>
+          </loc:alertCLocation>
+        </loc:alertCMethod2SecondaryPointLocation>
+      </loc:alertCLinear>
+      <!-- tag::gn-both[] -->
+      <loc:linearWithinLinearElement>
+        <loc:directionRelativeOnLinearSection>both</loc:directionRelativeOnLinearSection>
+        <loc:linearElement xsi:type="loc:LinearElementByCode">
+          <loc:linearElementReferenceModel>CZ-RSD-GlobalNetwork</loc:linearElementReferenceModel>
+          <loc:linearElementReferenceModelVersion>25.12</loc:linearElementReferenceModelVersion>
+          <loc:linearElementIdentifier>4138522</loc:linearElementIdentifier>
+        </loc:linearElement>
+        <loc:fromPoint xsi:type="loc:DistanceFromLinearElementReferent">
+          <loc:distanceAlong>0</loc:distanceAlong>
+          <loc:fromReferent>
+            <loc:referentIdentifier>4138522-start</loc:referentIdentifier>
+            <loc:referentType>referenceMarker</loc:referentType>
+            <loc:pointCoordinates>
+              <loc:latitude>48.973150</loc:latitude>
+              <loc:longitude>17.756977</loc:longitude>
+            </loc:pointCoordinates>
+          </loc:fromReferent>
+        </loc:fromPoint>
+        <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
+          <loc:percentageDistanceAlong>0</loc:percentageDistanceAlong>
+        </loc:toPoint>
+      </loc:linearWithinLinearElement>
+      <loc:linearWithinLinearElement>
+        <loc:directionRelativeOnLinearSection>both</loc:directionRelativeOnLinearSection>
+        <loc:linearElement xsi:type="loc:LinearElementByCode">
+          <loc:linearElementReferenceModel>CZ-RSD-GlobalNetwork</loc:linearElementReferenceModel>
+          <loc:linearElementReferenceModelVersion>25.12</loc:linearElementReferenceModelVersion>
+          <loc:linearElementIdentifier>3223684</loc:linearElementIdentifier>
+        </loc:linearElement>
+        <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
+          <loc:percentageDistanceAlong>0</loc:percentageDistanceAlong>
+        </loc:fromPoint>
+        <loc:toPoint xsi:type="loc:DistanceFromLinearElementReferent">
+          <loc:distanceAlong>0</loc:distanceAlong>
+          <loc:fromReferent>
+            <loc:referentIdentifier>3223684-end</loc:referentIdentifier>
+            <loc:referentType>referenceMarker</loc:referentType>
+            <loc:pointCoordinates>
+              <loc:latitude>48.974056</loc:latitude>
+              <loc:longitude>17.754340</loc:longitude>
+            </loc:pointCoordinates>
+          </loc:fromReferent>
+        </loc:toPoint>
+      </loc:linearWithinLinearElement>
+      <!-- end::gn-both[] -->
+    </loc:location>
+  </loc:predefinedLocationReference>
+  <!-- end::both-mirror[] -->
+  <!-- tag::both-separate[] -->
+  <loc:predefinedLocationReference id="bdc39d98-4e62-515c-9fa1-0febee24eda3" version="251201" xsi:type="loc:PredefinedLocation">
+    <loc:predefinedLocationName>
+      <com:values>
+        <com:value lang="cs">I/30 Ústí nad Labem, Přístavní</com:value>
+      </com:values>
+    </loc:predefinedLocationName>
+    <loc:location xsi:type="loc:SingleRoadLinearLocation">
+      <!-- tag::openlr-both[] -->
+      <loc:openlrLinear>
+        <loc:firstDirection>
+          <loc:openlrLocationReferencePoint>
+            <loc:openlrCoordinates>
+              <loc:latitude>50.656673361824168</loc:latitude>
+              <loc:longitude>14.042766778233588</loc:longitude>
+            </loc:openlrCoordinates>
+            <loc:openlrLineAttributes>
+              <loc:openlrFunctionalRoadClass>frc1</loc:openlrFunctionalRoadClass>
+              <loc:openlrFormOfWay>multipleCarriageway</loc:openlrFormOfWay>
+              <loc:openlrBearing>14</loc:openlrBearing>
+            </loc:openlrLineAttributes>
+            <loc:openlrPathAttributes>
+              <loc:openlrLowestFrcToNextLRPoint>frc1</loc:openlrLowestFrcToNextLRPoint>
+              <loc:openlrDistanceToNextLRPoint>599</loc:openlrDistanceToNextLRPoint>
+            </loc:openlrPathAttributes>
+          </loc:openlrLocationReferencePoint>
+          <loc:openlrLastLocationReferencePoint>
+            <loc:openlrCoordinates>
+              <loc:latitude>50.660612747962581</loc:latitude>
+              <loc:longitude>14.048207165874764</loc:longitude>
+            </loc:openlrCoordinates>
+            <loc:openlrLineAttributes>
+              <loc:openlrFunctionalRoadClass>frc1</loc:openlrFunctionalRoadClass>
+              <loc:openlrFormOfWay>multipleCarriageway</loc:openlrFormOfWay>
+              <loc:openlrBearing>241</loc:openlrBearing>
+            </loc:openlrLineAttributes>
+          </loc:openlrLastLocationReferencePoint>
+          <loc:openlrOffsets>
+            <loc:openlrPositiveOffset>427</loc:openlrPositiveOffset>
+            <loc:openlrNegativeOffset>141</loc:openlrNegativeOffset>
+          </loc:openlrOffsets>
+        </loc:firstDirection>
+        <loc:oppositeDirection>
+          <loc:openlrLocationReferencePoint>
+            <loc:openlrCoordinates>
+              <loc:latitude>50.660188990589873</loc:latitude>
+              <loc:longitude>14.047080083604834</loc:longitude>
+            </loc:openlrCoordinates>
+            <loc:openlrLineAttributes>
+              <loc:openlrFunctionalRoadClass>frc1</loc:openlrFunctionalRoadClass>
+              <loc:openlrFormOfWay>multipleCarriageway</loc:openlrFormOfWay>
+              <loc:openlrBearing>223</loc:openlrBearing>
+            </loc:openlrLineAttributes>
+            <loc:openlrPathAttributes>
+              <loc:openlrLowestFrcToNextLRPoint>frc1</loc:openlrLowestFrcToNextLRPoint>
+              <loc:openlrDistanceToNextLRPoint>337</loc:openlrDistanceToNextLRPoint>
+            </loc:openlrPathAttributes>
+          </loc:openlrLocationReferencePoint>
+          <loc:openlrLastLocationReferencePoint>
+            <loc:openlrCoordinates>
+              <loc:latitude>50.658136814775339</loc:latitude>
+              <loc:longitude>14.043541248268356</loc:longitude>
+            </loc:openlrCoordinates>
+            <loc:openlrLineAttributes>
+              <loc:openlrFunctionalRoadClass>frc1</loc:openlrFunctionalRoadClass>
+              <loc:openlrFormOfWay>multipleCarriageway</loc:openlrFormOfWay>
+              <loc:openlrBearing>32</loc:openlrBearing>
+            </loc:openlrLineAttributes>
+          </loc:openlrLastLocationReferencePoint>
+          <loc:openlrOffsets>
+            <loc:openlrPositiveOffset>51</loc:openlrPositiveOffset>
+            <loc:openlrNegativeOffset>255</loc:openlrNegativeOffset>
+          </loc:openlrOffsets>
+        </loc:oppositeDirection>
+      </loc:openlrLinear>
+      <!-- end::openlr-both[] -->
+      <loc:alertCLinear xsi:type="loc:AlertCMethod2Linear">
+        <loc:alertCLocationCountryCode>2</loc:alertCLocationCountryCode>
+        <loc:alertCLocationTableNumber>25</loc:alertCLocationTableNumber>
+        <loc:alertCLocationTableVersion>11.0</loc:alertCLocationTableVersion>
+        <loc:alertCDirection>
+          <loc:alertCDirectionCoded>negative</loc:alertCDirectionCoded>
+          <loc:alertCAffectedDirection>both</loc:alertCAffectedDirection>
+        </loc:alertCDirection>
+        <loc:alertCMethod2PrimaryPointLocation>
+          <loc:alertCLocation>
+            <loc:specificLocation>3417</loc:specificLocation>
+          </loc:alertCLocation>
+        </loc:alertCMethod2PrimaryPointLocation>
+        <loc:alertCMethod2SecondaryPointLocation>
+          <loc:alertCLocation>
+            <loc:specificLocation>20697</loc:specificLocation>
+          </loc:alertCLocation>
+        </loc:alertCMethod2SecondaryPointLocation>
+      </loc:alertCLinear>
+      <loc:linearWithinLinearElement>
+        <loc:directionRelativeOnLinearSection>aligned</loc:directionRelativeOnLinearSection>
+        <loc:linearElement xsi:type="loc:LinearElementByCode">
+          <loc:linearElementReferenceModel>CZ-RSD-GlobalNetwork</loc:linearElementReferenceModel>
+          <loc:linearElementReferenceModelVersion>25.12</loc:linearElementReferenceModelVersion>
+          <loc:linearElementIdentifier>3819742</loc:linearElementIdentifier>
+        </loc:linearElement>
+        <loc:fromPoint xsi:type="loc:DistanceFromLinearElementReferent">
+          <loc:distanceAlong>0</loc:distanceAlong>
+          <loc:fromReferent>
+            <loc:referentIdentifier>3819742-start</loc:referentIdentifier>
+            <loc:referentType>referenceMarker</loc:referentType>
+            <loc:pointCoordinates>
+              <loc:latitude>50.659633</loc:latitude>
+              <loc:longitude>14.046300</loc:longitude>
+            </loc:pointCoordinates>
+          </loc:fromReferent>
+        </loc:fromPoint>
+        <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
+          <loc:percentageDistanceAlong>100</loc:percentageDistanceAlong>
+        </loc:toPoint>
+      </loc:linearWithinLinearElement>
+      <loc:linearWithinLinearElement>
+        <loc:directionRelativeOnLinearSection>aligned</loc:directionRelativeOnLinearSection>
+        <loc:linearElement xsi:type="loc:LinearElementByCode">
+          <loc:linearElementReferenceModel>CZ-RSD-GlobalNetwork</loc:linearElementReferenceModel>
+          <loc:linearElementReferenceModelVersion>25.12</loc:linearElementReferenceModelVersion>
+          <loc:linearElementIdentifier>3719852</loc:linearElementIdentifier>
+        </loc:linearElement>
+        <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
+          <loc:percentageDistanceAlong>0</loc:percentageDistanceAlong>
+        </loc:fromPoint>
+        <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
+          <loc:percentageDistanceAlong>100</loc:percentageDistanceAlong>
+        </loc:toPoint>
+      </loc:linearWithinLinearElement>
+      <loc:linearWithinLinearElement>
+        <loc:directionRelativeOnLinearSection>aligned</loc:directionRelativeOnLinearSection>
+        <loc:linearElement xsi:type="loc:LinearElementByCode">
+          <loc:linearElementReferenceModel>CZ-RSD-GlobalNetwork</loc:linearElementReferenceModel>
+          <loc:linearElementReferenceModelVersion>25.12</loc:linearElementReferenceModelVersion>
+          <loc:linearElementIdentifier>3719851</loc:linearElementIdentifier>
+        </loc:linearElement>
+        <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
+          <loc:percentageDistanceAlong>0</loc:percentageDistanceAlong>
+        </loc:fromPoint>
+        <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
+          <loc:percentageDistanceAlong>13.8128</loc:percentageDistanceAlong>
+        </loc:toPoint>
+      </loc:linearWithinLinearElement>
+      <loc:linearWithinLinearElement>
+        <loc:directionRelativeOnLinearSection>aligned</loc:directionRelativeOnLinearSection>
+        <loc:linearElement xsi:type="loc:LinearElementByCode">
+          <loc:linearElementReferenceModel>CZ-RSD-GlobalNetwork</loc:linearElementReferenceModel>
+          <loc:linearElementReferenceModelVersion>25.12</loc:linearElementReferenceModelVersion>
+          <loc:linearElementIdentifier>3719853</loc:linearElementIdentifier>
+        </loc:linearElement>
+        <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
+          <loc:percentageDistanceAlong>88.1356</loc:percentageDistanceAlong>
+        </loc:fromPoint>
+        <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
+          <loc:percentageDistanceAlong>100</loc:percentageDistanceAlong>
+        </loc:toPoint>
+      </loc:linearWithinLinearElement>
+      <loc:linearWithinLinearElement>
+        <loc:directionRelativeOnLinearSection>aligned</loc:directionRelativeOnLinearSection>
+        <loc:linearElement xsi:type="loc:LinearElementByCode">
+          <loc:linearElementReferenceModel>CZ-RSD-GlobalNetwork</loc:linearElementReferenceModel>
+          <loc:linearElementReferenceModelVersion>25.12</loc:linearElementReferenceModelVersion>
+          <loc:linearElementIdentifier>3719854</loc:linearElementIdentifier>
+        </loc:linearElement>
+        <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
+          <loc:percentageDistanceAlong>0</loc:percentageDistanceAlong>
+        </loc:fromPoint>
+        <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
+          <loc:percentageDistanceAlong>100</loc:percentageDistanceAlong>
+        </loc:toPoint>
+      </loc:linearWithinLinearElement>
+      <loc:linearWithinLinearElement>
+        <loc:directionRelativeOnLinearSection>aligned</loc:directionRelativeOnLinearSection>
+        <loc:linearElement xsi:type="loc:LinearElementByCode">
+          <loc:linearElementReferenceModel>CZ-RSD-GlobalNetwork</loc:linearElementReferenceModel>
+          <loc:linearElementReferenceModelVersion>25.12</loc:linearElementReferenceModelVersion>
+          <loc:linearElementIdentifier>3819738</loc:linearElementIdentifier>
+        </loc:linearElement>
+        <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
+          <loc:percentageDistanceAlong>0</loc:percentageDistanceAlong>
+        </loc:fromPoint>
+        <loc:toPoint xsi:type="loc:DistanceFromLinearElementReferent">
+          <loc:distanceAlong>0</loc:distanceAlong>
+          <loc:fromReferent>
+            <loc:referentIdentifier>3819738-end</loc:referentIdentifier>
+            <loc:referentType>referenceMarker</loc:referentType>
+            <loc:pointCoordinates>
+              <loc:latitude>50.659817</loc:latitude>
+              <loc:longitude>14.046638</loc:longitude>
+            </loc:pointCoordinates>
+          </loc:fromReferent>
+        </loc:toPoint>
+      </loc:linearWithinLinearElement>
+    </loc:location>
+  </loc:predefinedLocationReference>
+  <!-- end::both-separate[] -->
+</d2:payload>

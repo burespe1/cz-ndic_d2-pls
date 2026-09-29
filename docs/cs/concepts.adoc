@@ -1,143 +1,142 @@
 == Koncepty
 
-Formát poskytuje sady předem definovaných poloh, na které odkazují publikace stavových informací
-a událostí – dojezdové doby a stav provozu z FCD (`cz-ndic_d2-fcd-status`), počasí a sjízdnost
-(`cz-ndic_d2-weather`), obsazenost parkovišť (`cz-ndic_d2-city-parking-*`) a další. Odkazující zpráva
-obsahuje jen identifikátor a verzi polohy; úplný popis polohy obsahuje tato publikace.
+Formát publikuje sady předdefinovaných poloh – úseků silniční sítě, na které odkazují jiné formáty NDIC.
+Odkazující zpráva nese jen identifikátor a verzi polohy; úplný popis polohy je v této publikaci.
 
-Formát vychází z DATEX II publikace `PredefinedLocationsPublication` <<EN16157-2>>. Oproti verzi 1.2
-(DATEX II 2.3) je převeden na model DATEX II 3.7 bez národních rozšíření.
+[cols="2,3,3",options="header"]
+|===
+|Sada (distribuce) |Obsah |Odkazují na ni
+|`x-source:cz-ndic_d2-pls-fcd-pull-v2` |úseky mezi lokacemi ALERT-C, každý směr samostatně |`cz-ndic_d2-fcd-status`
+|`x-source:cz-ndic_d2-pls-weather-pull-v2` |úseky meteohlásek, platné pro oba směry |`cz-ndic_d2-weather`
+|===
+
+Sada se stahuje celá (snímek, pull). Formát vychází z publikace `PredefinedLocationsPublication`
+<<EN16157-2>>.
 
 [[obalka]]
 === Obálka a hlavička publikace
 
-Každá zpráva je dokument DATEX II 3 s kořenovým elementem `d2:payload`. Obálky `d2LogicalModel`
-a `exchange` z verze 2 se již nepoužívají. Atribut `xsi:type` kořenového elementu určuje typ
-publikace (zde `loc:PredefinedLocationsPublication`), atribut `modelBaseVersion="3"` verzi modelu a atribut `lang` výchozí jazyk
-textů.
+Zpráva je dokument DATEX II 3 s kořenovým elementem `d2:payload` typu `loc:PredefinedLocationsPublication`.
+Formát identifikují atributy kořene `profileName` (`cz-ndic_d2-pls`) a `profileVersion` (`2.0`).
 
-Formát, podle kterého je zpráva sestavena, identifikují výhradně atributy kořenového elementu:
+Hlavička obsahuje:
 
-[horizontal]
-`profileName`:: identifikátor formátu bez verze (`cz-ndic_d2-pls`),
-`profileVersion`:: verze formátu (`2.0`).
+* `feedType` – distribuce podle tabulky výše (odkaz do registru národního přístupového bodu <<nap>>),
+* `publicationTime` – čas vytvoření obsahu; nezměnil-li se obsah, zůstává čas původní,
+* `publicationCreator` – `cz` a `NDIC`,
+* `headerInformation` – vždy `confidentiality` = `noRestriction` a `informationStatus` = `real`.
 
-Hlavička publikace obsahuje:
-
-* `feedType` – odkaz na *zdroj dat* (distribuci) v registru národního přístupového bodu <<nap>>,
-  např. `x-source:cz-ndic_d2-pls-fcd-pull-v2` nebo `x-source:cz-ndic_d2-pls-weather-pull-v2`. Název distribuce tvoří název formátu, případně obsah distribuce (u VMS `fixed`/`mobile`,
-  u sad poloh `fcd`/`weather`), u snímků (pull) protokol `pull` a celé číslo verze distribuce
-  (`-v1`, `-v2`, …), které se mění nezávisle na verzi formátu a navazuje na řadu distribucí v registru.
-  Verze sítě Global Network není součástí `feedType`; nese ji obsah (verze předdefinovaných poloh).
-  Element neodkazuje na formát; ten určují atributy `profileName` a `profileVersion`. Element
-  `feedDescription` se nepoužívá.
-* `publicationTime` – čas vytvoření obsahu publikace. Pokud se obsah od předchozí publikace nezměnil,
-  zůstává čas původní (stejně jako hlavičky HTTP `Last-Modified` a `ETag`); nový čas vzniká jen se
-  změnou obsahu.
-* `publicationCreator` – poskytovatel publikace: kód země malými písmeny (`cz`) a zkratka
-  poskytovatele (`nationalIdentifier`).
-* `headerInformation` – způsob nakládání s informacemi; NDIC uvádí vždy `confidentiality`
-  = `noRestriction` a `informationStatus` = `real`.
-
-Všechny časové údaje ve zprávě se uvádějí včetně časové zóny.
-
-.Kořenový element a hlavička publikace (vzorek `predefined_location_samples_set.xml`)
+.Kořenový element a hlavička publikace (vzorek `predefined_location_set-fcd.xml`)
 [source,xml]
 ----
-include::{samplesdir}/predefined_location_samples_set.xml[lines=2]
-include::{samplesdir}/predefined_location_samples_set.xml[tag=header,indent=2]
+include::{samplesdir}/predefined_location_set-fcd.xml[lines=2]
+include::{samplesdir}/predefined_location_set-fcd.xml[tag=header,indent=2]
   ...
 ----
 
 [[predef]]
 === Předdefinované polohy
 
-Každá předdefinovaná poloha je jeden element `predefinedLocationReference` typu
-`loc:PredefinedLocation` (ve verzi 2 `predefinedLocationContainer`). Obsahuje název
-(`predefinedLocationName`) a popis polohy (`location`). Publikace obsahuje tolik elementů, kolik je
-předdefinovaných poloh.
+Každá poloha je element `predefinedLocationReference` typu `loc:PredefinedLocation` s názvem
+(`predefinedLocationName`) a popisem polohy (`location`, vždy liniová – viz <<polohy>>).
 
-.Předdefinovaná poloha popsaná souřadnicemi (vzorek `predefined_location_samples_set.xml`)
+* *Identifikátor* (`@id`) je stálý. Úseky FCD ho mají složený z lokací ALERT-C: `TS25760T25761` je úsek
+  z lokace 25760 do lokace 25761, opačný směr je `TS25761T25760`.
+* *Verze* (`@version`) odpovídá vydání sítě Global Network, ze kterého je poloha odvozena, ve tvaru
+  `RRMM01` (síť 25.06 → `250601`). S novým vydáním sítě dostávají polohy novou verzi se stejným
+  identifikátorem; nová poloha dostává nový identifikátor.
+
+Publikace vždy obsahuje všechny platné polohy, i ty dříve vydané. Uvnitř poloh se žádný čas neuvádí.
+
+.Předdefinovaná poloha – úsek meteohlásky popsaný OpenLR, ALERT-C a úseky GN (vzorek `predefined_location_set-weather.xml`)
 [source,xml]
 ----
-include::{samplesdir}/predefined_location_samples_set.xml[tag=pl-point,indent=0]
+include::{samplesdir}/predefined_location_set-weather.xml[tag=weather-1,indent=0]
 ----
-
-Jednoznačnost polohy zaručuje identifikátor `@id` s verzí `@version`:
-
-* Identifikátor ani verze se při převodu z verze 2 formátu nemění, odkazy ve stávajících datech tak zůstávají
-  platné.
-* Změna popisu polohy (geometrie) vytváří novou verzi se stejným identifikátorem; nová poloha dostává
-  nový identifikátor.
 
 [[skupiny]]
 ==== Skupiny poloh
 
-Více nespojitých poloh, na které se odkazuje společně (např. soubor míst jedné meteohlásky), tvoří
-skupinu: element `predefinedLocationReference` typu `loc:PredefinedLocationGroup` (ve verzi 2
-`PredefinedNonOrderedLocationGroup`) s vlastním `@id`, `@version` a volitelným názvem
-`predefinedLocationGroupName`, jehož jednotlivé polohy jsou ve
-vnořených elementech `predefinedLocation` (každý s vlastním identifikátorem, verzí, názvem a popisem
-polohy). Na skupinu odkazují zprávy typem `loc:LocationGroupByReference`
-(`targetClass` = `loc:PredefinedLocationGroup`). Příklad je v příloze (vzorek
-`predefined_location_loc_group.xml`).
+Skupina sdružuje úseky, na které se opakovaně odkazuje jako na celek – i na různých silnicích
+a nesouvislé: oblast pravidelných zimních uzavírek, stálá objízdná trasa, úseky v okolí meteohlásky.
 
-[[platnost]]
-=== Časová platnost
+.Skupina tří nesouvislých úseků na dvou silnicích
+image::skupina-poloh.svg[Skupina poloh – nesouvislé úseky,width=640,align="center"]
 
-Předdefinované polohy platí od vydání publikace (`publicationTime`); uvnitř poloh se žádný čas neuvádí.
-Nově vydaná publikace *vždy obsahuje i dříve vydané polohy*: nové polohy mají nový identifikátor,
-aktualizované vyšší verzi. Pokud se obsah publikace nezměnil, zůstává `publicationTime` původní.
+Skupina je element `predefinedLocationReference` typu `loc:PredefinedLocationGroup`. Naplňuje se takto:
+
+. Skupina dostane vlastní identifikátor, verzi a název (`predefinedLocationGroupName`).
+. Každý úsek skupiny je vnořený element `predefinedLocation` – úplná předdefinovaná poloha s vlastním
+  identifikátorem, verzí, názvem a popisem polohy (stejně jako samostatná poloha).
+. Skupina má alespoň dva úseky; jejich pořadí nemá význam.
+. Identifikátory úseků jsou jedinečné v celé publikaci; tentýž úsek se ve skupině ani v publikaci
+  neopakuje.
+. Změní-li se úsek, dostane novou verzi on i skupina; přidání nebo odebrání úseku mění verzi skupiny.
+
+Zpráva odkazuje na celou skupinu typem `loc:LocationGroupByReference` (`targetClass` =
+`loc:PredefinedLocationGroup`). Předdefinované skupiny se zakládají jen pro oblasti, které se opakují;
+jednorázové oblastní jevy popisují formáty událostí skupinou úseků přímo ve zprávě.
+
+.Skupina poloh (vzorek `predefined_location_loc_group.xml`, zkráceno)
+[source,xml]
+----
+include::{samplesdir}/predefined_location_loc_group.xml[tag=group-head,indent=0]
+  ...
+</loc:predefinedLocationReference>
+----
+
+[[smer]]
+=== Směr a obousměrné polohy
+
+Poloha je buď jednosměrná, nebo platí pro oba směry jízdy:
+
+* *Úseky FCD* jsou jednosměrné; každý směr je samostatná poloha (`TS25760T25761`, `TS25761T25760`).
+* *Úseky meteohlásek* a další obousměrné polohy popisuje *jedna* poloha pro oba směry. Každá metoda
+  vyjadřuje obousměrnost po svém:
+
+[cols="1,4",options="header"]
+|===
+|Metoda |Obousměrná poloha
+|ALERT-C |`alertCAffectedDirection` = `both` (jednosměrná `aligned`)
+|OpenLR |`firstDirection` pro směr polohy a `oppositeDirection` pro protisměr – každý s vlastními
+referenčními body a ofsety (<<openlr>>)
+|Global Network |úseky společné oběma směrům jednou s `directionRelativeOnLinearSection` = `both`; úseky
+protisměru, které se liší (oddělené jízdní pásy), za úseky prvního směru (<<gn>>)
+|===
+
+Skupina poloh se pro obousměrnost nepoužívá. Dvojice jednosměrných poloh sdružená do skupiny by
+vyžadovala odkaz jiného typu (`LocationGroupByReference`), ztratila by vazbu mezi směry a metody
+OpenLR a ALERT-C by obousměrnost vyjadřovaly dvakrát. Skupina je vyhrazena pro oblasti.
 
 [[polohy]]
 == Popisování poloh
 
-Předdefinovaná poloha je liniová (`loc:SingleRoadLinearLocation`) nebo bodová (`loc:PointLocation`);
-plošné polohy se nepoužívají. Jedna poloha bývá popsána několika metodami podle jejich dostupnosti
-v daném místě; všechny popisují tentýž úsek skutečnosti a musí být uvedena alespoň jedna. Všechny metody
-jsou součástí modelu DATEX II 3.7 – národní rozšíření polohy z verze 2 (`linearExtension`,
-`globalNetworkLinear`, `openlrExtendedLinear`) se již nepoužívají.
+Poloha je liniová (`loc:SingleRoadLinearLocation`) a bývá popsána několika metodami podle jejich
+dostupnosti; všechny popisují tentýž úsek a alespoň jedna musí být uvedena. Úseky FCD i meteohlásek mají
+všechny tři hlavní metody.
 
-[cols="2,3,2",options="header"]
+[cols="2,3,3",options="header"]
 |===
-|Metoda |Element |Typ polohy
-|ALERT-C |`alertCLinear` (`AlertCMethod2Linear`) |liniová
-|OpenLR |`openlrLinear` |liniová
-|Staničení |`linearWithinLinearElement` s `roadNumber` |liniová
-|Staničení bodu |`pointAlongLinearElement` |bodová
-|Global Network |`linearWithinLinearElement` s `LinearElementByCode`, `externalReferencing` |liniová
-|Souřadnice |`pointByCoordinates` |bodová
-|ALERT-C bod |`alertCPoint` |bodová
-|OpenLR bod |`openlrPointLocationReference` |bodová
+|Metoda |Element |Pro koho
+|ALERT-C |`alertCLinear` |navigace s lokační tabulkou RDS-TMC
+|OpenLR |`openlrLinear` |napojení na libovolnou mapu
+|Global Network |`linearWithinLinearElement` (`LinearElementByCode`), `externalReferencing` |uživatelé sítě GN
+|Staničení |`linearWithinLinearElement` s `roadNumber` |zatím se nepoužívá
 |===
-
-Poloha má nést i geometrii pro zobrazení (`coordinatesForDisplay`, u liniových poloh `gmlLineString`
-ve WGS-84), aby ji odběratelé mohli použít bez sítě Global Network či lokačních tabulek ALERT-C.
-Geometrii dodává zdroj poloh; vzorky ji zatím neobsahují.
 
 === Popis polohy pomocí ALERT-C
 
-Metoda popisuje liniovou polohu kódy lokační tabulky ALERT-C <<ISO14819-3>> v elementu `alertCLinear` typu
-`AlertCMethod2Linear` (bodovou polohu obdobně `alertCPoint` typu `AlertCMethod2Point`).
+Poloha je dána dvěma lokacemi lokační tabulky ALERT-C <<ISO14819-3>> v elementu `alertCLinear` typu
+`AlertCMethod2Linear`:
 
-* Lokační tabulku určují `alertCLocationCountryCode`, `alertCLocationTableNumber`
-  a `alertCLocationTableVersion`. Kód země se uvádí podle IEC 62106 – pro ČR hodnota `2`
-  (nikoli `CZ`).
-* Primární lokace (`alertCMethod2PrimaryPointLocation`) je podle principu ALERT-C místo, kde došlo
-  k události či kde řidič opouští problémový úsek; sekundární lokace
-  (`alertCMethod2SecondaryPointLocation`) je konec kolony či místo, kde řidič do problémového úseku
-  vjíždí.
-* `alertCDirectionCoded` = `positive`, je-li směr dopravního proudu souhlasný se směrem kódování
-  cesty v lokační tabulce.
-* `alertCAffectedDirection` (ve verzi 3 povinný) určuje, kterých směrů dopravního proudu se událost
-  týká, vůči směru popsané polohy (danému `alertCDirectionCoded`): `aligned` pro jednosměrné události
-  v tomto směru, `both` pro události platné v obou směrech. Hodnota vychází ze směrovosti události
-  v katalogu událostí ALERT-C <<ISO14819-2>>.
-* Dlouhé události, které nelze popsat jednou cestou ALERT-C, mají více elementů `alertCLinear`.
-* Bodová událost (i vnitřek křižovatky či tunelu) má shodnou primární a sekundární lokaci.
+* tabulka: `alertCLocationCountryCode` = `2` (kód ČR podle IEC 62106), `alertCLocationTableNumber` = `25`,
+  `alertCLocationTableVersion`,
+* sekundární lokace (`alertCMethod2SecondaryPointLocation`) – kde řidič do úseku vjíždí, primární
+  (`alertCMethod2PrimaryPointLocation`) – kde ho opouští,
+* `alertCDirectionCoded` = `positive`, je-li směr jízdy souhlasný se směrem kódování v lokační tabulce,
+* `alertCAffectedDirection` = `aligned` pro jednosměrnou, `both` pro obousměrnou polohu.
 
-IMPORTANT: Význam `alertCDirectionCoded` je opačný než význam bitu `direction` v RDS-TMC, který slouží
-k dohledání sekundární lokace.
+IMPORTANT: Význam `alertCDirectionCoded` je opačný než význam bitu `direction` v RDS-TMC.
 
 .Popis polohy pomocí ALERT-C (vzorek `predefined_location_samples_set.xml`)
 [source,xml]
@@ -145,86 +144,59 @@ k dohledání sekundární lokace.
 include::{samplesdir}/predefined_location_samples_set.xml[tag=loc-alertc,indent=0]
 ----
 
+[[openlr]]
 === Popis polohy pomocí OpenLR
 
-Metoda OpenLR (element `openlrLinear`) popisuje polohu nezávisle na mapovém podkladu: odběratel ji
-v libovolné mapě najde vyhledáním cesty (tzv. on-the-fly lokalizace). Referenční body
-`openlrLocationReferencePoint` a `openlrLastLocationReferencePoint` jsou dány souřadnicemi (WGS-84),
-azimutem a třídou komunikace; nalezená cesta je upřesněna ofsety `openlrPositiveOffset`
-a `openlrNegativeOffset` na skutečný rozsah události. Nestačí-li dva body, použijí se body mezilehlé.
-U bodové události vymezují ofsety úsek nulové délky.
+OpenLR (`openlrLinear`) popisuje polohu nezávisle na mapě: odběratel ji ve své mapě najde vyhledáním trasy
+mezi referenčními body. Referenční body (`openlrLocationReferencePoint`, poslední
+`openlrLastLocationReferencePoint`) nesou souřadnice WGS-84, azimut, třídu komunikace a vzdálenost
+k dalšímu bodu; ofsety `openlrPositiveOffset` a `openlrNegativeOffset` zkracují nalezenou trasu na
+skutečný rozsah polohy.
 
-.Popis polohy pomocí OpenLR (vzorek `predefined_location_samples_set.xml`)
+Obousměrná poloha má oba směry zvlášť: `firstDirection` ve směru polohy a `oppositeDirection` v protisměru,
+každý s vlastními referenčními body a ofsety. Na komunikaci s oddělenými jízdními pásy vede každý směr
+po jiném pásu:
+
+.Obousměrná poloha v OpenLR na komunikaci s oddělenými pásy
+image::openlr-obousmerne.svg[OpenLR – firstDirection a oppositeDirection,width=680,align="center"]
+
+.Obousměrná poloha v OpenLR (vzorek `predefined_location_both-directions.xml`)
 [source,xml]
 ----
-include::{samplesdir}/predefined_location_samples_set.xml[tag=loc-openlr,indent=0]
-----
-
-=== Popis polohy pomocí staničení
-
-Staničení se popisuje elementem `linearWithinLinearElement`, jehož `linearElement` nese číslo
-komunikace (`roadNumber`). `directionRelativeOnLinearSection` určuje směr vůči staničení (`aligned`
-po směru, `opposite` proti směru) a `fromPoint` a `toPoint` typu `DistanceFromLinearElementStart`
-vzdálenost počátku a konce události od počátku komunikace v metrech (`distanceAlong`). Bodová událost
-má shodný počátek a konec.
-
-.Popis polohy pomocí staničení (vzorek `predefined_location_samples_set.xml`)
-[source,xml]
-----
-include::{samplesdir}/predefined_location_samples_set.xml[tag=loc-station,indent=0]
+include::{samplesdir}/predefined_location_both-directions.xml[tag=openlr-both,indent=0]
 ----
 
 [[gn]]
 === Popis polohy pomocí sítě Global Network
 
-Úseky silniční sítě Global Network (GN, ŘSD) se ve verzi 3 popisují nativními prostředky modelu:
+Poloha je výčet úseků sítě Global Network (GN, ŘSD):
 
-* Každý úsek je jeden element `linearWithinLinearElement`, jehož `linearElement` je typu
-  `LinearElementByCode`: `linearElementReferenceModel` = `CZ-RSD-GlobalNetwork`,
-  `linearElementReferenceModelVersion` = verze sítě a `linearElementIdentifier` = identifikátor
-  úseku. Pořadí elementů odpovídá pořadí úseků ve směru trasy.
-* `directionRelativeOnLinearSection` určuje směr vůči směru kódování úseku.
-* Krajní úseky, které událost zasahuje jen částečně, vymezují `fromPoint` a `toPoint` typu
-  `PercentageDistanceAlongLinearElement` – vzdálenost od počátku úseku v procentech jeho délky
-  (0–100, kde 100 = konec úseku).
-* *Počátek a konec polohy* nesou (jsou-li známy) souřadnice WGS-84: `fromPoint` prvního a `toPoint` posledního úseku
-  jsou typu `DistanceFromLinearElementReferent` s `distanceAlong` = 0 a referentem (`fromReferent`,
-  `referentType` = `referenceMarker`) se souřadnicemi `pointCoordinates`. Nahrazují tak body
-  `startPoint` a `endPoint` z verze 2 (tam v S-JTSK).
-* *Plné vnitřní úseky* (zasažené celé a ve stejném směru) se neuvádějí jako samostatné
-  `linearWithinLinearElement`, ale zkráceně elementy `externalReferencing` přímo v poloze:
-  `externalLocationCode` = identifikátor úseku, `externalReferencingSystem` =
-  `CZ-RSD-GlobalNetwork:<verze sítě>`; pořadí odpovídá pořadí úseků na trase.
+* Každý úsek je element `linearWithinLinearElement` s `linearElement` typu `LinearElementByCode`:
+  `linearElementReferenceModel` = `CZ-RSD-GlobalNetwork`, `linearElementReferenceModelVersion` = verze
+  sítě, `linearElementIdentifier` = identifikátor úseku. Úseky jsou v pořadí trasy.
+* `directionRelativeOnLinearSection` – směr vůči kódování úseku: `aligned`, `opposite`, u obousměrné polohy
+  `both` (úsek slouží oběma směrům).
+* Krajní úseky vymezují `fromPoint` a `toPoint` typu `PercentageDistanceAlongLinearElement` v procentech
+  délky úseku (0–100).
+* Počátek a konec polohy nesou souřadnice WGS-84: `fromPoint` prvního a `toPoint` posledního úseku jsou
+  typu `DistanceFromLinearElementReferent` s `distanceAlong` = 0 a referentem se souřadnicemi.
+* Plné vnitřní úseky stejného směru se zkracují na `externalReferencing` (`externalLocationCode` =
+  identifikátor úseku, `externalReferencingSystem` = `CZ-RSD-GlobalNetwork:<verze sítě>`). Úplnou trasu pak
+  tvoří první krajní úsek, vnitřní úseky v pořadí `externalReferencing` a poslední krajní úsek.
+* Obousměrná poloha: úseky společné oběma směrům jednou se směrem `both`; liší-li se úseky protisměru
+  (oddělené pásy), následují za úseky prvního směru a všechny úseky se pak uvádějí jako
+  `linearWithinLinearElement` bez zkracování.
 
-.Úseky Global Network – krajní úseky se souřadnicemi počátku a konce (vzorek `predefined_location_samples_set.xml`)
+.Úseky Global Network – obousměrná poloha se společnými úseky (vzorek `predefined_location_both-directions.xml`)
 [source,xml]
 ----
-include::{samplesdir}/predefined_location_samples_set.xml[tag=loc-gn,indent=0]
+include::{samplesdir}/predefined_location_both-directions.xml[tag=gn-both,indent=0]
 ----
 
-.Plné vnitřní úseky Global Network zkráceně (vzorek `predefined_location_samples_set.xml`)
-[source,xml]
-----
-include::{samplesdir}/predefined_location_samples_set.xml[tag=loc-extref,indent=0]
-----
+=== Popis polohy pomocí staničení
 
-Úplný seznam úseků tvoří první krajní úsek (`linearWithinLinearElement`), vnitřní úseky v pořadí
-`externalReferencing` a poslední krajní úsek. Nemají-li vnitřní úseky stejný směr vůči svému kódování,
-uvádějí se všechny úseky jako `linearWithinLinearElement`.
+NOTE: Staničení je v profilu pro budoucí použití; sady poloh NDIC je zatím neobsahují.
 
-=== Bodová poloha pomocí staničení
-
-Bodová poloha podél komunikace se popisuje elementem `pointAlongLinearElement`: číslo komunikace
-(`linearElement/roadNumber`), směr vůči staničení (`directionRelativeAtPoint`) a vzdálenost od počátku
-komunikace v metrech (`distanceAlongLinearElement` typu `DistanceFromLinearElementStart`).
-
-.Bodová poloha pomocí staničení (vzorek `predefined_location_samples_set.xml`)
-[source,xml]
-----
-include::{samplesdir}/predefined_location_samples_set.xml[tag=loc-point-along,indent=0]
-----
-
-=== Bodová poloha pomocí souřadnic
-
-Bodovou polohu lze popsat souřadnicemi WGS-84 elementem `pointByCoordinates/pointCoordinates`
-(`latitude`, `longitude`); příklad je výše v kapitole <<predef>>.
+Staničení je element `linearWithinLinearElement` s číslem komunikace (`linearElement/roadNumber`), směrem
+vůči staničení (`directionRelativeOnLinearSection`) a vzdáleností počátku a konce od začátku komunikace
+v metrech (`fromPoint`, `toPoint` typu `DistanceFromLinearElementStart`).

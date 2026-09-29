@@ -3,10 +3,9 @@
 Vzorky jsou součástí balíčku specifikace `{schema-uri}.zip` (adresář `samples`). Všechny jsou validní vůči
 schématu DATEX II 3.7 a odpovídají výběru profilu (`.sel`).
 
-=== predefined_location_set-fcd.xml – segmenty FCD
+=== predefined_location_set-fcd.xml – úseky FCD
 
-Publikace obsahuje tři předdefinované polohy – segmenty sítě, na které se lokalizují data FCD
-(`TS25760T25761`, `TS25761T25760`, `TS27072T27073`; název je shodný s identifikátorem segmentu).
+Dva úseky sady FCD mezi lokacemi ALERT-C 25760 a 25761, každý směr jako samostatná poloha (síť GN 22.12).
 
 [source,xml]
 ----
@@ -15,19 +14,49 @@ include::{samplesdir}/predefined_location_set-fcd.xml[tags=**]
 
 Obálka a hlavička::
 Kořen `d2:payload` typu `loc:PredefinedLocationsPublication` s atributy `profileName`
-a `profileVersion`, `publicationTime` a `publicationCreator`. Odkaz na zdroj dat (`feedType`) je
-`x-source:cz-ndic_d2-pls-fcd-pull-v2` (sada FCD), resp. `x-source:cz-ndic_d2-pls-weather-pull-v2`.
+a `profileVersion`; zdroj dat `x-source:cz-ndic_d2-pls-fcd-pull-v2`.
 
 Poloha::
-Každá poloha je liniová (`SingleRoadLinearLocation`) a je popsána třemi metodami: OpenLR, ALERT-C
-a úseky Global Network. První dva segmenty střídají úseky ve směru a proti směru jejich kódování, proto jsou
-všechny úseky uvedeny jako `linearWithinLinearElement`; třetí segment má čtyři úseky stejného směru,
-dva vnitřní jsou proto zkráceně v `externalReferencing`. Procenta délky úseků jsou v rozsahu 0–100.
+Jednosměrná liniová poloha popsaná OpenLR (jen `firstDirection`), ALERT-C (`alertCAffectedDirection` =
+`aligned`) a úseky Global Network. Úseky střídají směr vůči svému kódování, proto jsou všechny uvedeny
+jako `linearWithinLinearElement`. Druhá poloha je tentýž úsek v opačném směru.
+
+=== predefined_location_set-weather.xml – úseky meteohlásek
+
+Dva úseky sady weather (síť GN 25.06); první je poloha, na kterou odkazuje vzorek `aquaplaning.xml`
+formátu `cz-ndic_d2-weather`.
+
+[source,xml]
+----
+include::{samplesdir}/predefined_location_set-weather.xml[tags=**]
+----
+
+Poloha::
+Úseky meteohlásek platí pro oba směry (`alertCAffectedDirection` = `both`). U první polohy slouží tytéž
+úseky GN oběma směrům (`directionRelativeOnLinearSection` = `both`); druhá poloha má úseky protisměru
+uvedené za úseky prvního směru. Počátek a konec polohy nesou referenty se souřadnicemi WGS-84.
+
+=== predefined_location_both-directions.xml – obousměrné polohy
+
+Dvě obousměrné polohy (síť GN 25.12) s popisem obou směrů v OpenLR (`firstDirection`, `oppositeDirection`).
+
+[source,xml]
+----
+include::{samplesdir}/predefined_location_both-directions.xml[tags=**]
+----
+
+Úseky slouží oběma směrům::
+I/50 u Bystřice pod Lopeníkem: úseky protisměru jsou zrcadlem prvního směru, proto jsou uvedeny jednou
+s `directionRelativeOnLinearSection` = `both`; plný vnitřní úsek zkráceně v `externalReferencing`.
+
+Oddělené jízdní pásy::
+I/30 v Ústí nad Labem: protisměr vede po jiných úsecích; za třemi úseky prvního směru následují tři úseky
+protisměru, všechny jako `linearWithinLinearElement`.
 
 === predefined_location_samples_set.xml – ukázky metod popisu polohy
 
-Publikace obsahuje šest předdefinovaných poloh, každou popsanou jednou metodou: úseky Global Network,
-ALERT-C, staničení, staničení bodu, souřadnice a OpenLR.
+Publikace obsahuje čtyři předdefinované polohy, každou popsanou jednou metodou: úseky Global Network,
+ALERT-C, staničení a OpenLR.
 
 [source,xml]
 ----
@@ -36,9 +65,8 @@ include::{samplesdir}/predefined_location_samples_set.xml[tags=**]
 
 === predefined_location_loc_group.xml – skupina poloh
 
-Publikace obsahuje jednu skupinu poloh (`loc:PredefinedLocationGroup`) se dvěma vnořenými polohami
-`predefinedLocation` (Podolské nábřeží a P+R Chodov), popsanými úseky Global Network, druhá navíc
-ALERT-C.
+Předdefinovaná skupina (`loc:PredefinedLocationGroup`) dvou úseků meteohlásek na silnici I/34 u Stráže
+nad Nežárkou; každý úsek je vnořená poloha `predefinedLocation` s vlastním identifikátorem a verzí.
 
 [source,xml]
 ----
