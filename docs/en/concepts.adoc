@@ -1,4 +1,232 @@
 == Concepts
 
-Description of the format concepts: content of the publication, static vs. dynamic part,
-location referencing, record versioning. References: <<EN16157-3>>.
+The format publishes sets of predefined locations – road network sections referenced by other NDIC
+formats. A referencing message carries only the identifier and version of the location; the full
+location description is in this publication.
+
+[cols="2,3,3",options="header"]
+|===
+|Set (distribution) |Content |Referenced by
+|`x-source:cz-ndic_d2-pls-fcd-pull-v2` |sections between ALERT-C locations, each direction separately |`cz-ndic_d2-fcd-status`
+|`x-source:cz-ndic_d2-pls-weather-pull-v2` |road weather station sections, valid in both directions |`cz-ndic_d2-weather`
+|===
+
+A set is always downloaded as a whole (snapshot, pull). The format is based on the
+`PredefinedLocationsPublication` publication <<EN16157-2>>.
+
+[[obalka]]
+=== Envelope and publication header
+
+A message is a DATEX II 3 document with the root element `d2:payload` of type
+`loc:PredefinedLocationsPublication`. The format is identified by the root attributes `profileName`
+(`cz-ndic_d2-pls`) and `profileVersion` (`2.0`).
+
+The header contains:
+
+* `feedType` – the distribution according to the table above (reference to the register of the national
+  access point <<nap>>),
+* `publicationTime` – time the content was created; if the content has not changed, the original time is kept,
+* `publicationCreator` – `cz` and `NDIC`,
+* `headerInformation` – always `confidentiality` = `noRestriction` and `informationStatus` = `real`.
+
+.Root element and publication header (sample `predefined_location_set-fcd.xml`)
+[source,xml]
+----
+include::{samplesdir}/predefined_location_set-fcd.xml[lines=2]
+include::{samplesdir}/predefined_location_set-fcd.xml[tag=header,indent=2]
+  ...
+----
+
+[[predef]]
+=== Predefined locations
+
+Each location is a `predefinedLocationReference` element of type `loc:PredefinedLocation` with a location
+description (`location`, always linear – see <<polohy>>).
+
+* The *identifier* (`@id`) is stable. FCD sections have it composed of ALERT-C locations:
+  `TS25760T25761` is the section from location 25760 to location 25761, the opposite direction is
+  `TS25761T25760`.
+* The *name* (`predefinedLocationName`) is given only if the location has one in the source: road weather
+  station sections carry the station name (`I/43 Černá Hora`, `D0 15.742`); FCD sections and groups have
+  no name.
+* The *version* (`@version`) corresponds to the Global Network release the set is derived from, in the form
+  `YYMM01` (network 25.06 → `250601`). With each network release *all* locations of the set get a new
+  version, including those where only the network version label (`linearElementReferenceModelVersion`)
+  changed; the identifier stays. A new location gets a new identifier. Messages always reference the
+  version of the current set.
+
+The publication always contains all valid locations, including those published earlier. No time is given
+inside the locations.
+
+.Predefined location – road weather station section described by OpenLR, ALERT-C and GN sections (sample `predefined_location_set-weather.xml`)
+[source,xml]
+----
+include::{samplesdir}/predefined_location_set-weather.xml[tag=weather-1,indent=0]
+----
+
+[[skupiny]]
+==== Location groups
+
+A group combines sections that are repeatedly referenced as a whole – also on different roads and
+non-contiguous: an area of regular winter closures, a permanent diversion route, sections around a road
+weather station.
+
+.Group of three non-contiguous sections on two roads
+image::skupina-poloh-en.svg[Location group – non-contiguous sections,width=640,align="center"]
+
+A group is a `predefinedLocationReference` element of type `loc:PredefinedLocationGroup`. It is filled as
+follows:
+
+. The group gets its own identifier and version; no name is given.
+. Each section of the group is a nested `predefinedLocation` element – a complete predefined location with
+  its own identifier, version, location description and, where available, a name (the same as a
+  stand-alone location).
+. A group has at least two sections; their order has no meaning.
+. Section identifiers are unique in the whole publication; the same section does not repeat within a
+  group or the publication.
+. If a section changes, both the section and the group get a new version; adding or removing a section
+  changes the group version.
+
+A message references the whole group with the type `loc:LocationGroupByReference` (`targetClass` =
+`loc:PredefinedLocationGroup`). Predefined groups are created only for areas that recur; one-off area
+events are described by the event formats with a group of sections directly in the message.
+
+.Location group (sample `predefined_location_loc_group.xml`, shortened)
+[source,xml]
+----
+include::{samplesdir}/predefined_location_loc_group.xml[tag=group-head,indent=0]
+    ...
+  </loc:predefinedLocation>
+  <loc:predefinedLocation id="…" version="…">
+    ...
+  </loc:predefinedLocation>
+</loc:predefinedLocationReference>
+----
+
+[[smer]]
+=== Direction and bidirectional locations
+
+A location is either one-directional or valid for both directions of travel:
+
+* *FCD sections* are one-directional; each direction is a separate location (`TS25760T25761`,
+  `TS25761T25760`).
+* *Road weather station sections* and other bidirectional locations are described by *one* location for
+  both directions. Each method expresses this in its own way:
+
+[cols="1,4",options="header"]
+|===
+|Method |Bidirectional location
+|ALERT-C |`alertCAffectedDirection` = `both` (one-directional `aligned`)
+|OpenLR |`firstDirection` for the location direction and `oppositeDirection` for the opposite direction –
+each with its own reference points and offsets (<<openlr>>)
+|Global Network |sections shared by both directions once with `directionRelativeOnLinearSection` = `both`;
+sections of the opposite direction that differ (separate carriageways) after the sections of the first
+direction (<<gn>>)
+|===
+
+Location groups are not used for bidirectionality. A pair of one-directional locations combined in a group
+would require a different reference type (`LocationGroupByReference`), would lose the link between the
+directions, and OpenLR and ALERT-C would express bidirectionality twice. Groups are reserved for areas.
+
+[[polohy]]
+== Location referencing
+
+A location is linear (`loc:SingleRoadLinearLocation`) and is usually described by several methods depending
+on their availability; all describe the same section and at least one must be given. FCD and road weather
+station sections carry all three main methods.
+
+A physically point-like place – a road weather station, a bridge, a tunnel entrance – is described as a
+short road section on which it lies, in all methods alike: in ALERT-C as a section between two locations,
+possibly with identical primary and secondary location; in OpenLR and the GN network as a section of
+non-zero length around the place (OpenLR does not allow zero length). Point locations
+(`loc:PointLocation`) are not used in the location sets.
+
+[cols="2,3,3",options="header"]
+|===
+|Method |Element |For whom
+|ALERT-C |`alertCLinear` |navigation with the RDS-TMC location table
+|OpenLR |`openlrLinear` |matching to any map
+|Global Network |`linearWithinLinearElement` (`LinearElementByCode`), `externalReferencing` |users of the GN network
+|Road chainage |`linearWithinLinearElement` with `roadNumber` |not used yet
+|===
+
+=== ALERT-C location referencing
+
+The location is given by two locations of the ALERT-C location table <<ISO14819-3>> in the `alertCLinear`
+element of type `AlertCMethod2Linear`:
+
+* table: `alertCLocationCountryCode` = `2` (Czech Republic according to IEC 62106),
+  `alertCLocationTableNumber` = `25`, `alertCLocationTableVersion`,
+* secondary location (`alertCMethod2SecondaryPointLocation`) – where the driver enters the section, primary
+  (`alertCMethod2PrimaryPointLocation`) – where the driver leaves it,
+* `alertCDirectionCoded` = `positive` if the direction of travel matches the coding direction of the
+  location table,
+* `alertCAffectedDirection` = `aligned` for a one-directional, `both` for a bidirectional location.
+
+IMPORTANT: The meaning of `alertCDirectionCoded` is the opposite of the RDS-TMC `direction` bit.
+
+.ALERT-C location referencing (sample `predefined_location_samples_set.xml`)
+[source,xml]
+----
+include::{samplesdir}/predefined_location_samples_set.xml[tag=loc-alertc,indent=0]
+----
+
+[[openlr]]
+=== OpenLR location referencing
+
+OpenLR (`openlrLinear`) describes the location independently of any map: the consumer finds it in its own
+map by searching a route between reference points. The reference points (`openlrLocationReferencePoint`,
+the last one `openlrLastLocationReferencePoint`) carry WGS-84 coordinates, bearing, road class and distance
+to the next point; the offsets `openlrPositiveOffset` and `openlrNegativeOffset` trim the found route to the
+actual extent of the location.
+
+A bidirectional location has both directions separately: `firstDirection` in the location direction and
+`oppositeDirection` in the opposite direction, each with its own reference points and offsets. On a road
+with separate carriageways each direction runs on a different carriageway:
+
+.Bidirectional location in OpenLR on a road with separate carriageways
+image::openlr-obousmerne-en.svg[OpenLR – firstDirection and oppositeDirection,width=680,align="center"]
+
+.Bidirectional location in OpenLR (sample `predefined_location_both-directions.xml`)
+[source,xml]
+----
+include::{samplesdir}/predefined_location_both-directions.xml[tag=openlr-both,indent=0]
+----
+
+[[gn]]
+=== Global Network location referencing
+
+The location is a list of sections of the Global Network (GN, ŘSD):
+
+* Each section is a `linearWithinLinearElement` element with `linearElement` of type `LinearElementByCode`:
+  `linearElementReferenceModel` = `CZ-RSD-GlobalNetwork`, `linearElementReferenceModelVersion` = network
+  version, `linearElementIdentifier` = section identifier. Sections are in route order.
+* `directionRelativeOnLinearSection` – direction relative to the section coding: `aligned`, `opposite`,
+  for a bidirectional location `both` (the section serves both directions).
+* The edge sections are delimited by `fromPoint` and `toPoint` of type `PercentageDistanceAlongLinearElement`
+  in percent of the section length (0–100).
+* The start and end of the location carry WGS-84 coordinates: `fromPoint` of the first and `toPoint` of the
+  last section are of type `DistanceFromLinearElementReferent` with `distanceAlong` = 0 and a referent with
+  coordinates.
+* Full inner sections of the same direction are shortened to `externalReferencing` (`externalLocationCode`
+  = section identifier, `externalReferencingSystem` = `CZ-RSD-GlobalNetwork:<network version>`). The complete
+  route is then the first edge section, the inner sections in the order of `externalReferencing` and the
+  last edge section.
+* Bidirectional location: sections shared by both directions once with direction `both`; if the sections of
+  the opposite direction differ (separate carriageways), they follow the sections of the first direction and
+  all sections are then given as `linearWithinLinearElement` without shortening.
+
+.Global Network sections – bidirectional location with shared sections (sample `predefined_location_both-directions.xml`)
+[source,xml]
+----
+include::{samplesdir}/predefined_location_both-directions.xml[tag=gn-both,indent=0]
+----
+
+=== Road chainage location referencing
+
+NOTE: Road chainage is in the profile for future use; the NDIC location sets do not contain it yet.
+
+Road chainage is a `linearWithinLinearElement` element with the road number (`linearElement/roadNumber`),
+the direction relative to the chainage (`directionRelativeOnLinearSection`) and the distance of the start
+and end from the beginning of the road in metres (`fromPoint`, `toPoint` of type
+`DistanceFromLinearElementStart`).

@@ -1,5 +1,28 @@
 == Documentation change history
 
+// Documentation revisions (MAJOR.MINOR.REVISION). Format changes: see CHANGELOG.adoc in the specification.
 === 2.0.0
 
-* first release of the documentation
+* New documentation of the `cz-ndic_d2-pls` format version 2.0 (DATEX II 3.7); replaces the documentation
+  of the cz-ndic_d2-predefined-location-set-v1.2 format (DATEX II 2.3).
+* Changes compared to version 1.2 (DATEX II 2.3):
+** The `d2LogicalModel` and `exchange` envelopes are not used; the root is `d2:payload`, the format is
+   identified by the `profileName` and `profileVersion` attributes, `feedType` references the
+   distribution, `feedDescription` is not used.
+** A location is `predefinedLocationReference` of type `loc:PredefinedLocation` (formerly
+   `predefinedLocationContainer`), a group is of type `loc:PredefinedLocationGroup` (formerly
+   `PredefinedNonOrderedLocationGroup`).
+** Location identifiers and versions do not change; references in existing data remain valid.
+** The national location extensions (`linearExtension`, `globalNetworkLinear`, `openlrExtendedLinear`) were
+   replaced by elements of the 3.7 model: OpenLR in `openlrLinear` (`firstDirection`, `oppositeDirection`),
+   Global Network sections in `linearWithinLinearElement` with `LinearElementByCode`, full inner sections in
+   `externalReferencing`.
+** The start and end of a GN location (`startPoint`, `endPoint` in S-JTSK) are referents with WGS-84
+   coordinates.
+** Percentages of the GN section length are in the range 0–100 (formerly 0–1).
+** Bidirectionality in GN (`directionality`, `oppositeDirection`) is expressed by direction `both`, or by the
+   opposite-direction sections after those of the first direction.
+** The ALERT-C country code is `2` (formerly `CZ`); new mandatory element `alertCAffectedDirection`.
+** OpenLR classes have different element names in the 3.7 model (`openlrCoordinates`,
+   `openlrLowestFrcToNextLRPoint`) and road class values in lower case (`frc0`–`frc7`).
+** Point locations are not used.

@@ -1,4 +1,79 @@
-== Examples
+== Message examples
 
-// Sample excerpts via tags – in the sample: <!-- tag::location[] --> … <!-- end::location[] -->
-Samples are part of the specification package `{schema-uri}.zip`.
+The samples are part of the specification package `{schema-uri}.zip` (directory `samples`). All of them
+are valid against the DATEX II 3.7 schema and conform to the profile selection (`.sel`).
+
+=== predefined_location_set-fcd.xml – FCD sections
+
+Two sections of the FCD set between ALERT-C locations 25760 and 25761, each direction as a separate
+location (GN network 22.12).
+
+[source,xml]
+----
+include::{samplesdir}/predefined_location_set-fcd.xml[tags=**]
+----
+
+Envelope and header::
+Root `d2:payload` of type `loc:PredefinedLocationsPublication` with the `profileName` and `profileVersion`
+attributes; data source `x-source:cz-ndic_d2-pls-fcd-pull-v2`.
+
+Location::
+One-directional linear location without a name, described by OpenLR (`firstDirection` only), ALERT-C
+(`alertCAffectedDirection` = `aligned`) and Global Network sections. The sections alternate their
+direction relative to their coding, so all are given as `linearWithinLinearElement`. The second location is
+the same section in the opposite direction.
+
+=== predefined_location_set-weather.xml – road weather station sections
+
+Two sections of the weather set (GN network 25.06); the first is the location referenced by the sample
+`aquaplaning.xml` of the `cz-ndic_d2-weather` format.
+
+[source,xml]
+----
+include::{samplesdir}/predefined_location_set-weather.xml[tags=**]
+----
+
+Location::
+Road weather station sections are valid in both directions (`alertCAffectedDirection` = `both`). In the
+first location the same GN sections serve both directions (`directionRelativeOnLinearSection` = `both`); the
+second location has the opposite-direction sections after those of the first direction. The start and end
+of the location carry referents with WGS-84 coordinates.
+
+=== predefined_location_both-directions.xml – bidirectional locations
+
+Two bidirectional locations (GN network 25.12) with both directions described in OpenLR
+(`firstDirection`, `oppositeDirection`).
+
+[source,xml]
+----
+include::{samplesdir}/predefined_location_both-directions.xml[tags=**]
+----
+
+Sections serving both directions::
+I/50 near Bystřice pod Lopeníkem: the opposite-direction sections mirror the first direction, so they are
+given once with `directionRelativeOnLinearSection` = `both`; the full inner section is shortened to
+`externalReferencing`.
+
+Separate carriageways::
+I/30 in Ústí nad Labem: the opposite direction runs on different sections; three sections of the first
+direction are followed by three sections of the opposite direction, all as `linearWithinLinearElement`.
+
+=== predefined_location_samples_set.xml – examples of referencing methods
+
+The publication contains four predefined locations, each described by one method: Global Network sections,
+ALERT-C, road chainage and OpenLR.
+
+[source,xml]
+----
+include::{samplesdir}/predefined_location_samples_set.xml[tags=**]
+----
+
+=== predefined_location_loc_group.xml – location group
+
+A predefined group (`loc:PredefinedLocationGroup`) of two road weather station sections on road I/34 near
+Stráž nad Nežárkou; each section is a nested `predefinedLocation` with its own identifier and version.
+
+[source,xml]
+----
+include::{samplesdir}/predefined_location_loc_group.xml[tags=**]
+----
