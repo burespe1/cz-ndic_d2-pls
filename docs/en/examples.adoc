@@ -34,9 +34,9 @@ include::{samplesdir}/predefined_location_set-weather.xml[tags=**]
 ----
 
 Location::
-Road weather station sections are valid in both directions (`alertCAffectedDirection` = `both`). In the
-first location the same GN sections serve both directions (`directionRelativeOnLinearSection` = `both`); the
-second location has the opposite-direction sections after those of the first direction. The start and end
+Road weather station sections are valid in both directions (`alertCAffectedDirection` = `both`). In both
+locations the same GN sections serve both directions (`directionRelativeOnLinearSection` = `both`); in the
+second location the full inner section is shortened to `externalReferencing`. The start and end
 of the location carry referents with WGS-84 coordinates.
 
 === predefined_location_both-directions.xml – bidirectional locations
@@ -50,13 +50,15 @@ include::{samplesdir}/predefined_location_both-directions.xml[tags=**]
 ----
 
 Sections serving both directions::
-I/50 near Bystřice pod Lopeníkem: the opposite-direction sections mirror the first direction, so they are
-given once with `directionRelativeOnLinearSection` = `both`; the full inner section is shortened to
+II/230 Zádub-Závišín: the opposite-direction sections mirror the first direction, so they are given once
+with `directionRelativeOnLinearSection` = `both`; both full inner sections are shortened to
 `externalReferencing`.
 
 Separate carriageways::
-I/30 in Ústí nad Labem: the opposite direction runs on different sections; three sections of the first
-direction are followed by three sections of the opposite direction, all as `linearWithinLinearElement`.
+I/30 in Ústí nad Labem: the opposite direction runs on different, one-way sections; the whole route of the
+first direction (three sections) is followed by the whole route of the opposite direction (three sections),
+all as `linearWithinLinearElement`. Each route is preceded by the comment `<!-- GN firstDirection -->` or
+`<!-- GN oppositeDirection -->`, and each starts and ends with a referent with coordinates.
 
 === predefined_location_samples_set.xml – examples of referencing methods
 

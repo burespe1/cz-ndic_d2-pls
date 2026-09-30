@@ -128,6 +128,10 @@
       </com:values>
     </loc:predefinedLocationName>
     <loc:location xsi:type="loc:SingleRoadLinearLocation">
+      <loc:externalReferencing>
+        <loc:externalLocationCode>3941101</loc:externalLocationCode>
+        <loc:externalReferencingSystem>CZ-RSD-GlobalNetwork:25.06</loc:externalReferencingSystem>
+      </loc:externalReferencing>
       <loc:openlrLinear>
         <loc:firstDirection>
           <loc:openlrLocationReferencePoint>
@@ -182,7 +186,7 @@
         </loc:alertCMethod2SecondaryPointLocation>
       </loc:alertCLinear>
       <loc:linearWithinLinearElement>
-        <loc:directionRelativeOnLinearSection>opposite</loc:directionRelativeOnLinearSection>
+        <loc:directionRelativeOnLinearSection>both</loc:directionRelativeOnLinearSection>
         <loc:linearElement xsi:type="loc:LinearElementByCode">
           <loc:linearElementReferenceModel>CZ-RSD-GlobalNetwork</loc:linearElementReferenceModel>
           <loc:linearElementReferenceModelVersion>25.06</loc:linearElementReferenceModelVersion>
@@ -204,21 +208,7 @@
         </loc:toPoint>
       </loc:linearWithinLinearElement>
       <loc:linearWithinLinearElement>
-        <loc:directionRelativeOnLinearSection>aligned</loc:directionRelativeOnLinearSection>
-        <loc:linearElement xsi:type="loc:LinearElementByCode">
-          <loc:linearElementReferenceModel>CZ-RSD-GlobalNetwork</loc:linearElementReferenceModel>
-          <loc:linearElementReferenceModelVersion>25.06</loc:linearElementReferenceModelVersion>
-          <loc:linearElementIdentifier>3941101</loc:linearElementIdentifier>
-        </loc:linearElement>
-        <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
-          <loc:percentageDistanceAlong>0</loc:percentageDistanceAlong>
-        </loc:fromPoint>
-        <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
-          <loc:percentageDistanceAlong>100</loc:percentageDistanceAlong>
-        </loc:toPoint>
-      </loc:linearWithinLinearElement>
-      <loc:linearWithinLinearElement>
-        <loc:directionRelativeOnLinearSection>aligned</loc:directionRelativeOnLinearSection>
+        <loc:directionRelativeOnLinearSection>both</loc:directionRelativeOnLinearSection>
         <loc:linearElement xsi:type="loc:LinearElementByCode">
           <loc:linearElementReferenceModel>CZ-RSD-GlobalNetwork</loc:linearElementReferenceModel>
           <loc:linearElementReferenceModelVersion>25.06</loc:linearElementReferenceModelVersion>

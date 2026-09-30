@@ -20,8 +20,9 @@
 ** The start and end of a GN location (`startPoint`, `endPoint` in S-JTSK) are referents with WGS-84
    coordinates.
 ** Percentages of the GN section length are in the range 0–100 (formerly 0–1).
-** Bidirectionality in GN (`directionality`, `oppositeDirection`) is expressed by direction `both`, or by the
-   opposite-direction sections after those of the first direction.
+** Bidirectionality in GN (`directionality`, `oppositeDirection`) is expressed by direction `both` (only for
+   sections passable in both directions), otherwise by the whole opposite-direction route after the route of
+   the first direction; each route has referents at both ends and is preceded by an XML comment.
 ** The ALERT-C country code is `2` (formerly `CZ`); new mandatory element `alertCAffectedDirection`.
 ** OpenLR classes have different element names in the 3.7 model (`openlrCoordinates`,
    `openlrLowestFrcToNextLRPoint`) and road class values in lower case (`frc0`–`frc7`).

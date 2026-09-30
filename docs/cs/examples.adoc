@@ -32,9 +32,9 @@ include::{samplesdir}/predefined_location_set-weather.xml[tags=**]
 ----
 
 Poloha::
-Úseky meteohlásek platí pro oba směry (`alertCAffectedDirection` = `both`). U první polohy slouží tytéž
-úseky GN oběma směrům (`directionRelativeOnLinearSection` = `both`); druhá poloha má úseky protisměru
-uvedené za úseky prvního směru. Počátek a konec polohy nesou referenty se souřadnicemi WGS-84.
+Úseky meteohlásek platí pro oba směry (`alertCAffectedDirection` = `both`). U obou poloh slouží tytéž
+úseky GN oběma směrům (`directionRelativeOnLinearSection` = `both`); u druhé polohy je plný vnitřní úsek
+uveden zkráceně v `externalReferencing`. Počátek a konec polohy nesou referenty se souřadnicemi WGS-84.
 
 === predefined_location_both-directions.xml – obousměrné polohy
 
@@ -46,12 +46,14 @@ include::{samplesdir}/predefined_location_both-directions.xml[tags=**]
 ----
 
 Úseky slouží oběma směrům::
-I/50 u Bystřice pod Lopeníkem: úseky protisměru jsou zrcadlem prvního směru, proto jsou uvedeny jednou
-s `directionRelativeOnLinearSection` = `both`; plný vnitřní úsek zkráceně v `externalReferencing`.
+II/230 Zádub-Závišín: úseky protisměru jsou zrcadlem prvního směru, proto jsou uvedeny jednou
+s `directionRelativeOnLinearSection` = `both`; oba plné vnitřní úseky zkráceně v `externalReferencing`.
 
 Oddělené jízdní pásy::
-I/30 v Ústí nad Labem: protisměr vede po jiných úsecích; za třemi úseky prvního směru následují tři úseky
-protisměru, všechny jako `linearWithinLinearElement`.
+I/30 v Ústí nad Labem: protisměr vede po jiných, jednosměrných úsecích; za celou trasou prvního směru
+(tři úseky) následuje celá trasa protisměru (tři úseky), všechny jako `linearWithinLinearElement`. Každou
+trasu uvozuje komentář `<!-- GN firstDirection -->`, resp. `<!-- GN oppositeDirection -->`, a každá začíná
+a končí referentem se souřadnicemi.
 
 === predefined_location_samples_set.xml – ukázky metod popisu polohy
 

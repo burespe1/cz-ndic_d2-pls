@@ -15,8 +15,9 @@
    v `linearWithinLinearElement` s `LinearElementByCode`, plné vnitřní úseky v `externalReferencing`.
 ** Počátek a konec polohy GN (`startPoint`, `endPoint` v S-JTSK) nesou referenty se souřadnicemi WGS-84.
 ** Procenta délky úseku GN jsou v rozsahu 0–100 (dříve 0–1).
-** Obousměrnost v GN (`directionality`, `oppositeDirection`) vyjadřuje směr `both`, případně úseky protisměru
-   uvedené za úseky prvního směru.
+** Obousměrnost v GN (`directionality`, `oppositeDirection`) vyjadřuje směr `both` (jen u úseků průjezdných
+   v obou směrech), jinak celá trasa protisměru uvedená za trasou prvního směru; každá trasa má referenty
+   na obou koncích a uvozuje ji komentář XML.
 ** Kód země ALERT-C je `2` (dříve `CZ`); nový povinný prvek `alertCAffectedDirection`.
 ** Třídy OpenLR mají v modelu 3.7 jiné názvy prvků (`openlrCoordinates`, `openlrLowestFrcToNextLRPoint`)
    a hodnoty třídy komunikace malými písmeny (`frc0`–`frc7`).
