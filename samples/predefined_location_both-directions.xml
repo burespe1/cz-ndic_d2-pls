@@ -20,14 +20,11 @@
       </com:values>
     </loc:predefinedLocationName>
     <loc:location xsi:type="loc:SingleRoadLinearLocation">
-      <loc:externalReferencing>
-        <loc:externalLocationCode>1327329</loc:externalLocationCode>
-        <loc:externalReferencingSystem>CZ-RSD-GlobalNetwork:25.12</loc:externalReferencingSystem>
-      </loc:externalReferencing>
-      <loc:externalReferencing>
-        <loc:externalLocationCode>1326918</loc:externalLocationCode>
-        <loc:externalReferencingSystem>CZ-RSD-GlobalNetwork:25.12</loc:externalReferencingSystem>
-      </loc:externalReferencing>
+      <loc:coordinatesForDisplay>
+        <loc:latitude>49.96603</loc:latitude>
+        <loc:longitude>12.74052</loc:longitude>
+      </loc:coordinatesForDisplay>
+      <!-- OpenLR -->
       <loc:openlrLinear>
         <loc:firstDirection>
           <loc:openlrLocationReferencePoint>
@@ -94,6 +91,11 @@
           </loc:openlrOffsets>
         </loc:oppositeDirection>
       </loc:openlrLinear>
+      <!-- gmlLineString -->
+      <loc:gmlLineString srsName="EPSG:4326" srsDimension="2">
+        <loc:posList>49.95927 12.73225 49.96136 12.73414 49.96308 12.73615 49.97116 12.74818 49.97242 12.74954</loc:posList>
+      </loc:gmlLineString>
+      <!-- ALERT-C -->
       <loc:alertCLinear xsi:type="loc:AlertCMethod2Linear">
         <loc:alertCLocationCountryCode>2</loc:alertCLocationCountryCode>
         <loc:alertCLocationTableNumber>25</loc:alertCLocationTableNumber>
@@ -113,6 +115,7 @@
           </loc:alertCLocation>
         </loc:alertCMethod2SecondaryPointLocation>
       </loc:alertCLinear>
+      <!-- GN -->
       <!-- tag::gn-both[] -->
       <loc:linearWithinLinearElement>
         <loc:directionRelativeOnLinearSection>both</loc:directionRelativeOnLinearSection>
@@ -121,16 +124,36 @@
           <loc:linearElementReferenceModelVersion>25.12</loc:linearElementReferenceModelVersion>
           <loc:linearElementIdentifier>3663224</loc:linearElementIdentifier>
         </loc:linearElement>
-        <loc:fromPoint xsi:type="loc:DistanceFromLinearElementReferent">
-          <loc:distanceAlong>0</loc:distanceAlong>
-          <loc:fromReferent>
-            <loc:referentIdentifier>3663224-start</loc:referentIdentifier>
-            <loc:referentType>referenceMarker</loc:referentType>
-            <loc:pointCoordinates>
-              <loc:latitude>49.959273</loc:latitude>
-              <loc:longitude>12.732247</loc:longitude>
-            </loc:pointCoordinates>
-          </loc:fromReferent>
+        <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
+          <loc:percentageDistanceAlong>30.4728</loc:percentageDistanceAlong>
+        </loc:fromPoint>
+        <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
+          <loc:percentageDistanceAlong>0</loc:percentageDistanceAlong>
+        </loc:toPoint>
+      </loc:linearWithinLinearElement>
+      <loc:linearWithinLinearElement>
+        <loc:directionRelativeOnLinearSection>both</loc:directionRelativeOnLinearSection>
+        <loc:linearElement xsi:type="loc:LinearElementByCode">
+          <loc:linearElementReferenceModel>CZ-RSD-GlobalNetwork</loc:linearElementReferenceModel>
+          <loc:linearElementReferenceModelVersion>25.12</loc:linearElementReferenceModelVersion>
+          <loc:linearElementIdentifier>1327329</loc:linearElementIdentifier>
+        </loc:linearElement>
+        <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
+          <loc:percentageDistanceAlong>100</loc:percentageDistanceAlong>
+        </loc:fromPoint>
+        <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
+          <loc:percentageDistanceAlong>0</loc:percentageDistanceAlong>
+        </loc:toPoint>
+      </loc:linearWithinLinearElement>
+      <loc:linearWithinLinearElement>
+        <loc:directionRelativeOnLinearSection>both</loc:directionRelativeOnLinearSection>
+        <loc:linearElement xsi:type="loc:LinearElementByCode">
+          <loc:linearElementReferenceModel>CZ-RSD-GlobalNetwork</loc:linearElementReferenceModel>
+          <loc:linearElementReferenceModelVersion>25.12</loc:linearElementReferenceModelVersion>
+          <loc:linearElementIdentifier>1326918</loc:linearElementIdentifier>
+        </loc:linearElement>
+        <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
+          <loc:percentageDistanceAlong>100</loc:percentageDistanceAlong>
         </loc:fromPoint>
         <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
           <loc:percentageDistanceAlong>0</loc:percentageDistanceAlong>
@@ -146,16 +169,8 @@
         <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
           <loc:percentageDistanceAlong>100</loc:percentageDistanceAlong>
         </loc:fromPoint>
-        <loc:toPoint xsi:type="loc:DistanceFromLinearElementReferent">
-          <loc:distanceAlong>0</loc:distanceAlong>
-          <loc:fromReferent>
-            <loc:referentIdentifier>901099-end</loc:referentIdentifier>
-            <loc:referentType>referenceMarker</loc:referentType>
-            <loc:pointCoordinates>
-              <loc:latitude>49.972416</loc:latitude>
-              <loc:longitude>12.749545</loc:longitude>
-            </loc:pointCoordinates>
-          </loc:fromReferent>
+        <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
+          <loc:percentageDistanceAlong>12.5773</loc:percentageDistanceAlong>
         </loc:toPoint>
       </loc:linearWithinLinearElement>
       <!-- end::gn-both[] -->
@@ -170,6 +185,11 @@
       </com:values>
     </loc:predefinedLocationName>
     <loc:location xsi:type="loc:SingleRoadLinearLocation">
+      <loc:coordinatesForDisplay>
+        <loc:latitude>50.65972</loc:latitude>
+        <loc:longitude>14.04647</loc:longitude>
+      </loc:coordinatesForDisplay>
+      <!-- OpenLR -->
       <!-- tag::openlr-both[] -->
       <loc:openlrLinear>
         <loc:firstDirection>
@@ -238,6 +258,11 @@
         </loc:oppositeDirection>
       </loc:openlrLinear>
       <!-- end::openlr-both[] -->
+      <!-- gmlLineString -->
+      <loc:gmlLineString srsName="EPSG:4326" srsDimension="2">
+        <loc:posList>50.65963 14.04630 50.65982 14.04664</loc:posList>
+      </loc:gmlLineString>
+      <!-- ALERT-C -->
       <loc:alertCLinear xsi:type="loc:AlertCMethod2Linear">
         <loc:alertCLocationCountryCode>2</loc:alertCLocationCountryCode>
         <loc:alertCLocationTableNumber>25</loc:alertCLocationTableNumber>
@@ -266,16 +291,8 @@
           <loc:linearElementReferenceModelVersion>25.12</loc:linearElementReferenceModelVersion>
           <loc:linearElementIdentifier>3819742</loc:linearElementIdentifier>
         </loc:linearElement>
-        <loc:fromPoint xsi:type="loc:DistanceFromLinearElementReferent">
-          <loc:distanceAlong>0</loc:distanceAlong>
-          <loc:fromReferent>
-            <loc:referentIdentifier>3819742-start</loc:referentIdentifier>
-            <loc:referentType>referenceMarker</loc:referentType>
-            <loc:pointCoordinates>
-              <loc:latitude>50.659633</loc:latitude>
-              <loc:longitude>14.046300</loc:longitude>
-            </loc:pointCoordinates>
-          </loc:fromReferent>
+        <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
+          <loc:percentageDistanceAlong>98.8815</loc:percentageDistanceAlong>
         </loc:fromPoint>
         <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
           <loc:percentageDistanceAlong>100</loc:percentageDistanceAlong>
@@ -305,16 +322,8 @@
         <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
           <loc:percentageDistanceAlong>0</loc:percentageDistanceAlong>
         </loc:fromPoint>
-        <loc:toPoint xsi:type="loc:DistanceFromLinearElementReferent">
-          <loc:distanceAlong>0</loc:distanceAlong>
-          <loc:fromReferent>
-            <loc:referentIdentifier>3719851-end</loc:referentIdentifier>
-            <loc:referentType>referenceMarker</loc:referentType>
-            <loc:pointCoordinates>
-              <loc:latitude>50.659817</loc:latitude>
-              <loc:longitude>14.046638</loc:longitude>
-            </loc:pointCoordinates>
-          </loc:fromReferent>
+        <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
+          <loc:percentageDistanceAlong>13.8128</loc:percentageDistanceAlong>
         </loc:toPoint>
       </loc:linearWithinLinearElement>
       <!-- GN oppositeDirection -->
@@ -325,16 +334,8 @@
           <loc:linearElementReferenceModelVersion>25.12</loc:linearElementReferenceModelVersion>
           <loc:linearElementIdentifier>3719853</loc:linearElementIdentifier>
         </loc:linearElement>
-        <loc:fromPoint xsi:type="loc:DistanceFromLinearElementReferent">
-          <loc:distanceAlong>0</loc:distanceAlong>
-          <loc:fromReferent>
-            <loc:referentIdentifier>3719853-start</loc:referentIdentifier>
-            <loc:referentType>referenceMarker</loc:referentType>
-            <loc:pointCoordinates>
-              <loc:latitude>50.659817</loc:latitude>
-              <loc:longitude>14.046638</loc:longitude>
-            </loc:pointCoordinates>
-          </loc:fromReferent>
+        <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
+          <loc:percentageDistanceAlong>88.1356</loc:percentageDistanceAlong>
         </loc:fromPoint>
         <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
           <loc:percentageDistanceAlong>100</loc:percentageDistanceAlong>
@@ -364,16 +365,8 @@
         <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
           <loc:percentageDistanceAlong>0</loc:percentageDistanceAlong>
         </loc:fromPoint>
-        <loc:toPoint xsi:type="loc:DistanceFromLinearElementReferent">
-          <loc:distanceAlong>0</loc:distanceAlong>
-          <loc:fromReferent>
-            <loc:referentIdentifier>3819738-end</loc:referentIdentifier>
-            <loc:referentType>referenceMarker</loc:referentType>
-            <loc:pointCoordinates>
-              <loc:latitude>50.659633</loc:latitude>
-              <loc:longitude>14.046300</loc:longitude>
-            </loc:pointCoordinates>
-          </loc:fromReferent>
+        <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
+          <loc:percentageDistanceAlong>1.2821</loc:percentageDistanceAlong>
         </loc:toPoint>
       </loc:linearWithinLinearElement>
       <!-- end::gn-separate[] -->

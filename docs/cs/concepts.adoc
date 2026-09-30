@@ -121,7 +121,7 @@ OpenLR a ALERT-C by obousměrnost vyjadřovaly dvakrát. Skupina je vyhrazena pr
 
 Poloha je liniová (`loc:SingleRoadLinearLocation`) a bývá popsána několika metodami podle jejich
 dostupnosti; všechny popisují tentýž úsek a alespoň jedna musí být uvedena. Úseky FCD i meteohlásek mají
-všechny tři hlavní metody.
+všechny tři hlavní metody a průběh polohy.
 
 Fyzicky bodové místo – meteohláska, most, vjezd do tunelu – se popisuje jako krátký úsek komunikace,
 na kterém leží, a to ve všech metodách stejně: v ALERT-C úsek mezi dvěma lokacemi, případně se shodnou
@@ -133,7 +133,8 @@ délky nepřipouští). Bodové polohy (`loc:PointLocation`) sady poloh nepouž�
 |Metoda |Element |Pro koho
 |ALERT-C |`alertCLinear` |navigace s lokační tabulkou RDS-TMC
 |OpenLR |`openlrLinear` |napojení na libovolnou mapu
-|Global Network |`linearWithinLinearElement` (`LinearElementByCode`), `externalReferencing` |uživatelé sítě GN
+|Global Network |`linearWithinLinearElement` (`LinearElementByCode`) |uživatelé sítě GN
+|Průběh polohy |`gmlLineString`, `coordinatesForDisplay` |zobrazení v mapě bez dalších podkladů (<<prubeh>>)
 |Staničení |`linearWithinLinearElement` s `roadNumber` |zatím se nepoužívá
 |===
 
@@ -189,26 +190,20 @@ Poloha je výčet úseků sítě Global Network (GN, ŘSD):
 
 * Každý úsek je element `linearWithinLinearElement` s `linearElement` typu `LinearElementByCode`:
   `linearElementReferenceModel` = `CZ-RSD-GlobalNetwork`, `linearElementReferenceModelVersion` = verze
-  sítě, `linearElementIdentifier` = identifikátor úseku. Úseky jsou v pořadí jízdy.
+  sítě, `linearElementIdentifier` = identifikátor úseku. Uvádějí se všechny úseky trasy
+  v pořadí jízdy, i celé vnitřní úseky.
 * `directionRelativeOnLinearSection` – směr jízdy vůči směru kódování úseku, tj. směru, v němž byl úsek
   vytvořen v databázi GN: `aligned` (po směru kódování), `opposite` (proti směru kódování), u obousměrné
   polohy `both` (úsek slouží oběma směrům). Směr se na trase může střídat tak, aby na sebe konce úseků
   navazovaly – např. když trasa přechází úsek vzniklý kódováním jiné komunikace, se kterou je v souběhu.
 * Jednosměrné úseky (např. oddělené jízdní pásy, větve křižovatek) jsou vždy kódovány ve směru jízdy;
   pojíždějí se tedy jen jako `aligned` a trasa nikdy nevede proti nim.
-* `fromPoint` a `toPoint` jsou místa, kde trasa na úsek vstupuje a kde ho opouští. Uvnitř trasy jsou typu
+* `fromPoint` a `toPoint` jsou místa, kde trasa na úsek vstupuje a kde ho opouští, vždy typu
   `PercentageDistanceAlongLinearElement` – procenta délky úseku (0–100) měřená od počátku kódování úseku.
   U `aligned` hodnota roste (např. 20 → 100), u `opposite` klesá (např. 100 → 20); celý úsek je 0 → 100,
   resp. 100 → 0.
-* Počátek a konec polohy (`fromPoint` prvního a `toPoint` posledního úseku) jsou typu
-  `DistanceFromLinearElementReferent` a nesou souřadnice WGS-84. Referent (`fromReferent`) je známý bod
-  ležící na úseku, zadaný souřadnicemi (`pointCoordinates`); zde je jím přímo počátek, resp. konec polohy.
-  `distanceAlong` je vzdálenost popisovaného bodu od referentu podél úseku – protože referentem je bod sám,
-  je vždy 0. S počátkem úseku nesouvisí: místo na krajním úseku je dáno souřadnicemi, ne procenty.
-  Nahrazuje body `startPoint` a `endPoint` z verze 2 (tam v S-JTSK).
-* Plné vnitřní úseky stejného směru se zkracují na `externalReferencing` (`externalLocationCode` =
-  identifikátor úseku, `externalReferencingSystem` = `CZ-RSD-GlobalNetwork:<verze sítě>`). Úplnou trasu pak
-  tvoří první krajní úsek, vnitřní úseky v pořadí `externalReferencing` a poslední krajní úsek.
+* Počátek a konec polohy dávají procenta prvního a posledního úseku. Souřadnice počátku a konce úseky GN
+  nenesou; nese je průběh polohy `gmlLineString` (<<prubeh>>).
 
 .Poloha v jednom směru složená z úseků GN
 image::gn-poloha.svg[GN – složení polohy z úseků,width=680,align="center"]
@@ -229,25 +224,43 @@ seznam čtený od konce, s body v opačném pořadí. Směr `both` mohou mít je
 include::{samplesdir}/predefined_location_both-directions.xml[tag=gn-both,indent=0]
 ----
 
-První úsek (3663224) vede od počátku polohy (referent) k 0 %, poslední úsek (901099) od 100 % ke konci
-polohy (referent); první směr tedy na obou vede proti směru kódování. Oba plné vnitřní úseky (1327329,
-1326918) jsou uvedeny zkráceně v `externalReferencing` na začátku polohy.
+První úsek (3663224) vede od 30,5 % k 0 % a poslední úsek (901099) od 100 % k 12,6 %; první směr tedy na obou vede proti směru kódování. Celé vnitřní úseky 1327329 a
+1326918 vede první směr také proti směru kódování (100 → 0).
 
 Vede-li protisměr jinudy – po oddělených jízdních pásech nebo po jednosměrných úsecích (v ukázce všechny
 `aligned`) –, uvádí se nejprve celá trasa prvního směru a za ní celá trasa protisměru, obě jako
-`linearWithinLinearElement` bez zkracování:
+`linearWithinLinearElement`:
 
-* Každá trasa začíná a končí referentem se souřadnicemi: první směr vede od počátku ke konci polohy,
-  protisměr od konce k počátku. Poslední úsek prvního směru má `toPoint` s referentem a za ním začíná
-  protisměr.
+* První směr vede od počátku ke konci polohy, protisměr od konce k počátku.
 * Každou trasu uvozuje komentář XML `<!-- GN firstDirection -->`, resp. `<!-- GN oppositeDirection -->`.
   Komentář používá názvy prvků modelu (shodné s OpenLR), je tedy nezávislý na jazyce, a slouží ke čtení
-  člověkem. Příjemce se jím nemá řídit; hranici mezi trasami určuje referent.
+  člověkem. Příjemce se jím nemá řídit; hranici mezi trasami určí z návaznosti úseků v síti GN. Oba směry
+  jednoznačně popisuje také OpenLR (<<openlr>>).
 
 .Úseky Global Network – oddělené jízdní pásy (vzorek `predefined_location_both-directions.xml`)
 [source,xml]
 ----
 include::{samplesdir}/predefined_location_both-directions.xml[tag=gn-separate,indent=0]
+----
+
+[[prubeh]]
+=== Průběh polohy
+
+Každá liniová poloha nese svůj průběh ve WGS-84, aby ji odběratel zobrazil v mapě bez sítě GN, lokační
+tabulky ALERT-C i dekodéru OpenLR:
+
+* `gmlLineString` – linie v `posList`: dvojice „zeměpisná šířka zeměpisná délka“ oddělené mezerou,
+  `srsName` = `EPSG:4326`, `srsDimension` = `2`. Linie vzniká z geometrie úseků GN oříznuté procenty
+  krajních úseků, je zjednodušená (tolerance 5 m) a souřadnice mají 5 desetinných míst (≈ 1 m). První bod
+  linie je počátek, poslední bod konec polohy.
+* U obousměrné polohy vede linie v prvním směru, na oddělených pásech tedy po pásu prvního směru (model
+  dovoluje jednu linii na polohu).
+* `coordinatesForDisplay` – bod pro značku v mapě, střed linie.
+
+.Průběh polohy (vzorek `predefined_location_samples_set.xml`)
+[source,xml]
+----
+include::{samplesdir}/predefined_location_samples_set.xml[tag=loc-gml,indent=0]
 ----
 
 === Popis polohy pomocí staničení

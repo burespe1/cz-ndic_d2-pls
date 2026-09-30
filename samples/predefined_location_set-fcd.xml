@@ -15,6 +15,11 @@
   <!-- tag::fcd-1[] -->
   <loc:predefinedLocationReference id="TS25760T25761" version="221201" xsi:type="loc:PredefinedLocation">
     <loc:location xsi:type="loc:SingleRoadLinearLocation">
+      <loc:coordinatesForDisplay>
+        <loc:latitude>49.77654</loc:latitude>
+        <loc:longitude>13.35102</loc:longitude>
+      </loc:coordinatesForDisplay>
+      <!-- OpenLR -->
       <loc:openlrLinear>
         <loc:firstDirection>
           <loc:openlrLocationReferencePoint>
@@ -49,6 +54,11 @@
           </loc:openlrOffsets>
         </loc:firstDirection>
       </loc:openlrLinear>
+      <!-- gmlLineString -->
+      <loc:gmlLineString srsName="EPSG:4326" srsDimension="2">
+        <loc:posList>49.77579 13.34736 49.77600 13.34855 49.77695 13.35269 49.77730 13.35467</loc:posList>
+      </loc:gmlLineString>
+      <!-- ALERT-C -->
       <loc:alertCLinear xsi:type="loc:AlertCMethod2Linear">
         <loc:alertCLocationCountryCode>2</loc:alertCLocationCountryCode>
         <loc:alertCLocationTableNumber>25</loc:alertCLocationTableNumber>
@@ -68,6 +78,7 @@
           </loc:alertCLocation>
         </loc:alertCMethod2SecondaryPointLocation>
       </loc:alertCLinear>
+      <!-- GN -->
       <loc:linearWithinLinearElement>
         <loc:directionRelativeOnLinearSection>aligned</loc:directionRelativeOnLinearSection>
         <loc:linearElement xsi:type="loc:LinearElementByCode">
@@ -242,6 +253,11 @@
   <!-- tag::fcd-2[] -->
   <loc:predefinedLocationReference id="TS25761T25760" version="221201" xsi:type="loc:PredefinedLocation">
     <loc:location xsi:type="loc:SingleRoadLinearLocation">
+      <loc:coordinatesForDisplay>
+        <loc:latitude>49.77654</loc:latitude>
+        <loc:longitude>13.35102</loc:longitude>
+      </loc:coordinatesForDisplay>
+      <!-- OpenLR -->
       <loc:openlrLinear>
         <loc:firstDirection>
           <loc:openlrLocationReferencePoint>
@@ -276,6 +292,11 @@
           </loc:openlrOffsets>
         </loc:firstDirection>
       </loc:openlrLinear>
+      <!-- gmlLineString -->
+      <loc:gmlLineString srsName="EPSG:4326" srsDimension="2">
+        <loc:posList>49.77730 13.35467 49.77695 13.35269 49.77600 13.34855 49.77579 13.34736</loc:posList>
+      </loc:gmlLineString>
+      <!-- ALERT-C -->
       <loc:alertCLinear xsi:type="loc:AlertCMethod2Linear">
         <loc:alertCLocationCountryCode>2</loc:alertCLocationCountryCode>
         <loc:alertCLocationTableNumber>25</loc:alertCLocationTableNumber>
@@ -295,6 +316,7 @@
           </loc:alertCLocation>
         </loc:alertCMethod2SecondaryPointLocation>
       </loc:alertCLinear>
+      <!-- GN -->
       <loc:linearWithinLinearElement>
         <loc:directionRelativeOnLinearSection>opposite</loc:directionRelativeOnLinearSection>
         <loc:linearElement xsi:type="loc:LinearElementByCode">

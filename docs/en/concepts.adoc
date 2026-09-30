@@ -133,7 +133,7 @@ directions, and OpenLR and ALERT-C would express bidirectionality twice. Groups 
 
 A location is linear (`loc:SingleRoadLinearLocation`) and is usually described by several methods depending
 on their availability; all describe the same section and at least one must be given. FCD and road weather
-station sections carry all three main methods.
+station sections carry all three main methods and the location path.
 
 A physically point-like place – a road weather station, a bridge, a tunnel entrance – is described as a
 short road section on which it lies, in all methods alike: in ALERT-C as a section between two locations,
@@ -146,7 +146,8 @@ non-zero length around the place (OpenLR does not allow zero length). Point loca
 |Method |Element |For whom
 |ALERT-C |`alertCLinear` |navigation with the RDS-TMC location table
 |OpenLR |`openlrLinear` |matching to any map
-|Global Network |`linearWithinLinearElement` (`LinearElementByCode`), `externalReferencing` |users of the GN network
+|Global Network |`linearWithinLinearElement` (`LinearElementByCode`) |users of the GN network
+|Location path |`gmlLineString`, `coordinatesForDisplay` |display on a map without further data (<<prubeh>>)
 |Road chainage |`linearWithinLinearElement` with `roadNumber` |not used yet
 |===
 
@@ -203,7 +204,8 @@ The location is a list of sections of the Global Network (GN, ŘSD):
 
 * Each section is a `linearWithinLinearElement` element with `linearElement` of type `LinearElementByCode`:
   `linearElementReferenceModel` = `CZ-RSD-GlobalNetwork`, `linearElementReferenceModelVersion` = network
-  version, `linearElementIdentifier` = section identifier. Sections are in travel order.
+  version, `linearElementIdentifier` = section identifier. All sections of the route are given in
+  travel order, including full inner sections.
 * `directionRelativeOnLinearSection` – travel direction relative to the section coding, i.e. the direction
   in which the section was created in the GN database: `aligned` (along the coding), `opposite` (against the
   coding), for a bidirectional location `both` (the section serves both directions). The direction may
@@ -211,21 +213,13 @@ The location is a list of sections of the Global Network (GN, ŘSD):
   coding another road that runs concurrently with it.
 * One-way sections (e.g. separate carriageways, junction ramps) are always coded in the travel direction;
   they are therefore travelled only as `aligned` and a route never runs against them.
-* `fromPoint` and `toPoint` are the points where the route enters and leaves the section. Within the route
-  they are of type `PercentageDistanceAlongLinearElement` – percent of the section length (0–100) measured
+* `fromPoint` and `toPoint` are the points where the route enters and leaves the section, always of
+  type `PercentageDistanceAlongLinearElement` – percent of the section length (0–100) measured
   from the start of the section coding. For `aligned` the value increases (e.g. 20 → 100), for `opposite` it
   decreases (e.g. 100 → 20); a full section is 0 → 100 or 100 → 0.
-* The start and end of the location (`fromPoint` of the first and `toPoint` of the last section) are of type
-  `DistanceFromLinearElementReferent` and carry WGS-84 coordinates. The referent (`fromReferent`) is a known
-  point lying on the section, given by coordinates (`pointCoordinates`); here it is the start or end of the
-  location itself. `distanceAlong` is the distance of the described point from the referent along the
-  section – since the referent is the point itself, it is always 0. It is not related to the start of the
-  section: the position on the edge section is given by coordinates, not by percent. It replaces the
-  `startPoint` and `endPoint` points of version 2 (there in S-JTSK).
-* Full inner sections of the same direction are shortened to `externalReferencing` (`externalLocationCode`
-  = section identifier, `externalReferencingSystem` = `CZ-RSD-GlobalNetwork:<network version>`). The complete
-  route is then the first edge section, the inner sections in the order of `externalReferencing` and the
-  last edge section.
+* The start and end of the location are given by the percentages of the first and last section. The GN
+  sections do not carry the coordinates of the start and end; they are carried by the location path
+  `gmlLineString` (<<prubeh>>).
 
 .One-direction location composed of GN sections
 image::gn-poloha-en.svg[GN – location composed of sections,width=680,align="center"]
@@ -247,27 +241,46 @@ the points in reverse order. Only sections passable in both directions may have 
 include::{samplesdir}/predefined_location_both-directions.xml[tag=gn-both,indent=0]
 ----
 
-The first section (3663224) runs from the start of the location (referent) to 0 %, the last section (901099)
-from 100 % to the end of the location (referent); on both the first direction therefore runs against the
-coding. Both full inner sections (1327329, 1326918) are shortened to `externalReferencing` at the beginning
-of the location.
+The first section (3663224) runs from 30.5 % to 0 % and the last section (901099) from 100 % to 12.6 %; on both the first direction therefore runs against the
+coding. The first direction also runs against the coding on the full inner sections 1327329
+and 1326918 (100 → 0).
 
 If the opposite direction runs elsewhere – on separate carriageways or on one-way sections (all `aligned`
 in the example) –, the whole route of the first direction is given first, followed by the whole route of
-the opposite direction, both as `linearWithinLinearElement` without shortening:
+the opposite direction, both as `linearWithinLinearElement`:
 
-* Each route starts and ends with a referent with coordinates: the first direction runs from the start to
-  the end of the location, the opposite direction from the end to the start. The last section of the first
-  direction has a `toPoint` with a referent and the opposite direction starts after it.
+* The first direction runs from the start to the end of the location, the opposite direction from the end
+  to the start.
 * Each route is preceded by the XML comment `<!-- GN firstDirection -->` or `<!-- GN oppositeDirection -->`.
   The comment uses model element names (the same as in OpenLR), so it is language-neutral, and it is meant
-  for human readers. A receiver should not rely on it; the boundary between the routes is given by the
-  referent.
+  for human readers. A receiver should not rely on it; it determines the boundary between the routes from
+  the connectivity of the sections in the GN network. Both directions are also described unambiguously by
+  OpenLR (<<openlr>>).
 
 .Global Network sections – separate carriageways (sample `predefined_location_both-directions.xml`)
 [source,xml]
 ----
 include::{samplesdir}/predefined_location_both-directions.xml[tag=gn-separate,indent=0]
+----
+
+[[prubeh]]
+=== Location path
+
+Each linear location carries its path in WGS-84 so that a subscriber can show it on a map without the GN
+network, the ALERT-C location table or an OpenLR decoder:
+
+* `gmlLineString` – a line in `posList`: "latitude longitude" pairs separated by spaces,
+  `srsName` = `EPSG:4326`, `srsDimension` = `2`. The line is made from the geometry of the GN sections
+  trimmed by the percentages of the edge sections, simplified (tolerance 5 m), with coordinates to 5 decimal
+  places (≈ 1 m). The first point of the line is the start and the last point the end of the location.
+* For a bidirectional location the line runs in the first direction, so on separate carriageways along the
+  carriageway of the first direction (the model allows one line per location).
+* `coordinatesForDisplay` – a point for the map marker, the middle of the line.
+
+.Location path (sample `predefined_location_samples_set.xml`)
+[source,xml]
+----
+include::{samplesdir}/predefined_location_samples_set.xml[tag=loc-gml,indent=0]
 ----
 
 === Road chainage location referencing

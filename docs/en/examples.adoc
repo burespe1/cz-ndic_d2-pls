@@ -3,6 +3,12 @@
 The samples are part of the specification package `{schema-uri}.zip` (directory `samples`). All of them
 are valid against the DATEX II 3.7 schema and conform to the profile selection (`.sel`).
 
+Within a location, the description by each method is preceded by an XML comment with its name: `<!-- OpenLR -->`,
+`<!-- ALERT-C -->`, `<!-- GN -->`,
+`<!-- gmlLineString -->` (location path), `<!-- roadNumber -->` (road chainage), and for separate carriageways `<!-- GN firstDirection -->` and
+`<!-- GN oppositeDirection -->`. The comments use model names, are language-neutral and are meant for human
+readers only.
+
 === predefined_location_set-fcd.xml – FCD sections
 
 Two sections of the FCD set between ALERT-C locations 25760 and 25761, each direction as a separate
@@ -20,8 +26,8 @@ attributes; data source `x-source:cz-ndic_d2-pls-fcd-pull-v2`.
 Location::
 One-directional linear location without a name, described by OpenLR (`firstDirection` only), ALERT-C
 (`alertCAffectedDirection` = `aligned`) and Global Network sections. The sections alternate their
-direction relative to their coding, so all are given as `linearWithinLinearElement`. The second location is
-the same section in the opposite direction.
+direction relative to their coding. The location path is carried by `gmlLineString` and
+`coordinatesForDisplay`. The second location is the same section in the opposite direction.
 
 === predefined_location_set-weather.xml – road weather station sections
 
@@ -35,9 +41,8 @@ include::{samplesdir}/predefined_location_set-weather.xml[tags=**]
 
 Location::
 Road weather station sections are valid in both directions (`alertCAffectedDirection` = `both`). In both
-locations the same GN sections serve both directions (`directionRelativeOnLinearSection` = `both`); in the
-second location the full inner section is shortened to `externalReferencing`. The start and end
-of the location carry referents with WGS-84 coordinates.
+locations the same GN sections serve both directions (`directionRelativeOnLinearSection` = `both`). The location path in
+WGS-84 is carried by `gmlLineString`.
 
 === predefined_location_both-directions.xml – bidirectional locations
 
@@ -51,19 +56,20 @@ include::{samplesdir}/predefined_location_both-directions.xml[tags=**]
 
 Sections serving both directions::
 II/230 Zádub-Závišín: the opposite-direction sections mirror the first direction, so they are given once
-with `directionRelativeOnLinearSection` = `both`; both full inner sections are shortened to
-`externalReferencing`.
+with `directionRelativeOnLinearSection` = `both`, including both full inner sections.
 
 Separate carriageways::
 I/30 in Ústí nad Labem: the opposite direction runs on different, one-way sections; the whole route of the
 first direction (three sections) is followed by the whole route of the opposite direction (three sections),
 all as `linearWithinLinearElement`. Each route is preceded by the comment `<!-- GN firstDirection -->` or
-`<!-- GN oppositeDirection -->`, and each starts and ends with a referent with coordinates.
+`<!-- GN oppositeDirection -->`; `gmlLineString` runs along the
+carriageway of the first direction.
 
 === predefined_location_samples_set.xml – examples of referencing methods
 
 The publication contains four predefined locations, each described by one method: Global Network sections,
-ALERT-C, road chainage and OpenLR.
+ALERT-C, road chainage and OpenLR. The location described by Global Network sections also carries its
+path (`gmlLineString`, `coordinatesForDisplay`).
 
 [source,xml]
 ----

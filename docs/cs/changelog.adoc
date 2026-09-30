@@ -12,12 +12,13 @@
 ** Identifikátory a verze poloh se nemění; odkazy ve stávajících datech zůstávají platné.
 ** Národní rozšíření polohy (`linearExtension`, `globalNetworkLinear`, `openlrExtendedLinear`) nahradily
    prvky modelu 3.7: OpenLR v `openlrLinear` (`firstDirection`, `oppositeDirection`), úseky Global Network
-   v `linearWithinLinearElement` s `LinearElementByCode`, plné vnitřní úseky v `externalReferencing`.
-** Počátek a konec polohy GN (`startPoint`, `endPoint` v S-JTSK) nesou referenty se souřadnicemi WGS-84.
+   v `linearWithinLinearElement` s `LinearElementByCode`.
+** Počátek a konec polohy GN (`startPoint`, `endPoint` v S-JTSK) nahradil průběh polohy ve WGS-84
+   (`gmlLineString`) a bod pro zobrazení (`coordinatesForDisplay`); krajní úseky GN mají procenta.
 ** Procenta délky úseku GN jsou v rozsahu 0–100 (dříve 0–1).
 ** Obousměrnost v GN (`directionality`, `oppositeDirection`) vyjadřuje směr `both` (jen u úseků průjezdných
-   v obou směrech), jinak celá trasa protisměru uvedená za trasou prvního směru; každá trasa má referenty
-   na obou koncích a uvozuje ji komentář XML.
+   v obou směrech), jinak celá trasa protisměru uvedená za trasou prvního směru; každou trasu uvozuje
+   komentář XML.
 ** Kód země ALERT-C je `2` (dříve `CZ`); nový povinný prvek `alertCAffectedDirection`.
 ** Třídy OpenLR mají v modelu 3.7 jiné názvy prvků (`openlrCoordinates`, `openlrLowestFrcToNextLRPoint`)
    a hodnoty třídy komunikace malými písmeny (`frc0`–`frc7`).
