@@ -20,3 +20,11 @@ AlertCDirection:
 PredefinedLocation:
   predefinedLocationName:
     ndic: "Jen je-li název ve zdroji: úseky meteohlásek (název meteohlásky); úseky FCD název nemají."
+
+GmlLineString:
+  posList:
+    ndic: "Linie ve směru jízdy od počátku ke konci polohy (u obousměrné polohy v prvním směru). Počátek a konec jsou přesné, mezilehlé body zjednodušené s odchylkou nejvýše 10 m od geometrie úseků GN; souřadnice WGS-84 na 5 desetinných míst (≈ 1 m)."
+
+PercentageDistanceAlongLinearElement:
+  percentageDistanceAlong:
+    ndic: "Procenta délky úseku 0–100, nejvýše 2 desetinná místa."

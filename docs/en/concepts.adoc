@@ -1,17 +1,14 @@
 == Concepts
 
-The format publishes sets of predefined locations – road network sections referenced by other NDIC
-formats. A referencing message carries only the identifier and version of the location; the full
+The format describes sets of predefined locations – road network sections referenced by messages of NDIC data sources. A referencing message carries only the identifier and version of the location; the full
 location description is in this publication.
 
-[cols="2,3,3",options="header"]
-|===
-|Set (distribution) |Content |Referenced by
-|`x-source:cz-ndic_d2-pls-fcd-pull-v2` |sections between ALERT-C locations, each direction separately |`cz-ndic_d2-fcd-status`
-|`x-source:cz-ndic_d2-pls-weather-pull-v2` |road weather station sections, valid in both directions |`cz-ndic_d2-weather`
-|===
+A set contains locations of one kind, for example:
 
-A set is always downloaded as a whole (snapshot, pull). The format is based on the
+* FCD sections – sections between ALERT-C locations, each direction of travel as a separate location,
+* road weather station sections – road sections at road weather stations, valid in both directions of travel.
+
+The format is based on the
 `PredefinedLocationsPublication` publication <<EN16157-2>>.
 
 [[obalka]]
@@ -23,8 +20,8 @@ A message is a DATEX II 3 document with the root element `d2:payload` of type
 
 The header contains:
 
-* `feedType` – the distribution according to the table above (reference to the register of the national
-  access point <<nap>>),
+* `feedType` – identifier of the data source (distribution) in the register of the national access point
+  <<nap>>; the source refers to this format,
 * `publicationTime` – time the content was created; if the content has not changed, the original time is kept,
 * `publicationCreator` – `cz` and `NDIC`,
 * `headerInformation` – always `confidentiality` = `noRestriction` and `informationStatus` = `real`.
@@ -214,7 +211,7 @@ The location is a list of sections of the Global Network (GN, ŘSD):
 * One-way sections (e.g. separate carriageways, junction ramps) are always coded in the travel direction;
   they are therefore travelled only as `aligned` and a route never runs against them.
 * `fromPoint` and `toPoint` are the points where the route enters and leaves the section, always of
-  type `PercentageDistanceAlongLinearElement` – percent of the section length (0–100) measured
+  type `PercentageDistanceAlongLinearElement` – percent of the section length (0–100, at most 2 decimal places) measured
   from the start of the section coding. For `aligned` the value increases (e.g. 20 → 100), for `opposite` it
   decreases (e.g. 100 → 20); a full section is 0 → 100 or 100 → 0.
 * The start and end of the location are given by the percentages of the first and last section. The GN
@@ -241,7 +238,7 @@ the points in reverse order. Only sections passable in both directions may have 
 include::{samplesdir}/predefined_location_both-directions.xml[tag=gn-both,indent=0]
 ----
 
-The first section (3663224) runs from 30.5 % to 0 % and the last section (901099) from 100 % to 12.6 %; on both the first direction therefore runs against the
+The first section (3663224) runs from 30.47{nbsp}% to 0{nbsp}% and the last section (901099) from 100{nbsp}% to 12.58{nbsp}%; on both the first direction therefore runs against the
 coding. The first direction also runs against the coding on the full inner sections 1327329
 and 1326918 (100 → 0).
 
@@ -270,9 +267,11 @@ Each linear location carries its path in WGS-84 so that a subscriber can show it
 network, the ALERT-C location table or an OpenLR decoder:
 
 * `gmlLineString` – a line in `posList`: "latitude longitude" pairs separated by spaces,
-  `srsName` = `EPSG:4326`, `srsDimension` = `2`. The line is made from the geometry of the GN sections
-  trimmed by the percentages of the edge sections, simplified (tolerance 5 m), with coordinates to 5 decimal
-  places (≈ 1 m). The first point of the line is the start and the last point the end of the location.
+  `srsName` = `EPSG:4326`, `srsDimension` = `2`. The line runs in the direction of travel: the first point is the start and the last point the end
+  of the location. It is
+  made from the geometry of the GN sections trimmed by the percentages of the edge sections; the start and end
+  are exact, intermediate points are simplified so that the line deviates from the section geometry by at
+  most 10{nbsp}m. Coordinates have 5 decimal places (≈{nbsp}1{nbsp}m).
 * For a bidirectional location the line runs in the first direction, so on separate carriageways along the
   carriageway of the first direction (the model allows one line per location).
 * `coordinatesForDisplay` – a point for the map marker, the middle of the line.

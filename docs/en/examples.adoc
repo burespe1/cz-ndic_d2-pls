@@ -1,7 +1,6 @@
 == Message examples
 
-The samples are part of the specification package `{schema-uri}.zip` (directory `samples`). All of them
-are valid against the DATEX II 3.7 schema and conform to the profile selection (`.sel`).
+The samples are part of the specification package `{schema-uri}.zip` (directory `samples`).
 
 Within a location, the description by each method is preceded by an XML comment with its name: `<!-- OpenLR -->`,
 `<!-- ALERT-C -->`, `<!-- GN -->`,
@@ -21,13 +20,19 @@ include::{samplesdir}/predefined_location_set-fcd.xml[tags=**]
 
 Envelope and header::
 Root `d2:payload` of type `loc:PredefinedLocationsPublication` with the `profileName` and `profileVersion`
-attributes; data source `x-source:cz-ndic_d2-pls-fcd-pull-v2`.
+attributes; `feedType` refers to the data source.
 
 Location::
 One-directional linear location without a name, described by OpenLR (`firstDirection` only), ALERT-C
 (`alertCAffectedDirection` = `aligned`) and Global Network sections. The sections alternate their
 direction relative to their coding. The location path is carried by `gmlLineString` and
 `coordinatesForDisplay`. The second location is the same section in the opposite direction.
++
+FCD sections are always one-directional: speed and travel time are evaluated for each direction of travel
+separately, so each direction of the same section is a separate location with its own identifier
+(`TS25760T25761` and `TS25761T25760`) and its own description by all methods. This is specific to FCD
+sections; other locations, e.g. road weather station sections, describe both directions by one
+bidirectional location (<<smer>>).
 
 === predefined_location_set-weather.xml – road weather station sections
 

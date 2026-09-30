@@ -23,13 +23,6 @@ samples: samples
 ndic:
   action: upgrade
   previous: cz-ndic_d2-predefined-location-set-v1.2 (DATEX II 2.3)
-  source: NDIC (GlobalNetwork ŘSD)
-  distributions:
-  - x-source:cz-ndic_d2-pls-fcd-pull-v2 (pull)
-  - x-source:cz-ndic_d2-pls-weather-pull-v2 (pull)
-  legislation:
-  - RTTI
-  - SRTI
   profiles: []
   profileName: cz-ndic_d2-pls
   profileVersion: '2.0'

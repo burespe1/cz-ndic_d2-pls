@@ -125,7 +125,7 @@
           <loc:linearElementIdentifier>3663224</loc:linearElementIdentifier>
         </loc:linearElement>
         <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
-          <loc:percentageDistanceAlong>30.4728</loc:percentageDistanceAlong>
+          <loc:percentageDistanceAlong>30.47</loc:percentageDistanceAlong>
         </loc:fromPoint>
         <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
           <loc:percentageDistanceAlong>0</loc:percentageDistanceAlong>
@@ -170,7 +170,7 @@
           <loc:percentageDistanceAlong>100</loc:percentageDistanceAlong>
         </loc:fromPoint>
         <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
-          <loc:percentageDistanceAlong>12.5773</loc:percentageDistanceAlong>
+          <loc:percentageDistanceAlong>12.58</loc:percentageDistanceAlong>
         </loc:toPoint>
       </loc:linearWithinLinearElement>
       <!-- end::gn-both[] -->
@@ -292,7 +292,7 @@
           <loc:linearElementIdentifier>3819742</loc:linearElementIdentifier>
         </loc:linearElement>
         <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
-          <loc:percentageDistanceAlong>98.8815</loc:percentageDistanceAlong>
+          <loc:percentageDistanceAlong>98.88</loc:percentageDistanceAlong>
         </loc:fromPoint>
         <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
           <loc:percentageDistanceAlong>100</loc:percentageDistanceAlong>
@@ -323,7 +323,7 @@
           <loc:percentageDistanceAlong>0</loc:percentageDistanceAlong>
         </loc:fromPoint>
         <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
-          <loc:percentageDistanceAlong>13.8128</loc:percentageDistanceAlong>
+          <loc:percentageDistanceAlong>13.81</loc:percentageDistanceAlong>
         </loc:toPoint>
       </loc:linearWithinLinearElement>
       <!-- GN oppositeDirection -->
@@ -335,7 +335,7 @@
           <loc:linearElementIdentifier>3719853</loc:linearElementIdentifier>
         </loc:linearElement>
         <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
-          <loc:percentageDistanceAlong>88.1356</loc:percentageDistanceAlong>
+          <loc:percentageDistanceAlong>88.14</loc:percentageDistanceAlong>
         </loc:fromPoint>
         <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
           <loc:percentageDistanceAlong>100</loc:percentageDistanceAlong>
@@ -366,7 +366,7 @@
           <loc:percentageDistanceAlong>0</loc:percentageDistanceAlong>
         </loc:fromPoint>
         <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
-          <loc:percentageDistanceAlong>1.2821</loc:percentageDistanceAlong>
+          <loc:percentageDistanceAlong>1.28</loc:percentageDistanceAlong>
         </loc:toPoint>
       </loc:linearWithinLinearElement>
       <!-- end::gn-separate[] -->

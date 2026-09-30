@@ -1,7 +1,6 @@
 == Příklady zpráv
 
-Vzorky jsou součástí balíčku specifikace `{schema-uri}.zip` (adresář `samples`). Všechny jsou validní vůči
-schématu DATEX II 3.7 a odpovídají výběru profilu (`.sel`).
+Vzorky jsou součástí balíčku specifikace `{schema-uri}.zip` (adresář `samples`).
 
 V poloze uvozuje popis každou metodou komentář XML s jejím názvem: `<!-- OpenLR -->`, `<!-- ALERT-C -->`,
 `<!-- GN -->`, `<!-- gmlLineString -->` (průběh polohy), `<!-- roadNumber -->` (staničení),
@@ -19,12 +18,17 @@ include::{samplesdir}/predefined_location_set-fcd.xml[tags=**]
 
 Obálka a hlavička::
 Kořen `d2:payload` typu `loc:PredefinedLocationsPublication` s atributy `profileName`
-a `profileVersion`; zdroj dat `x-source:cz-ndic_d2-pls-fcd-pull-v2`.
+a `profileVersion`; `feedType` odkazuje na zdroj dat.
 
 Poloha::
 Jednosměrná liniová poloha bez názvu, popsaná OpenLR (jen `firstDirection`), ALERT-C (`alertCAffectedDirection` =
 `aligned`) a úseky Global Network. Úseky střídají směr vůči svému kódování. Průběh
 polohy nese `gmlLineString` a `coordinatesForDisplay`. Druhá poloha je tentýž úsek v opačném směru.
++
+Úseky FCD jsou vždy jednosměrné: rychlost a dojezdová doba se vyhodnocují pro každý směr jízdy zvlášť,
+proto je každý směr téhož úseku samostatnou polohou s vlastním identifikátorem (`TS25760T25761`
+a `TS25761T25760`) a vlastním popisem všemi metodami. To je specifické pro úseky FCD; ostatní polohy, např.
+úseky meteohlásek, popisují oba směry jednou obousměrnou polohou (<<smer>>).
 
 === predefined_location_set-weather.xml – úseky meteohlásek
 

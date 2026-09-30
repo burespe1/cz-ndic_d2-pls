@@ -61,7 +61,7 @@
       </loc:openlrLinear>
       <!-- gmlLineString -->
       <loc:gmlLineString srsName="EPSG:4326" srsDimension="2">
-        <loc:posList>50.46960 13.37354 50.47021 13.37284 50.47069 13.37200 50.47108 13.37092 50.47131 13.36954</loc:posList>
+        <loc:posList>50.46960 13.37354 50.47069 13.37200 50.47108 13.37092 50.47131 13.36954</loc:posList>
       </loc:gmlLineString>
       <!-- ALERT-C -->
       <loc:alertCLinear xsi:type="loc:AlertCMethod2Linear">
@@ -92,7 +92,7 @@
           <loc:linearElementIdentifier>1584347</loc:linearElementIdentifier>
         </loc:linearElement>
         <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
-          <loc:percentageDistanceAlong>82.6057</loc:percentageDistanceAlong>
+          <loc:percentageDistanceAlong>82.61</loc:percentageDistanceAlong>
         </loc:fromPoint>
         <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
           <loc:percentageDistanceAlong>100</loc:percentageDistanceAlong>
@@ -109,7 +109,7 @@
           <loc:percentageDistanceAlong>0</loc:percentageDistanceAlong>
         </loc:fromPoint>
         <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
-          <loc:percentageDistanceAlong>35.4707</loc:percentageDistanceAlong>
+          <loc:percentageDistanceAlong>35.47</loc:percentageDistanceAlong>
         </loc:toPoint>
       </loc:linearWithinLinearElement>
     </loc:location>
@@ -195,7 +195,7 @@
           <loc:linearElementIdentifier>4127364</loc:linearElementIdentifier>
         </loc:linearElement>
         <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
-          <loc:percentageDistanceAlong>47.6526</loc:percentageDistanceAlong>
+          <loc:percentageDistanceAlong>47.65</loc:percentageDistanceAlong>
         </loc:fromPoint>
         <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
           <loc:percentageDistanceAlong>0</loc:percentageDistanceAlong>
@@ -226,7 +226,7 @@
           <loc:percentageDistanceAlong>0</loc:percentageDistanceAlong>
         </loc:fromPoint>
         <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
-          <loc:percentageDistanceAlong>28.7553</loc:percentageDistanceAlong>
+          <loc:percentageDistanceAlong>28.76</loc:percentageDistanceAlong>
         </loc:toPoint>
       </loc:linearWithinLinearElement>
     </loc:location>

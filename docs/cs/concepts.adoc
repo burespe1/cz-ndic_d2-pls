@@ -1,16 +1,14 @@
 == Koncepty
 
-Formát publikuje sady předdefinovaných poloh – úseků silniční sítě, na které odkazují jiné formáty NDIC.
+Formát popisuje sady předdefinovaných poloh – úseků silniční sítě, na které odkazují zprávy zdrojů dat NDIC.
 Odkazující zpráva nese jen identifikátor a verzi polohy; úplný popis polohy je v této publikaci.
 
-[cols="2,3,3",options="header"]
-|===
-|Sada (distribuce) |Obsah |Odkazují na ni
-|`x-source:cz-ndic_d2-pls-fcd-pull-v2` |úseky mezi lokacemi ALERT-C, každý směr samostatně |`cz-ndic_d2-fcd-status`
-|`x-source:cz-ndic_d2-pls-weather-pull-v2` |úseky meteohlásek, platné pro oba směry |`cz-ndic_d2-weather`
-|===
+Sada obsahuje polohy jednoho druhu, například:
 
-Sada se stahuje celá (snímek, pull). Formát vychází z publikace `PredefinedLocationsPublication`
+* úseky FCD – úseky mezi lokacemi ALERT-C, každý směr jízdy jako samostatná poloha,
+* úseky meteohlásek – úseky silnice u meteohlásek, platné pro oba směry jízdy.
+
+Formát vychází z publikace `PredefinedLocationsPublication`
 <<EN16157-2>>.
 
 [[obalka]]
@@ -21,7 +19,8 @@ Formát identifikují atributy kořene `profileName` (`cz-ndic_d2-pls`) a `profi
 
 Hlavička obsahuje:
 
-* `feedType` – distribuce podle tabulky výše (odkaz do registru národního přístupového bodu <<nap>>),
+* `feedType` – identifikátor zdroje dat (distribuce) v registru národního přístupového bodu <<nap>>;
+  zdroj odkazuje na tento formát,
 * `publicationTime` – čas vytvoření obsahu; nezměnil-li se obsah, zůstává čas původní,
 * `publicationCreator` – `cz` a `NDIC`,
 * `headerInformation` – vždy `confidentiality` = `noRestriction` a `informationStatus` = `real`.
@@ -199,7 +198,7 @@ Poloha je výčet úseků sítě Global Network (GN, ŘSD):
 * Jednosměrné úseky (např. oddělené jízdní pásy, větve křižovatek) jsou vždy kódovány ve směru jízdy;
   pojíždějí se tedy jen jako `aligned` a trasa nikdy nevede proti nim.
 * `fromPoint` a `toPoint` jsou místa, kde trasa na úsek vstupuje a kde ho opouští, vždy typu
-  `PercentageDistanceAlongLinearElement` – procenta délky úseku (0–100) měřená od počátku kódování úseku.
+  `PercentageDistanceAlongLinearElement` – procenta délky úseku (0–100, nejvýše 2 desetinná místa) měřená od počátku kódování úseku.
   U `aligned` hodnota roste (např. 20 → 100), u `opposite` klesá (např. 100 → 20); celý úsek je 0 → 100,
   resp. 100 → 0.
 * Počátek a konec polohy dávají procenta prvního a posledního úseku. Souřadnice počátku a konce úseky GN
@@ -224,7 +223,7 @@ seznam čtený od konce, s body v opačném pořadí. Směr `both` mohou mít je
 include::{samplesdir}/predefined_location_both-directions.xml[tag=gn-both,indent=0]
 ----
 
-První úsek (3663224) vede od 30,5 % k 0 % a poslední úsek (901099) od 100 % k 12,6 %; první směr tedy na obou vede proti směru kódování. Celé vnitřní úseky 1327329 a
+První úsek (3663224) vede od 30,47{nbsp}% k 0{nbsp}% a poslední úsek (901099) od 100{nbsp}% k 12,58{nbsp}%; první směr tedy na obou vede proti směru kódování. Celé vnitřní úseky 1327329 a
 1326918 vede první směr také proti směru kódování (100 → 0).
 
 Vede-li protisměr jinudy – po oddělených jízdních pásech nebo po jednosměrných úsecích (v ukázce všechny
@@ -250,9 +249,9 @@ Každá liniová poloha nese svůj průběh ve WGS-84, aby ji odběratel zobrazi
 tabulky ALERT-C i dekodéru OpenLR:
 
 * `gmlLineString` – linie v `posList`: dvojice „zeměpisná šířka zeměpisná délka“ oddělené mezerou,
-  `srsName` = `EPSG:4326`, `srsDimension` = `2`. Linie vzniká z geometrie úseků GN oříznuté procenty
-  krajních úseků, je zjednodušená (tolerance 5 m) a souřadnice mají 5 desetinných míst (≈ 1 m). První bod
-  linie je počátek, poslední bod konec polohy.
+  `srsName` = `EPSG:4326`, `srsDimension` = `2`. Linie vede ve směru jízdy: první bod je počátek, poslední bod konec polohy. Vzniká z geometrie úseků GN oříznuté procenty krajních úseků; počátek
+  a konec jsou přesné, mezilehlé body jsou zjednodušené tak, že se linie od geometrie úseků odchyluje nejvýše
+  o 10{nbsp}m. Souřadnice mají 5 desetinných míst (≈{nbsp}1{nbsp}m).
 * U obousměrné polohy vede linie v prvním směru, na oddělených pásech tedy po pásu prvního směru (model
   dovoluje jednu linii na polohu).
 * `coordinatesForDisplay` – bod pro značku v mapě, střed linie.

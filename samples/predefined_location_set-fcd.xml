@@ -56,7 +56,7 @@
       </loc:openlrLinear>
       <!-- gmlLineString -->
       <loc:gmlLineString srsName="EPSG:4326" srsDimension="2">
-        <loc:posList>49.77579 13.34736 49.77600 13.34855 49.77695 13.35269 49.77730 13.35467</loc:posList>
+        <loc:posList>49.77579 13.34736 49.77730 13.35467</loc:posList>
       </loc:gmlLineString>
       <!-- ALERT-C -->
       <loc:alertCLinear xsi:type="loc:AlertCMethod2Linear">
@@ -294,7 +294,7 @@
       </loc:openlrLinear>
       <!-- gmlLineString -->
       <loc:gmlLineString srsName="EPSG:4326" srsDimension="2">
-        <loc:posList>49.77730 13.35467 49.77695 13.35269 49.77600 13.34855 49.77579 13.34736</loc:posList>
+        <loc:posList>49.77730 13.35467 49.77579 13.34736</loc:posList>
       </loc:gmlLineString>
       <!-- ALERT-C -->
       <loc:alertCLinear xsi:type="loc:AlertCMethod2Linear">
