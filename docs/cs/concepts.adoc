@@ -118,7 +118,7 @@ OpenLR a ALERT-C by obousměrnost vyjadřovaly dvakrát. Skupina je vyhrazena pr
 [[polohy]]
 == Popisování poloh
 
-Poloha je liniová (`loc:SingleRoadLinearLocation`) a bývá popsána několika metodami podle jejich
+Poloha je liniová (`loc:SingleRoadLinearLocation`) – vždy souvislý úsek jedné komunikace – a bývá popsána několika metodami podle jejich
 dostupnosti; všechny popisují tentýž úsek a alespoň jedna musí být uvedena. Úseky FCD i meteohlásek mají
 všechny tři hlavní metody a průběh polohy.
 
