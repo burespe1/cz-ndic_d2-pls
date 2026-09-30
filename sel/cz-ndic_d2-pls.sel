@@ -270,51 +270,6 @@
       <definition>A linear element along a single linear object, consistent with EN ISO 19148 definitions. </definition>
     </D2Component>
     <D2Component>
-      <name>ExternalReferencing</name>
-      <ID>EAID_1F93F005_17BF_429c_A37E_8C2AE3D045B7</ID>
-      <package>
-        <name>LocationReference</name>
-        <ID>EAPK_612CA98D_ED91_4514_BFD2_7AC2C233656D</ID>
-        <generate>true</generate>
-        <definition>A collection of information related to specifying locations within a transportation network.</definition>
-        <NamespaceName>LocationReferencing</NamespaceName>
-      </package>
-      <generate>true</generate>
-      <isGenerated>true</isGenerated>
-      <NamespaceName>LocationReferencing</NamespaceName>
-      <isAbstract>false</isAbstract>
-      <isExtension>false</isExtension>
-      <attributes>
-        <ID>EAID_7DE54BB8_7255_4b91_96C0_8CE59CD29039</ID>
-        <name>externalLocationCode</name>
-        <type>EAID_DD0FAA46_EDB3_4ba6_A191_377D87F4D303</type>
-        <order>0</order>
-        <lowerBound>1</lowerBound>
-        <upperBound>1</upperBound>
-        <upperBoundUnlimited>false</upperBoundUnlimited>
-        <definition>A code in the external referencing system which defines the location.</definition>
-        <generate>true</generate>
-        <attribute>false</attribute>
-        <newLowerBound>-1</newLowerBound>
-        <newUpperBound>-1</newUpperBound>
-      </attributes>
-      <attributes>
-        <ID>EAID_95E818BA_E834_4d04_AE4B_1F1400F1BE39</ID>
-        <name>externalReferencingSystem</name>
-        <type>EAID_DD0FAA46_EDB3_4ba6_A191_377D87F4D303</type>
-        <order>1</order>
-        <lowerBound>1</lowerBound>
-        <upperBound>1</upperBound>
-        <upperBoundUnlimited>false</upperBoundUnlimited>
-        <definition>Identification of the external/other location referencing system.</definition>
-        <generate>true</generate>
-        <attribute>false</attribute>
-        <newLowerBound>-1</newLowerBound>
-        <newUpperBound>-1</newUpperBound>
-      </attributes>
-      <definition>A location defined by reference to an external/other referencing system.</definition>
-    </D2Component>
-    <D2Component>
       <name>LinearLocation</name>
       <ID>EAID_2802F386_8507_4c69_9706_A2015C78A5E2</ID>
       <package>
@@ -331,9 +286,9 @@
       <isAbstract>false</isAbstract>
       <isExtension>false</isExtension>
       <relations>
-        <ID>EAID_392E40B8_C1E9_42fa_8952_FCA0896C380D</ID>
-        <target>EAID_6C63F590_D1E3_495c_8A34_D1E6988BC264</target>
-        <order>0</order>
+        <ID>EAID_63AC72AA_49F8_4d99_975D_0C6DDAAD1823</ID>
+        <target>EAID_3D271A89_15EA_45f8_B5B1_5F37E7FD9B10</target>
+        <order>1</order>
         <lowerBound>0</lowerBound>
         <upperBound>1</upperBound>
         <upperBoundUnlimited>false</upperBoundUnlimited>
@@ -342,9 +297,9 @@
         <newUpperBound>-1</newUpperBound>
       </relations>
       <relations>
-        <ID>EAID_63AC72AA_49F8_4d99_975D_0C6DDAAD1823</ID>
-        <target>EAID_3D271A89_15EA_45f8_B5B1_5F37E7FD9B10</target>
-        <order>1</order>
+        <ID>EAID_392E40B8_C1E9_42fa_8952_FCA0896C380D</ID>
+        <target>EAID_6C63F590_D1E3_495c_8A34_D1E6988BC264</target>
+        <order>0</order>
         <lowerBound>0</lowerBound>
         <upperBound>1</upperBound>
         <upperBoundUnlimited>false</upperBoundUnlimited>
@@ -383,17 +338,6 @@
       <isAbstract>false</isAbstract>
       <isExtension>false</isExtension>
       <relations>
-        <ID>EAID_4036522E_5D18_4257_8159_E8BD85E9C506</ID>
-        <target>EAID_0CAB1F60_1F6C_4a88_BE21_EA256D99C2EC</target>
-        <order>0</order>
-        <lowerBound>1</lowerBound>
-        <upperBound>1</upperBound>
-        <upperBoundUnlimited>false</upperBoundUnlimited>
-        <generate>true</generate>
-        <newLowerBound>-1</newLowerBound>
-        <newUpperBound>-1</newUpperBound>
-      </relations>
-      <relations>
         <ID>EAID_D01DD8D2_5151_444d_BB6D_348E79FBCEB2</ID>
         <role>fromPoint</role>
         <target>EAID_91DF4D41_6E94_4701_A4FB_DE5DF4823E9C</target>
@@ -415,6 +359,17 @@
         <upperBound>1</upperBound>
         <upperBoundUnlimited>false</upperBoundUnlimited>
         <definition>A point on the linear element that defines the end node of the linear section.</definition>
+        <generate>true</generate>
+        <newLowerBound>-1</newLowerBound>
+        <newUpperBound>-1</newUpperBound>
+      </relations>
+      <relations>
+        <ID>EAID_4036522E_5D18_4257_8159_E8BD85E9C506</ID>
+        <target>EAID_0CAB1F60_1F6C_4a88_BE21_EA256D99C2EC</target>
+        <order>0</order>
+        <lowerBound>1</lowerBound>
+        <upperBound>1</upperBound>
+        <upperBoundUnlimited>false</upperBoundUnlimited>
         <generate>true</generate>
         <newLowerBound>-1</newLowerBound>
         <newUpperBound>-1</newUpperBound>
@@ -580,64 +535,6 @@
         <newUpperBound>-1</newUpperBound>
       </attributes>
       <definition>Line string based on GML (EN ISO 19136) definition: a curve defined by a series of two or more coordinate tuples. Unlike GML may be self-intersecting. If srsName attribute is not present, posList is assumed to use "ETRS89-LatLonh" reference system.</definition>
-    </D2Component>
-    <D2Component>
-      <name>DistanceFromLinearElementReferent</name>
-      <ID>EAID_43F490EF_BCC2_4ab0_9A71_8E852EDA1241</ID>
-      <package>
-        <name>PointAlongLinearElement</name>
-        <ID>EAPK_DD69DC59_C5E3_4e25_AE45_5C013EE2BC9B</ID>
-        <generate>true</generate>
-        <definition>A collection of information for defining point locations using reference points on a linear element that is a road.</definition>
-        <NamespaceName>LocationReferencing</NamespaceName>
-      </package>
-      <generate>true</generate>
-      <isGenerated>true</isGenerated>
-      <SuperD2Component>EAID_91DF4D41_6E94_4701_A4FB_DE5DF4823E9C</SuperD2Component>
-      <NamespaceName>LocationReferencing</NamespaceName>
-      <isAbstract>false</isAbstract>
-      <isExtension>false</isExtension>
-      <relations>
-        <ID>EAID_66E2D270_7048_4169_80B8_F97EAEB8222C</ID>
-        <role>fromReferent</role>
-        <target>EAID_C52BC9A2_1CEB_4186_927B_D41F3E88464F</target>
-        <order>0</order>
-        <lowerBound>1</lowerBound>
-        <upperBound>1</upperBound>
-        <upperBoundUnlimited>false</upperBoundUnlimited>
-        <definition>A known location along the linear element from which the distanceAlong is measured, termed the "fromReferent" in EN ISO 19148. </definition>
-        <generate>true</generate>
-        <newLowerBound>-1</newLowerBound>
-        <newUpperBound>-1</newUpperBound>
-      </relations>
-      <relations>
-        <ID>EAID_A4DB2569_0D65_4f9d_94A9_1319FE199167</ID>
-        <role>towardsReferent</role>
-        <target>EAID_C52BC9A2_1CEB_4186_927B_D41F3E88464F</target>
-        <order>1</order>
-        <lowerBound>0</lowerBound>
-        <upperBound>1</upperBound>
-        <upperBoundUnlimited>false</upperBoundUnlimited>
-        <definition>A known location along the linear element towards which the distanceAlong is measured, termed the "towardsReferent" in EN ISO 19148.</definition>
-        <generate>false</generate>
-        <newLowerBound>-1</newLowerBound>
-        <newUpperBound>-1</newUpperBound>
-      </relations>
-      <attributes>
-        <ID>EAID_855E0C41_E910_477d_9E1C_03A947C831A7</ID>
-        <name>distanceAlong</name>
-        <type>EAID_5F90D438_ECAA_4f3c_940B_9FE694BC71FA</type>
-        <order>0</order>
-        <lowerBound>1</lowerBound>
-        <upperBound>1</upperBound>
-        <upperBoundUnlimited>false</upperBoundUnlimited>
-        <definition>A measure of distance along a linear element.</definition>
-        <generate>true</generate>
-        <attribute>false</attribute>
-        <newLowerBound>-1</newLowerBound>
-        <newUpperBound>-1</newUpperBound>
-      </attributes>
-      <definition>Distance of a point along a linear element measured from a "from referent" on the linear element, in the sense relative to the linear element definition rather than the direction of traffic flow or optionally towards a "towards referent".</definition>
     </D2Component>
     <D2Component>
       <name>PointCoordinates</name>
@@ -1110,7 +1007,7 @@
         <lowerBound>0</lowerBound>
         <upperBound>-1</upperBound>
         <upperBoundUnlimited>true</upperBoundUnlimited>
-        <generate>true</generate>
+        <generate>false</generate>
         <newLowerBound>-1</newLowerBound>
         <newUpperBound>-1</newUpperBound>
       </relations>
@@ -1163,9 +1060,9 @@
       <isAbstract>true</isAbstract>
       <isExtension>false</isExtension>
       <relations>
-        <ID>EAID_F2309C63_CD0A_4d28_A866_4E1E9C4684AD</ID>
-        <target>EAID_EB0BF15E_C269_4f69_86DC_94F1518CB8CC</target>
-        <order>0</order>
+        <ID>EAID_D8046CA4_2985_404a_AB9D_2F5DDFFE9AEE</ID>
+        <target>EAID_42AEF70A_9AAE_43c8_BF44_6BA8C2A3DA75</target>
+        <order>1</order>
         <lowerBound>0</lowerBound>
         <upperBound>1</upperBound>
         <upperBoundUnlimited>false</upperBoundUnlimited>
@@ -1174,9 +1071,9 @@
         <newUpperBound>-1</newUpperBound>
       </relations>
       <relations>
-        <ID>EAID_D8046CA4_2985_404a_AB9D_2F5DDFFE9AEE</ID>
-        <target>EAID_42AEF70A_9AAE_43c8_BF44_6BA8C2A3DA75</target>
-        <order>1</order>
+        <ID>EAID_F2309C63_CD0A_4d28_A866_4E1E9C4684AD</ID>
+        <target>EAID_EB0BF15E_C269_4f69_86DC_94F1518CB8CC</target>
+        <order>0</order>
         <lowerBound>0</lowerBound>
         <upperBound>1</upperBound>
         <upperBoundUnlimited>false</upperBoundUnlimited>
@@ -1406,123 +1303,6 @@
       <definition>A publication containing one or more groups of predefined locations organised either as itineraries, non-ordered groups or as individual locations.</definition>
     </D2Component>
     <D2Component>
-      <name>LocationByReference</name>
-      <ID>EAID_C30482F4_B726_4dce_81E4_4AC5651E4C82</ID>
-      <package>
-        <name>LocationReference</name>
-        <ID>EAPK_612CA98D_ED91_4514_BFD2_7AC2C233656D</ID>
-        <generate>true</generate>
-        <definition>A collection of information related to specifying locations within a transportation network.</definition>
-        <NamespaceName>LocationReferencing</NamespaceName>
-      </package>
-      <generate>true</generate>
-      <isGenerated>true</isGenerated>
-      <SuperD2Component>EAID_8B6050E8_8BFC_4b0e_9354_4F0527307112</SuperD2Component>
-      <NamespaceName>LocationReferencing</NamespaceName>
-      <isAbstract>false</isAbstract>
-      <isExtension>false</isExtension>
-      <attributes>
-        <ID>EAID_C85ACF08_54C2_4866_8023_4270F96D6927</ID>
-        <name>predefinedLocationReference</name>
-        <type>EAID_3BA348A2_B96E_4bc1_BF06_A2326B0E81BD</type>
-        <order>0</order>
-        <lowerBound>1</lowerBound>
-        <upperBound>1</upperBound>
-        <upperBoundUnlimited>false</upperBoundUnlimited>
-        <definition>A reference to a versioned predefined location.</definition>
-        <generate>true</generate>
-        <attribute>false</attribute>
-        <targetClass>loc:PredefinedLocation</targetClass>
-        <newLowerBound>-1</newLowerBound>
-        <newUpperBound>-1</newUpperBound>
-      </attributes>
-      <definition>A location defined by reference to a predefined location.</definition>
-    </D2Component>
-    <D2Component>
-      <name>Referent</name>
-      <ID>EAID_C52BC9A2_1CEB_4186_927B_D41F3E88464F</ID>
-      <package>
-        <name>PointAlongLinearElement</name>
-        <ID>EAPK_DD69DC59_C5E3_4e25_AE45_5C013EE2BC9B</ID>
-        <generate>true</generate>
-        <definition>A collection of information for defining point locations using reference points on a linear element that is a road.</definition>
-        <NamespaceName>LocationReferencing</NamespaceName>
-      </package>
-      <generate>true</generate>
-      <isGenerated>true</isGenerated>
-      <NamespaceName>LocationReferencing</NamespaceName>
-      <isAbstract>false</isAbstract>
-      <isExtension>false</isExtension>
-      <relations>
-        <ID>EAID_B93EE94C_103C_46d6_A9FB_7CA695394A74</ID>
-        <target>EAID_46E260A6_C34E_43eb_B1D1_4BC0C63E224B</target>
-        <order>0</order>
-        <lowerBound>0</lowerBound>
-        <upperBound>1</upperBound>
-        <upperBoundUnlimited>false</upperBoundUnlimited>
-        <generate>true</generate>
-        <newLowerBound>-1</newLowerBound>
-        <newUpperBound>-1</newUpperBound>
-      </relations>
-      <attributes>
-        <ID>EAID_E23CED59_84A0_46a0_B014_97194B63CBDC</ID>
-        <name>referentIdentifier</name>
-        <type>EAID_DD0FAA46_EDB3_4ba6_A191_377D87F4D303</type>
-        <order>0</order>
-        <lowerBound>1</lowerBound>
-        <upperBound>1</upperBound>
-        <upperBoundUnlimited>false</upperBoundUnlimited>
-        <definition>The identifier of the referent, unique on the specified linear element (i.e. road or part of).</definition>
-        <generate>true</generate>
-        <attribute>false</attribute>
-        <newLowerBound>-1</newLowerBound>
-        <newUpperBound>-1</newUpperBound>
-      </attributes>
-      <attributes>
-        <ID>EAID_E381013E_FA86_428f_9EA0_9EA1907D268C</ID>
-        <name>referentName</name>
-        <type>EAID_DD0FAA46_EDB3_4ba6_A191_377D87F4D303</type>
-        <order>1</order>
-        <lowerBound>0</lowerBound>
-        <upperBound>1</upperBound>
-        <upperBoundUnlimited>false</upperBoundUnlimited>
-        <definition>The name of the referent, e.g. a junction or intersection name.</definition>
-        <generate>false</generate>
-        <attribute>false</attribute>
-        <newLowerBound>-1</newLowerBound>
-        <newUpperBound>-1</newUpperBound>
-      </attributes>
-      <attributes>
-        <ID>EAID_E4810E12_FA1D_4fd0_8339_15CECC3A3360</ID>
-        <name>referentType</name>
-        <type>EAID_7E595C98_61A9_40e0_9EB9_1A84CCBF4AE2</type>
-        <order>2</order>
-        <lowerBound>1</lowerBound>
-        <upperBound>1</upperBound>
-        <upperBoundUnlimited>false</upperBoundUnlimited>
-        <definition>The type of the referent.</definition>
-        <generate>true</generate>
-        <attribute>false</attribute>
-        <newLowerBound>1</newLowerBound>
-        <newUpperBound>1</newUpperBound>
-      </attributes>
-      <attributes>
-        <ID>EAID_5E053A05_D928_4c76_80A1_8C78ED598EC2</ID>
-        <name>referentDescription</name>
-        <type>EAID_E9FD7AF8_362B_4b36_899F_2F827A73E908</type>
-        <order>3</order>
-        <lowerBound>0</lowerBound>
-        <upperBound>1</upperBound>
-        <upperBoundUnlimited>false</upperBoundUnlimited>
-        <definition>Description of the referent.</definition>
-        <generate>false</generate>
-        <attribute>false</attribute>
-        <newLowerBound>-1</newLowerBound>
-        <newUpperBound>-1</newUpperBound>
-      </attributes>
-      <definition>A referent on a linear object that has a known location such as a node, a reference marker (e.g. a marker-post), an intersection etc.</definition>
-    </D2Component>
-    <D2Component>
       <name>OpenlrLineAttributes</name>
       <ID>EAID_CBBDB09F_DA46_41df_BFD2_A180A5FD1A1F</ID>
       <package>
@@ -1630,17 +1410,6 @@
       <isAbstract>false</isAbstract>
       <isExtension>false</isExtension>
       <relations>
-        <ID>EAID_7E5A46C0_8C35_406b_A647_40ABAF49224A</ID>
-        <target>EAID_900C51D7_FC05_4fbd_ABB0_410768EDEF70</target>
-        <order>0</order>
-        <lowerBound>0</lowerBound>
-        <upperBound>1</upperBound>
-        <upperBoundUnlimited>false</upperBoundUnlimited>
-        <generate>false</generate>
-        <newLowerBound>-1</newLowerBound>
-        <newUpperBound>-1</newUpperBound>
-      </relations>
-      <relations>
         <ID>EAID_F3F83840_5998_4bf1_9A23_CB8A77874E06</ID>
         <target>EAID_538DA6A1_280C_4b5f_8FFA_1CEDF0BA19C2</target>
         <order>1</order>
@@ -1660,6 +1429,17 @@
         <upperBound>-1</upperBound>
         <upperBoundUnlimited>true</upperBoundUnlimited>
         <generate>true</generate>
+        <newLowerBound>-1</newLowerBound>
+        <newUpperBound>-1</newUpperBound>
+      </relations>
+      <relations>
+        <ID>EAID_7E5A46C0_8C35_406b_A647_40ABAF49224A</ID>
+        <target>EAID_900C51D7_FC05_4fbd_ABB0_410768EDEF70</target>
+        <order>0</order>
+        <lowerBound>0</lowerBound>
+        <upperBound>1</upperBound>
+        <upperBoundUnlimited>false</upperBoundUnlimited>
+        <generate>false</generate>
         <newLowerBound>-1</newLowerBound>
         <newUpperBound>-1</newUpperBound>
       </relations>
@@ -1915,59 +1695,6 @@
           <order>3</order>
           <generate>false</generate>
           <ID>EAID_6CBDBC45_701A_4c72_8C3A_51E6F416270D</ID>
-        </D2Litteral>
-      </d2Litteral>
-      <isExtension>false</isExtension>
-      <isExtended>false</isExtended>
-    </D2Enumeration>
-    <D2Enumeration>
-      <name>ReferentTypeEnum</name>
-      <definition>A set of types of known points along a linear object such as a road.</definition>
-      <id>EAID_7E595C98_61A9_40e0_9EB9_1A84CCBF4AE2</id>
-      <isGenerated>true</isGenerated>
-      <package>
-        <name>Enumerations</name>
-        <ID>EAPK_1FC76BEE_DA3B_4218_8202_40BD7A4D6445</ID>
-        <generate>false</generate>
-        <definition>A collection of enumerations that are used LocationReferencing package of the DATEX II model.</definition>
-        <NamespaceName>LocationReferencing</NamespaceName>
-      </package>
-      <NamespaceName>LocationReferencing</NamespaceName>
-      <d2Litteral>
-        <D2Litteral>
-          <name>boundary</name>
-          <definition>A boundary between two jurisdictional or administrative areas. These may be legal boundaries such as between counties or countries, maintenance responsibility boundaries or control boundaries. </definition>
-          <order>0</order>
-          <generate>false</generate>
-          <ID>EAID_864DE47D_5D3C_4a6c_B763_38A23EBDB152</ID>
-        </D2Litteral>
-        <D2Litteral>
-          <name>intersection</name>
-          <definition>A crossing of two or more roads where the precise point of intersection is defined according to specific business rules.</definition>
-          <order>1</order>
-          <generate>false</generate>
-          <ID>EAID_754FF8C0_1404_46aa_B0C2_A11E0252358B</ID>
-        </D2Litteral>
-        <D2Litteral>
-          <name>referenceMarker</name>
-          <definition>A marker which is usually but not necessarily physical that is one of a sequence which are spaced out along the linear object (road) to provide a location reference. The spacing of markers is not necessarily even.</definition>
-          <order>2</order>
-          <generate>true</generate>
-          <ID>EAID_813FD58A_2EB7_4415_810A_75B07B0A383C</ID>
-        </D2Litteral>
-        <D2Litteral>
-          <name>landmark</name>
-          <definition>A visible identifiable physical landmark either alongside or close to the linear object.</definition>
-          <order>3</order>
-          <generate>false</generate>
-          <ID>EAID_0FAC5CCA_223D_4a04_8E18_BC5AB333D7ED</ID>
-        </D2Litteral>
-        <D2Litteral>
-          <name>roadNode</name>
-          <definition>A topological node defined on a road network. Such nodes may delineate the segmentation of the road network according to defined business rules or may constitute a purely topological representation of a road network.</definition>
-          <order>4</order>
-          <generate>false</generate>
-          <ID>EAID_1081F08C_9328_4384_8E39_C695B0B5466D</ID>
         </D2Litteral>
       </d2Litteral>
       <isExtension>false</isExtension>
