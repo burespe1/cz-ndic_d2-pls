@@ -12,4 +12,11 @@
 #
 # _enum:                # překlady hodnot výčtů pro celý formát (přepisují sdílený slovník kitu)
 #   ProbabilityEnum.certain: jistá
-{}
+
+AlertCDirection:
+  alertCAffectedDirection:
+    ndic: "NDIC uvádí `aligned` pro jednosměrnou polohu (úseky FCD) a `both` pro obousměrnou polohu (úseky meteohlásek); `opposite` se nepoužívá."
+
+PredefinedLocation:
+  predefinedLocationName:
+    ndic: "Jen je-li název ve zdroji: úseky meteohlásek (název meteohlásky); úseky FCD název nemají."

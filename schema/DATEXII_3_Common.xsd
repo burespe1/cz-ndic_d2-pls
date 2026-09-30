@@ -33,24 +33,9 @@
       <xs:documentation>Values of confidentiality.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
-      <xs:enumeration value="internalUse">
-        <xs:annotation>
-          <xs:documentation>For internal use only of the recipient organisation.</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
       <xs:enumeration value="noRestriction">
         <xs:annotation>
           <xs:documentation>No restriction on usage.</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="restrictedToAuthorities">
-        <xs:annotation>
-          <xs:documentation>Restricted for use only by authorities.</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="restrictedToAuthoritiesAndTrafficOperators">
-        <xs:annotation>
-          <xs:documentation>Restricted for use only by authorities and traffic operators.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="_extended" />
@@ -102,21 +87,6 @@
       <xs:enumeration value="real">
         <xs:annotation>
           <xs:documentation>The information is real. It is not a test or exercise.</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="securityExercise">
-        <xs:annotation>
-          <xs:documentation>The information is part of an exercise which is for testing security.</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="technicalExercise">
-        <xs:annotation>
-          <xs:documentation>The information is part of an exercise which includes tests of associated technical subsystems.</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="test">
-        <xs:annotation>
-          <xs:documentation>The information is part of a test for checking the exchange of this type of information.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="_extended" />

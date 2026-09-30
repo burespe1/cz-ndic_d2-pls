@@ -15,18 +15,13 @@
   <!-- tag::loc-group[] -->
   <!-- tag::group-head[] -->
   <loc:predefinedLocationReference id="de08487e-e29a-5a4e-9def-7e7229fb2dd0" version="250601" xsi:type="loc:PredefinedLocationGroup">
-    <loc:predefinedLocationGroupName>
-      <com:values>
-        <com:value lang="cs">I/34 Stráž nad Nežárkou – úseky meteohlásek</com:value>
-      </com:values>
-    </loc:predefinedLocationGroupName>
-    <!-- end::group-head[] -->
     <loc:predefinedLocation id="d638c061-1177-4944-bb50-d06c9fbe795e" version="250601">
       <loc:predefinedLocationName>
         <com:values>
           <com:value lang="cs">I/34 Stráž nad Nežárkou</com:value>
         </com:values>
       </loc:predefinedLocationName>
+      <!-- end::group-head[] -->
       <loc:location xsi:type="loc:SingleRoadLinearLocation">
         <loc:externalReferencing>
           <loc:externalLocationCode>2205709</loc:externalLocationCode>

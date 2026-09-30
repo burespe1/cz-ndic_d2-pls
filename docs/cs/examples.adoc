@@ -17,7 +17,7 @@ Kořen `d2:payload` typu `loc:PredefinedLocationsPublication` s atributy `profil
 a `profileVersion`; zdroj dat `x-source:cz-ndic_d2-pls-fcd-pull-v2`.
 
 Poloha::
-Jednosměrná liniová poloha popsaná OpenLR (jen `firstDirection`), ALERT-C (`alertCAffectedDirection` =
+Jednosměrná liniová poloha bez názvu, popsaná OpenLR (jen `firstDirection`), ALERT-C (`alertCAffectedDirection` =
 `aligned`) a úseky Global Network. Úseky střídají směr vůči svému kódování, proto jsou všechny uvedeny
 jako `linearWithinLinearElement`. Druhá poloha je tentýž úsek v opačném směru.
 

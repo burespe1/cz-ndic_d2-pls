@@ -14,11 +14,6 @@
   </loc:headerInformation>
   <!-- tag::fcd-1[] -->
   <loc:predefinedLocationReference id="TS25760T25761" version="221201" xsi:type="loc:PredefinedLocation">
-    <loc:predefinedLocationName>
-      <com:values>
-        <com:value lang="cs">TS25760T25761</com:value>
-      </com:values>
-    </loc:predefinedLocationName>
     <loc:location xsi:type="loc:SingleRoadLinearLocation">
       <loc:openlrLinear>
         <loc:firstDirection>
@@ -246,11 +241,6 @@
   <!-- end::fcd-1[] -->
   <!-- tag::fcd-2[] -->
   <loc:predefinedLocationReference id="TS25761T25760" version="221201" xsi:type="loc:PredefinedLocation">
-    <loc:predefinedLocationName>
-      <com:values>
-        <com:value lang="cs">TS25761T25760</com:value>
-      </com:values>
-    </loc:predefinedLocationName>
     <loc:location xsi:type="loc:SingleRoadLinearLocation">
       <loc:openlrLinear>
         <loc:firstDirection>

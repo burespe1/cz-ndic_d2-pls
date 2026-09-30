@@ -273,11 +273,6 @@
           <xs:documentation>Indicates that the direction of traffic flow affected by the situation or related to the traffic data is in the same sense as the direction in which the linear element is defined.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="unknown">
-        <xs:annotation>
-          <xs:documentation>Indicates that the direction of traffic flow affected by the situation or related to the traffic data is unknown.</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
       <xs:enumeration value="_extended" />
     </xs:restriction>
   </xs:simpleType>
@@ -711,11 +706,6 @@
     <xs:complexContent>
       <xs:extension base="loc:PredefinedLocationReference">
         <xs:sequence>
-          <xs:element name="predefinedLocationGroupName" type="com:MultilingualString" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-              <xs:documentation>A name assigned to the predefined group of non-ordered locations.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
           <xs:element name="predefinedLocation" type="loc:PredefinedLocation" minOccurs="0" maxOccurs="unbounded" />
           <xs:element name="_predefinedLocationGroupExtension" type="com:_ExtensionType" minOccurs="0" />
         </xs:sequence>
@@ -770,29 +760,9 @@
       <xs:documentation>A set of types of known points along a linear object such as a road.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
-      <xs:enumeration value="boundary">
-        <xs:annotation>
-          <xs:documentation>A boundary between two jurisdictional or administrative areas. These may be legal boundaries such as between counties or countries, maintenance responsibility boundaries or control boundaries. </xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="intersection">
-        <xs:annotation>
-          <xs:documentation>A crossing of two or more roads where the precise point of intersection is defined according to specific business rules.</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
       <xs:enumeration value="referenceMarker">
         <xs:annotation>
           <xs:documentation>A marker which is usually but not necessarily physical that is one of a sequence which are spaced out along the linear object (road) to provide a location reference. The spacing of markers is not necessarily even.</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="landmark">
-        <xs:annotation>
-          <xs:documentation>A visible identifiable physical landmark either alongside or close to the linear object.</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="roadNode">
-        <xs:annotation>
-          <xs:documentation>A topological node defined on a road network. Such nodes may delineate the segmentation of the road network according to defined business rules or may constitute a purely topological representation of a road network.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="_extended" />
