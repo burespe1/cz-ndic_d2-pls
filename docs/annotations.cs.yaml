@@ -9,9 +9,13 @@
 #     required: true    # NDIC vždy vyplňuje
 #     values:           # překlad/upřesnění hodnot výčtu jen pro tento element
 #       certain: jistě nastalo
+#   locationReference:
+#     variants: reduced # u elementu s více typy: výčet typů je zúžený profilem (popisek „zúžený výčet – N“);
+#                       # seznam názvů tříd ([A, B]) uvede jen tyto typy
 #
 # _enum:                # překlady hodnot výčtů pro celý formát (přepisují sdílený slovník kitu)
 #   ProbabilityEnum.certain: jistá
+# _unused_types: [LinearLocation]   # třídy, které schéma připouští, ale formát nepoužívá (ve výčtech variant se neuvádějí)
 
 AlertCDirection:
   alertCAffectedDirection:
@@ -23,7 +27,7 @@ PredefinedLocation:
 
 GmlLineString:
   posList:
-    ndic: "Linie ve směru jízdy od počátku ke konci polohy (u obousměrné polohy v prvním směru). Počátek a konec jsou přesné, mezilehlé body zjednodušené s odchylkou nejvýše 10 m od geometrie úseků GN; souřadnice WGS-84 na 5 desetinných míst (≈ 1 m)."
+    ndic: "Linie ve směru jízdy od počátku ke konci polohy (u obousměrné polohy v prvním směru). Počátek a konec jsou přesné, mezilehlé body zjednodušené s odchylkou nejvýše 10 m od geometrie úseků GN; alespoň dva body (počátek a konec); souřadnice ETRS89 (`srsName` = `urn:ogc:def:crs:EPSG::4258`) na 5 desetinných míst (≈ 1 m)."
 
 PercentageDistanceAlongLinearElement:
   percentageDistanceAlong:

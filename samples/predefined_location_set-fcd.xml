@@ -55,7 +55,7 @@
         </loc:firstDirection>
       </loc:openlrLinear>
       <!-- gmlLineString -->
-      <loc:gmlLineString srsName="EPSG:4326" srsDimension="2">
+      <loc:gmlLineString srsName="urn:ogc:def:crs:EPSG::4258" srsDimension="2">
         <loc:posList>50.48801 13.44941 50.48864 13.45140 50.48969 13.45356 50.49302 13.45806 50.49590 13.46270 50.49703 13.46374 50.50020 13.46547 50.50853 13.47127 50.50935 13.47225 50.50998 13.47339 50.51045 13.47470 50.51086 13.47663</loc:posList>
       </loc:gmlLineString>
       <!-- ALERT-C -->
@@ -377,7 +377,7 @@
         </loc:firstDirection>
       </loc:openlrLinear>
       <!-- gmlLineString -->
-      <loc:gmlLineString srsName="EPSG:4326" srsDimension="2">
+      <loc:gmlLineString srsName="urn:ogc:def:crs:EPSG::4258" srsDimension="2">
         <loc:posList>50.51123 13.48057 50.51106 13.47744 50.51068 13.47514 50.51001 13.47319 50.50901 13.47158 50.50755 13.47031 50.50110 13.46590 50.49645 13.46308 50.49549 13.46195 50.49287 13.45762 50.49045 13.45450</loc:posList>
       </loc:gmlLineString>
       <!-- ALERT-C -->
@@ -643,7 +643,7 @@
         </loc:firstDirection>
       </loc:openlrLinear>
       <!-- gmlLineString -->
-      <loc:gmlLineString srsName="EPSG:4326" srsDimension="2">
+      <loc:gmlLineString srsName="urn:ogc:def:crs:EPSG::4258" srsDimension="2">
         <loc:posList>49.18533 16.84175 49.18785 16.84883 49.18863 16.85222 49.18907 16.85565 49.18912 16.86067 49.18811 16.87041 49.18822 16.87372 49.18875 16.87698</loc:posList>
       </loc:gmlLineString>
       <!-- ALERT-C -->
@@ -825,7 +825,7 @@
         </loc:firstDirection>
       </loc:openlrLinear>
       <!-- gmlLineString -->
-      <loc:gmlLineString srsName="EPSG:4326" srsDimension="2">
+      <loc:gmlLineString srsName="urn:ogc:def:crs:EPSG::4258" srsDimension="2">
         <loc:posList>49.19068 16.88214 49.18911 16.87797 49.18850 16.87517 49.18826 16.87295 49.18829 16.86907 49.18925 16.86018 49.18925 16.85703 49.18907 16.85455 49.18849 16.85091 49.18791 16.84865 49.18557 16.84209</loc:posList>
       </loc:gmlLineString>
       <!-- ALERT-C -->

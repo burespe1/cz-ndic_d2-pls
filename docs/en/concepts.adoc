@@ -1,6 +1,6 @@
 == Concepts
 
-The format describes sets of predefined locations – road network sections referenced by messages of NDIC data sources. A referencing message carries only the identifier and version of the location; the full
+The format describes sets of predefined locations – road network sections referenced by messages of other formats. A referencing message carries only the identifier and version of the location; the full
 location description is in this publication.
 
 A set contains locations of one kind, for example:
@@ -20,8 +20,8 @@ A message is a DATEX II 3 document with the root element `d2:payload` of type
 
 The header contains:
 
-* `feedType` – identifier of the data source (distribution) in the register of the national access point
-  <<nap>>; the source refers to this format,
+* `feedType` – identifier of the data source the message comes from. The format of the message is
+  identified by the `profileName` and `profileVersion` attributes, not by `feedType`,
 * `publicationTime` – time the content was created; if the content has not changed, the original time is kept,
 * `publicationCreator` – `cz` and `NDIC`,
 * `headerInformation` – always `confidentiality` = `noRestriction` and `informationStatus` = `real`.
@@ -148,20 +148,10 @@ non-zero length around the place (OpenLR does not allow zero length). Point loca
 |Road chainage |`linearWithinLinearElement` with `roadNumber` |not used yet
 |===
 
+[[alertc]]
 === ALERT-C location referencing
 
-The location is given by two locations of the ALERT-C location table <<ISO14819-3>> in the `alertCLinear`
-element of type `AlertCMethod2Linear`:
-
-* table: `alertCLocationCountryCode` = `2` (Czech Republic according to IEC 62106),
-  `alertCLocationTableNumber` = `25`, `alertCLocationTableVersion`,
-* secondary location (`alertCMethod2SecondaryPointLocation`) – where the driver enters the section, primary
-  (`alertCMethod2PrimaryPointLocation`) – where the driver leaves it,
-* `alertCDirectionCoded` = `positive` if the direction of travel matches the coding direction of the
-  location table,
-* `alertCAffectedDirection` = `aligned` for a one-directional, `both` for a bidirectional location.
-
-IMPORTANT: The meaning of `alertCDirectionCoded` is the opposite of the RDS-TMC `direction` bit.
+include::{kitdir}/shared/en/poloha/alertc.adoc[]
 
 .ALERT-C location referencing – direction, secondary and primary location
 image::alertc-poloha-en.svg[ALERT-C – direction and locations,width=680,align="center"]
@@ -175,15 +165,7 @@ include::{samplesdir}/predefined_location_set-weather.xml[tag=loc-alertc,indent=
 [[openlr]]
 === OpenLR location referencing
 
-OpenLR (`openlrLinear`) describes the location independently of any map: the consumer finds it in its own
-map by searching a route between reference points. The reference points (`openlrLocationReferencePoint`,
-the last one `openlrLastLocationReferencePoint`) carry WGS-84 coordinates, bearing, road class and distance
-to the next point; the offsets `openlrPositiveOffset` and `openlrNegativeOffset` trim the found route to the
-actual extent of the location.
-
-A bidirectional location has both directions separately: `firstDirection` in the location direction and
-`oppositeDirection` in the opposite direction, each with its own reference points and offsets. On a road
-with separate carriageways each direction runs on a different carriageway:
+include::{kitdir}/shared/en/poloha/openlr.adoc[]
 
 .Bidirectional location in OpenLR on a road with separate carriageways
 image::openlr-obousmerne-en.svg[OpenLR – firstDirection and oppositeDirection,width=680,align="center"]
@@ -194,29 +176,17 @@ image::openlr-obousmerne-en.svg[OpenLR – firstDirection and oppositeDirection,
 include::{samplesdir}/predefined_location_both-directions.xml[tag=openlr-both,indent=0]
 ----
 
+[[staniceni]]
+=== Road chainage location referencing
+
+NOTE: Road chainage is in the profile for future use; the NDIC location sets do not contain it yet.
+
+include::{kitdir}/shared/en/poloha/staniceni.adoc[]
+
 [[gn]]
 === Global Network location referencing
 
-The location is a list of sections of the Global Network (GN, ŘSD):
-
-* Each section is a `linearWithinLinearElement` element with `linearElement` of type `LinearElementByCode`:
-  `linearElementReferenceModel` = `CZ-RSD-GlobalNetwork`, `linearElementReferenceModelVersion` = network
-  version, `linearElementIdentifier` = section identifier. All sections of the route are given in
-  travel order, including full inner sections.
-* `directionRelativeOnLinearSection` – travel direction relative to the section coding, i.e. the direction
-  in which the section was created in the GN database: `aligned` (along the coding), `opposite` (against the
-  coding), for a bidirectional location `both` (the section serves both directions). The direction may
-  alternate along a route so that the section ends connect – e.g. when the route passes a section created by
-  coding another road that runs concurrently with it.
-* One-way sections (e.g. separate carriageways, junction ramps) are always coded in the travel direction;
-  they are therefore travelled only as `aligned` and a route never runs against them.
-* `fromPoint` and `toPoint` are the points where the route enters and leaves the section, always of
-  type `PercentageDistanceAlongLinearElement` – percent of the section length (0–100, at most 2 decimal places) measured
-  from the start of the section coding. For `aligned` the value increases (e.g. 20 → 100), for `opposite` it
-  decreases (e.g. 100 → 20); a full section is 0 → 100 or 100 → 0.
-* The start and end of the location are given by the percentages of the first and last section. The GN
-  sections do not carry the coordinates of the start and end; they are carried by the location path
-  `gmlLineString` (<<prubeh>>).
+include::{kitdir}/shared/en/poloha/gn.adoc[]
 
 .One-direction location composed of GN sections
 image::gn-poloha-en.svg[GN – location composed of sections,width=680,align="center"]
@@ -226,11 +196,7 @@ image::gn-poloha-en.svg[GN – location composed of sections,width=680,align="ce
 .Bidirectional location in GN – shared sections and separate carriageways
 image::gn-obousmerne-en.svg[GN – bidirectional location,width=680,align="center"]
 
-Sections shared by both directions (the opposite direction mirrors the first one) are given once with
-direction `both`, in the order of the first direction and with its points: `fromPoint` → `toPoint`
-describes travel in the first direction, so a decreasing value (e.g. 100 → 30) means that the first
-direction runs against the section coding. The opposite direction is the same list read from the end, with
-the points in reverse order. Only sections passable in both directions may have direction `both`.
+include::{kitdir}/shared/en/poloha/gn-obousmerne-spolecne.adoc[]
 
 .Global Network sections – sections shared by both directions (sample `predefined_location_both-directions.xml`)
 [source,xml]
@@ -242,17 +208,9 @@ The first section (3663224) runs from 30.47{nbsp}% to 0{nbsp}% and the last sect
 coding. The first direction also runs against the coding on the full inner sections 1327329
 and 1326918 (100 → 0).
 
-If the opposite direction runs elsewhere – on separate carriageways or on one-way sections (all `aligned`
-in the example) –, the whole route of the first direction is given first, followed by the whole route of
-the opposite direction, both as `linearWithinLinearElement`:
+include::{kitdir}/shared/en/poloha/gn-obousmerne-oddelene.adoc[]
 
-* The first direction runs from the start to the end of the location, the opposite direction from the end
-  to the start.
-* Each route is preceded by the XML comment `<!-- GN firstDirection -->` or `<!-- GN oppositeDirection -->`.
-  The comment uses model element names (the same as in OpenLR), so it is language-neutral, and it is meant
-  for human readers. A receiver should not rely on it; it determines the boundary between the routes from
-  the connectivity of the sections in the GN network. Both directions are also described unambiguously by
-  OpenLR (<<openlr>>).
+In the sample all sections of both routes are one-way (`aligned`).
 
 .Global Network sections – separate carriageways (sample `predefined_location_both-directions.xml`)
 [source,xml]
@@ -263,30 +221,13 @@ include::{samplesdir}/predefined_location_both-directions.xml[tag=gn-separate,in
 [[prubeh]]
 === Location path
 
-Each linear location carries its path in WGS-84 so that a subscriber can show it on a map without the GN
-network, the ALERT-C location table or an OpenLR decoder:
+include::{kitdir}/shared/en/poloha/prubeh.adoc[]
 
-* `gmlLineString` – a line in `posList`: "latitude longitude" pairs separated by spaces,
-  `srsName` = `EPSG:4326`, `srsDimension` = `2`. The line runs in the direction of travel: the first point is the start and the last point the end
-  of the location. It is
-  made from the geometry of the GN sections trimmed by the percentages of the edge sections; the start and end
-  are exact, intermediate points are simplified so that the line deviates from the section geometry by at
-  most 10{nbsp}m. Coordinates have 5 decimal places (≈{nbsp}1{nbsp}m).
-* For a bidirectional location the line runs in the first direction, so on separate carriageways along the
-  carriageway of the first direction (the model allows one line per location).
-* `coordinatesForDisplay` – a point for the map marker, the middle of the line.
+In the location set a location additionally carries `coordinatesForDisplay` – the point for a map marker,
+the middle of the line.
 
 .Location path (sample `predefined_location_set-weather.xml`)
 [source,xml]
 ----
 include::{samplesdir}/predefined_location_set-weather.xml[tag=loc-gml,indent=0]
 ----
-
-=== Road chainage location referencing
-
-NOTE: Road chainage is in the profile for future use; the NDIC location sets do not contain it yet.
-
-Road chainage is a `linearWithinLinearElement` element with the road number (`linearElement/roadNumber`),
-the direction relative to the chainage (`directionRelativeOnLinearSection`) and the distance of the start
-and end from the beginning of the road in metres (`fromPoint`, `toPoint` of type
-`DistanceFromLinearElementStart`).

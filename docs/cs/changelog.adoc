@@ -13,7 +13,7 @@
 ** Národní rozšíření polohy (`linearExtension`, `globalNetworkLinear`, `openlrExtendedLinear`) nahradily
    prvky modelu 3.7: OpenLR v `openlrLinear` (`firstDirection`, `oppositeDirection`), úseky Global Network
    v `linearWithinLinearElement` s `LinearElementByCode`.
-** Počátek a konec polohy GN (`startPoint`, `endPoint` v S-JTSK) nahradil průběh polohy ve WGS-84
+** Počátek a konec polohy GN (`startPoint`, `endPoint` v S-JTSK) nahradil průběh polohy v ETRS89
    (`gmlLineString`) a bod pro zobrazení (`coordinatesForDisplay`); krajní úseky GN mají procenta.
 ** Procenta délky úseku GN jsou v rozsahu 0–100 (dříve 0–1).
 ** Obousměrnost v GN (`directionality`, `oppositeDirection`) vyjadřuje směr `both` (jen u úseků průjezdných

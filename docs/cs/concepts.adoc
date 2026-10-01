@@ -1,6 +1,6 @@
 == Koncepty
 
-Formát popisuje sady předdefinovaných poloh – úseků silniční sítě, na které odkazují zprávy zdrojů dat NDIC.
+Formát popisuje sady předdefinovaných poloh – úseků silniční sítě, na které odkazují zprávy jiných formátů.
 Odkazující zpráva nese jen identifikátor a verzi polohy; úplný popis polohy je v této publikaci.
 
 Sada obsahuje polohy jednoho druhu, například:
@@ -19,8 +19,8 @@ Formát identifikují atributy kořene `profileName` (`cz-ndic_d2-pls`) a `profi
 
 Hlavička obsahuje:
 
-* `feedType` – identifikátor zdroje dat (distribuce) v registru národního přístupového bodu <<nap>>;
-  zdroj odkazuje na tento formát,
+* `feedType` – identifikátor zdroje dat, ze kterého zpráva pochází. Formát zprávy určují atributy
+  `profileName` a `profileVersion`, nikoli `feedType`,
 * `publicationTime` – čas vytvoření obsahu; nezměnil-li se obsah, zůstává čas původní,
 * `publicationCreator` – `cz` a `NDIC`,
 * `headerInformation` – vždy `confidentiality` = `noRestriction` a `informationStatus` = `real`.
@@ -137,19 +137,10 @@ délky nepřipouští). Bodové polohy (`loc:PointLocation`) sady poloh nepouž�
 |Staničení |`linearWithinLinearElement` s `roadNumber` |zatím se nepoužívá
 |===
 
+[[alertc]]
 === Popis polohy pomocí ALERT-C
 
-Poloha je dána dvěma lokacemi lokační tabulky ALERT-C <<ISO14819-3>> v elementu `alertCLinear` typu
-`AlertCMethod2Linear`:
-
-* tabulka: `alertCLocationCountryCode` = `2` (kód ČR podle IEC 62106), `alertCLocationTableNumber` = `25`,
-  `alertCLocationTableVersion`,
-* sekundární lokace (`alertCMethod2SecondaryPointLocation`) – kde řidič do úseku vjíždí, primární
-  (`alertCMethod2PrimaryPointLocation`) – kde ho opouští,
-* `alertCDirectionCoded` = `positive`, je-li směr jízdy souhlasný se směrem kódování v lokační tabulce,
-* `alertCAffectedDirection` = `aligned` pro jednosměrnou, `both` pro obousměrnou polohu.
-
-IMPORTANT: Význam `alertCDirectionCoded` je opačný než význam bitu `direction` v RDS-TMC.
+include::{kitdir}/shared/cs/poloha/alertc.adoc[]
 
 .Popis polohy pomocí ALERT-C – směr, sekundární a primární lokace
 image::alertc-poloha.svg[ALERT-C – směr a lokace,width=680,align="center"]
@@ -163,15 +154,7 @@ include::{samplesdir}/predefined_location_set-weather.xml[tag=loc-alertc,indent=
 [[openlr]]
 === Popis polohy pomocí OpenLR
 
-OpenLR (`openlrLinear`) popisuje polohu nezávisle na mapě: odběratel ji ve své mapě najde vyhledáním trasy
-mezi referenčními body. Referenční body (`openlrLocationReferencePoint`, poslední
-`openlrLastLocationReferencePoint`) nesou souřadnice WGS-84, azimut, třídu komunikace a vzdálenost
-k dalšímu bodu; ofsety `openlrPositiveOffset` a `openlrNegativeOffset` zkracují nalezenou trasu na
-skutečný rozsah polohy.
-
-Obousměrná poloha má oba směry zvlášť: `firstDirection` ve směru polohy a `oppositeDirection` v protisměru,
-každý s vlastními referenčními body a ofsety. Na komunikaci s oddělenými jízdními pásy vede každý směr
-po jiném pásu:
+include::{kitdir}/shared/cs/poloha/openlr.adoc[]
 
 .Obousměrná poloha v OpenLR na komunikaci s oddělenými pásy
 image::openlr-obousmerne.svg[OpenLR – firstDirection a oppositeDirection,width=680,align="center"]
@@ -182,27 +165,17 @@ image::openlr-obousmerne.svg[OpenLR – firstDirection a oppositeDirection,width
 include::{samplesdir}/predefined_location_both-directions.xml[tag=openlr-both,indent=0]
 ----
 
+[[staniceni]]
+=== Popis polohy pomocí staničení
+
+NOTE: Staničení je v profilu pro budoucí použití; sady poloh NDIC je zatím neobsahují.
+
+include::{kitdir}/shared/cs/poloha/staniceni.adoc[]
+
 [[gn]]
 === Popis polohy pomocí sítě Global Network
 
-Poloha je výčet úseků sítě Global Network (GN, ŘSD):
-
-* Každý úsek je element `linearWithinLinearElement` s `linearElement` typu `LinearElementByCode`:
-  `linearElementReferenceModel` = `CZ-RSD-GlobalNetwork`, `linearElementReferenceModelVersion` = verze
-  sítě, `linearElementIdentifier` = identifikátor úseku. Uvádějí se všechny úseky trasy
-  v pořadí jízdy, i celé vnitřní úseky.
-* `directionRelativeOnLinearSection` – směr jízdy vůči směru kódování úseku, tj. směru, v němž byl úsek
-  vytvořen v databázi GN: `aligned` (po směru kódování), `opposite` (proti směru kódování), u obousměrné
-  polohy `both` (úsek slouží oběma směrům). Směr se na trase může střídat tak, aby na sebe konce úseků
-  navazovaly – např. když trasa přechází úsek vzniklý kódováním jiné komunikace, se kterou je v souběhu.
-* Jednosměrné úseky (např. oddělené jízdní pásy, větve křižovatek) jsou vždy kódovány ve směru jízdy;
-  pojíždějí se tedy jen jako `aligned` a trasa nikdy nevede proti nim.
-* `fromPoint` a `toPoint` jsou místa, kde trasa na úsek vstupuje a kde ho opouští, vždy typu
-  `PercentageDistanceAlongLinearElement` – procenta délky úseku (0–100, nejvýše 2 desetinná místa) měřená od počátku kódování úseku.
-  U `aligned` hodnota roste (např. 20 → 100), u `opposite` klesá (např. 100 → 20); celý úsek je 0 → 100,
-  resp. 100 → 0.
-* Počátek a konec polohy dávají procenta prvního a posledního úseku. Souřadnice počátku a konce úseky GN
-  nenesou; nese je průběh polohy `gmlLineString` (<<prubeh>>).
+include::{kitdir}/shared/cs/poloha/gn.adoc[]
 
 .Poloha v jednom směru složená z úseků GN
 image::gn-poloha.svg[GN – složení polohy z úseků,width=680,align="center"]
@@ -212,10 +185,7 @@ image::gn-poloha.svg[GN – složení polohy z úseků,width=680,align="center"]
 .Obousměrná poloha v síti GN – společné úseky a oddělené jízdní pásy
 image::gn-obousmerne.svg[GN – obousměrná poloha,width=680,align="center"]
 
-Úseky společné oběma směrům (protisměr je zrcadlem prvního směru) se uvádějí jednou se směrem `both`,
-v pořadí prvního směru a s jeho body: `fromPoint` → `toPoint` popisuje jízdu prvního směru, pokles
-hodnoty (např. 100 → 30) tedy znamená, že první směr vede proti směru kódování úseku. Protisměr je tentýž
-seznam čtený od konce, s body v opačném pořadí. Směr `both` mohou mít jen úseky průjezdné v obou směrech.
+include::{kitdir}/shared/cs/poloha/gn-obousmerne-spolecne.adoc[]
 
 .Úseky Global Network – úseky společné oběma směrům (vzorek `predefined_location_both-directions.xml`)
 [source,xml]
@@ -226,15 +196,9 @@ include::{samplesdir}/predefined_location_both-directions.xml[tag=gn-both,indent
 První úsek (3663224) vede od 30,47{nbsp}% k 0{nbsp}% a poslední úsek (901099) od 100{nbsp}% k 12,58{nbsp}%; první směr tedy na obou vede proti směru kódování. Celé vnitřní úseky 1327329 a
 1326918 vede první směr také proti směru kódování (100 → 0).
 
-Vede-li protisměr jinudy – po oddělených jízdních pásech nebo po jednosměrných úsecích (v ukázce všechny
-`aligned`) –, uvádí se nejprve celá trasa prvního směru a za ní celá trasa protisměru, obě jako
-`linearWithinLinearElement`:
+include::{kitdir}/shared/cs/poloha/gn-obousmerne-oddelene.adoc[]
 
-* První směr vede od počátku ke konci polohy, protisměr od konce k počátku.
-* Každou trasu uvozuje komentář XML `<!-- GN firstDirection -->`, resp. `<!-- GN oppositeDirection -->`.
-  Komentář používá názvy prvků modelu (shodné s OpenLR), je tedy nezávislý na jazyce, a slouží ke čtení
-  člověkem. Příjemce se jím nemá řídit; hranici mezi trasami určí z návaznosti úseků v síti GN. Oba směry
-  jednoznačně popisuje také OpenLR (<<openlr>>).
+V ukázce jsou všechny úseky obou tras jednosměrné (`aligned`).
 
 .Úseky Global Network – oddělené jízdní pásy (vzorek `predefined_location_both-directions.xml`)
 [source,xml]
@@ -245,27 +209,12 @@ include::{samplesdir}/predefined_location_both-directions.xml[tag=gn-separate,in
 [[prubeh]]
 === Průběh polohy
 
-Každá liniová poloha nese svůj průběh ve WGS-84, aby ji odběratel zobrazil v mapě bez sítě GN, lokační
-tabulky ALERT-C i dekodéru OpenLR:
+include::{kitdir}/shared/cs/poloha/prubeh.adoc[]
 
-* `gmlLineString` – linie v `posList`: dvojice „zeměpisná šířka zeměpisná délka“ oddělené mezerou,
-  `srsName` = `EPSG:4326`, `srsDimension` = `2`. Linie vede ve směru jízdy: první bod je počátek, poslední bod konec polohy. Vzniká z geometrie úseků GN oříznuté procenty krajních úseků; počátek
-  a konec jsou přesné, mezilehlé body jsou zjednodušené tak, že se linie od geometrie úseků odchyluje nejvýše
-  o 10{nbsp}m. Souřadnice mají 5 desetinných míst (≈{nbsp}1{nbsp}m).
-* U obousměrné polohy vede linie v prvním směru, na oddělených pásech tedy po pásu prvního směru (model
-  dovoluje jednu linii na polohu).
-* `coordinatesForDisplay` – bod pro značku v mapě, střed linie.
+V sadě poloh nese poloha navíc `coordinatesForDisplay` – bod pro značku v mapě, střed linie.
 
 .Průběh polohy (vzorek `predefined_location_set-weather.xml`)
 [source,xml]
 ----
 include::{samplesdir}/predefined_location_set-weather.xml[tag=loc-gml,indent=0]
 ----
-
-=== Popis polohy pomocí staničení
-
-NOTE: Staničení je v profilu pro budoucí použití; sady poloh NDIC je zatím neobsahují.
-
-Staničení je element `linearWithinLinearElement` s číslem komunikace (`linearElement/roadNumber`), směrem
-vůči staničení (`directionRelativeOnLinearSection`) a vzdáleností počátku a konce od začátku komunikace
-v metrech (`fromPoint`, `toPoint` typu `DistanceFromLinearElementStart`).

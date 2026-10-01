@@ -49,7 +49,7 @@ include::{samplesdir}/predefined_location_set-weather.xml[tags=**]
 Location::
 Road weather station sections are valid in both directions (`alertCAffectedDirection` = `both`). In all three
 locations the same GN sections serve both directions (`directionRelativeOnLinearSection` = `both`). The location path in
-WGS-84 is carried by `gmlLineString`. The excerpts used in the chapter on location referencing (ALERT-C, location
+ETRS89 is carried by `gmlLineString`. The excerpts used in the chapter on location referencing (ALERT-C, location
 path) are marked in the first location.
 
 === predefined_location_both-directions.xml – bidirectional locations

@@ -43,7 +43,7 @@ include::{samplesdir}/predefined_location_set-weather.xml[tags=**]
 
 Poloha::
 Úseky meteohlásek platí pro oba směry (`alertCAffectedDirection` = `both`). Ve všech třech polohách slouží tytéž
-úseky GN oběma směrům (`directionRelativeOnLinearSection` = `both`). Průběh polohy ve WGS-84 nese `gmlLineString`. U první polohy jsou
+úseky GN oběma směrům (`directionRelativeOnLinearSection` = `both`). Průběh polohy v ETRS89 nese `gmlLineString`. U první polohy jsou
 vyznačeny výřezy použité v kapitole o popisu poloh (ALERT-C, průběh polohy).
 
 === predefined_location_both-directions.xml – obousměrné polohy
