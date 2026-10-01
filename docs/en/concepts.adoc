@@ -166,10 +166,10 @@ IMPORTANT: The meaning of `alertCDirectionCoded` is the opposite of the RDS-TMC 
 .ALERT-C location referencing – direction, secondary and primary location
 image::alertc-poloha-en.svg[ALERT-C – direction and locations,width=680,align="center"]
 
-.ALERT-C location referencing (sample `predefined_location_samples_set.xml`)
+.ALERT-C location referencing (sample `predefined_location_set-weather.xml`)
 [source,xml]
 ----
-include::{samplesdir}/predefined_location_samples_set.xml[tag=loc-alertc,indent=0]
+include::{samplesdir}/predefined_location_set-weather.xml[tag=loc-alertc,indent=0]
 ----
 
 [[openlr]]
@@ -276,10 +276,10 @@ network, the ALERT-C location table or an OpenLR decoder:
   carriageway of the first direction (the model allows one line per location).
 * `coordinatesForDisplay` – a point for the map marker, the middle of the line.
 
-.Location path (sample `predefined_location_samples_set.xml`)
+.Location path (sample `predefined_location_set-weather.xml`)
 [source,xml]
 ----
-include::{samplesdir}/predefined_location_samples_set.xml[tag=loc-gml,indent=0]
+include::{samplesdir}/predefined_location_set-weather.xml[tag=loc-gml,indent=0]
 ----
 
 === Road chainage location referencing

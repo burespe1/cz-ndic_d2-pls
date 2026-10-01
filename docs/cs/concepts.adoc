@@ -154,10 +154,10 @@ IMPORTANT: Význam `alertCDirectionCoded` je opačný než význam bitu `directi
 .Popis polohy pomocí ALERT-C – směr, sekundární a primární lokace
 image::alertc-poloha.svg[ALERT-C – směr a lokace,width=680,align="center"]
 
-.Popis polohy pomocí ALERT-C (vzorek `predefined_location_samples_set.xml`)
+.Popis polohy pomocí ALERT-C (vzorek `predefined_location_set-weather.xml`)
 [source,xml]
 ----
-include::{samplesdir}/predefined_location_samples_set.xml[tag=loc-alertc,indent=0]
+include::{samplesdir}/predefined_location_set-weather.xml[tag=loc-alertc,indent=0]
 ----
 
 [[openlr]]
@@ -256,10 +256,10 @@ tabulky ALERT-C i dekodéru OpenLR:
   dovoluje jednu linii na polohu).
 * `coordinatesForDisplay` – bod pro značku v mapě, střed linie.
 
-.Průběh polohy (vzorek `predefined_location_samples_set.xml`)
+.Průběh polohy (vzorek `predefined_location_set-weather.xml`)
 [source,xml]
 ----
-include::{samplesdir}/predefined_location_samples_set.xml[tag=loc-gml,indent=0]
+include::{samplesdir}/predefined_location_set-weather.xml[tag=loc-gml,indent=0]
 ----
 
 === Popis polohy pomocí staničení

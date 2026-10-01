@@ -9,7 +9,7 @@ názvy z modelu, jsou nezávislé na jazyce a slouží jen ke čtení člověkem
 
 === predefined_location_set-fcd.xml – úseky FCD
 
-Dva úseky sady FCD mezi lokacemi ALERT-C 2125 a 15781, každý směr jako samostatná poloha (síť GN 26.06). Úsek `TS02125T15781` je i ve vzorcích formátu `cz-ndic_d2-fcd-status`.
+Čtyři úseky sady FCD – mezi lokacemi ALERT-C 2125 a 15781 a mezi lokacemi 25575 a 1325 (dálnice), každý směr jako samostatná poloha (síť GN 26.06). Úseky `TS02125T15781` a `TS25575T01325` jsou i ve vzorcích formátu `cz-ndic_d2-fcd-status`.
 
 [source,xml]
 ----
@@ -33,8 +33,8 @@ a `TS15781T02125`) a vlastním popisem všemi metodami. To je specifické pro ú
 
 === predefined_location_set-weather.xml – úseky meteohlásek
 
-Dva úseky sady weather (síť GN 25.06); první je poloha, na kterou odkazuje vzorek `aquaplaning.xml`
-formátu `cz-ndic_d2-weather`.
+Tři úseky meteohlásek ze sady weather (síť GN 26.06, data 30.{nbsp}9.{nbsp}2026). Na první úsek (7 83.427) odkazuje
+vzorek `aquaplaning.xml`, na druhý (Cínovec 2) vzorek `strong-wind.xml` formátu `cz-ndic_d2-weather`.
 
 [source,xml]
 ----
@@ -42,8 +42,9 @@ include::{samplesdir}/predefined_location_set-weather.xml[tags=**]
 ----
 
 Poloha::
-Úseky meteohlásek platí pro oba směry (`alertCAffectedDirection` = `both`). U obou poloh slouží tytéž
-úseky GN oběma směrům (`directionRelativeOnLinearSection` = `both`). Průběh polohy ve WGS-84 nese `gmlLineString`.
+Úseky meteohlásek platí pro oba směry (`alertCAffectedDirection` = `both`). Ve všech třech polohách slouží tytéž
+úseky GN oběma směrům (`directionRelativeOnLinearSection` = `both`). Průběh polohy ve WGS-84 nese `gmlLineString`. U první polohy jsou
+vyznačeny výřezy použité v kapitole o popisu poloh (ALERT-C, průběh polohy).
 
 === predefined_location_both-directions.xml – obousměrné polohy
 
@@ -63,17 +64,6 @@ I/30 v Ústí nad Labem: protisměr vede po jiných, jednosměrných úsecích; 
 (tři úseky) následuje celá trasa protisměru (tři úseky), všechny jako `linearWithinLinearElement`. Každou
 trasu uvozuje komentář `<!-- GN firstDirection -->`, resp. `<!-- GN oppositeDirection -->`; `gmlLineString` vede po pásu
 prvního směru.
-
-=== predefined_location_samples_set.xml – ukázky metod popisu polohy
-
-Publikace obsahuje čtyři předdefinované polohy, každou popsanou jednou metodou: úseky Global Network,
-ALERT-C, staničení a OpenLR. Poloha popsaná úseky Global Network nese i průběh (`gmlLineString`,
-`coordinatesForDisplay`).
-
-[source,xml]
-----
-include::{samplesdir}/predefined_location_samples_set.xml[tags=**]
-----
 
 === predefined_location_loc_group.xml – skupina poloh
 

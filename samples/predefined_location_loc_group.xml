@@ -2,7 +2,7 @@
 <d2:payload xmlns:d2="http://datex2.eu/schema/3/d2Payload" xmlns:com="http://datex2.eu/schema/3/common" xmlns:loc="http://datex2.eu/schema/3/locationReferencing" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="loc:PredefinedLocationsPublication" lang="cs" modelBaseVersion="3" profileName="cz-ndic_d2-pls" profileVersion="2.0">
   <!-- tag::header[] -->
   <com:feedType>x-source:cz-ndic_d2-pls-weather-pull-v2</com:feedType>
-  <com:publicationTime>2025-12-10T11:46:40+01:00</com:publicationTime>
+  <com:publicationTime>2026-09-30T14:17:43+02:00</com:publicationTime>
   <com:publicationCreator>
     <com:country>cz</com:country>
     <com:nationalIdentifier>NDIC</com:nationalIdentifier>
@@ -14,8 +14,8 @@
   </loc:headerInformation>
   <!-- tag::loc-group[] -->
   <!-- tag::group-head[] -->
-  <loc:predefinedLocationReference id="de08487e-e29a-5a4e-9def-7e7229fb2dd0" version="250601" xsi:type="loc:PredefinedLocationGroup">
-    <loc:predefinedLocation id="d638c061-1177-4944-bb50-d06c9fbe795e" version="250601">
+  <loc:predefinedLocationReference id="de08487e-e29a-5a4e-9def-7e7229fb2dd0" version="260601" xsi:type="loc:PredefinedLocationGroup">
+    <loc:predefinedLocation id="d638c061-1177-4944-bb50-d06c9fbe795e" version="260601">
       <loc:predefinedLocationName>
         <com:values>
           <com:value lang="cs">I/34 Stráž nad Nežárkou</com:value>
@@ -64,7 +64,7 @@
         </loc:openlrLinear>
         <!-- gmlLineString -->
         <loc:gmlLineString srsName="EPSG:4326" srsDimension="2">
-          <loc:posList>49.06576 14.90790 49.06556 14.91142</loc:posList>
+          <loc:posList>49.06576 14.90789 49.06556 14.91141</loc:posList>
         </loc:gmlLineString>
         <!-- ALERT-C -->
         <loc:alertCLinear xsi:type="loc:AlertCMethod2Linear">
@@ -91,11 +91,11 @@
           <loc:directionRelativeOnLinearSection>both</loc:directionRelativeOnLinearSection>
           <loc:linearElement xsi:type="loc:LinearElementByCode">
             <loc:linearElementReferenceModel>CZ-RSD-GlobalNetwork</loc:linearElementReferenceModel>
-            <loc:linearElementReferenceModelVersion>25.06</loc:linearElementReferenceModelVersion>
+            <loc:linearElementReferenceModelVersion>25.12</loc:linearElementReferenceModelVersion>
             <loc:linearElementIdentifier>1310785</loc:linearElementIdentifier>
           </loc:linearElement>
           <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
-            <loc:percentageDistanceAlong>65.23</loc:percentageDistanceAlong>
+            <loc:percentageDistanceAlong>64.74</loc:percentageDistanceAlong>
           </loc:fromPoint>
           <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
             <loc:percentageDistanceAlong>100</loc:percentageDistanceAlong>
@@ -105,7 +105,7 @@
           <loc:directionRelativeOnLinearSection>both</loc:directionRelativeOnLinearSection>
           <loc:linearElement xsi:type="loc:LinearElementByCode">
             <loc:linearElementReferenceModel>CZ-RSD-GlobalNetwork</loc:linearElementReferenceModel>
-            <loc:linearElementReferenceModelVersion>25.06</loc:linearElementReferenceModelVersion>
+            <loc:linearElementReferenceModelVersion>25.12</loc:linearElementReferenceModelVersion>
             <loc:linearElementIdentifier>2205709</loc:linearElementIdentifier>
           </loc:linearElement>
           <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
@@ -119,19 +119,19 @@
           <loc:directionRelativeOnLinearSection>both</loc:directionRelativeOnLinearSection>
           <loc:linearElement xsi:type="loc:LinearElementByCode">
             <loc:linearElementReferenceModel>CZ-RSD-GlobalNetwork</loc:linearElementReferenceModel>
-            <loc:linearElementReferenceModelVersion>25.06</loc:linearElementReferenceModelVersion>
+            <loc:linearElementReferenceModelVersion>25.12</loc:linearElementReferenceModelVersion>
             <loc:linearElementIdentifier>2205774</loc:linearElementIdentifier>
           </loc:linearElement>
           <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
             <loc:percentageDistanceAlong>0</loc:percentageDistanceAlong>
           </loc:fromPoint>
           <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
-            <loc:percentageDistanceAlong>33.23</loc:percentageDistanceAlong>
+            <loc:percentageDistanceAlong>33.15</loc:percentageDistanceAlong>
           </loc:toPoint>
         </loc:linearWithinLinearElement>
       </loc:location>
     </loc:predefinedLocation>
-    <loc:predefinedLocation id="e993ccba-e8c1-4559-a0f9-cc9eee00b4f5" version="250601">
+    <loc:predefinedLocation id="e993ccba-e8c1-4559-a0f9-cc9eee00b4f5" version="260601">
       <loc:predefinedLocationName>
         <com:values>
           <com:value lang="cs">I/34 Stráž nad Nežárkou</com:value>
@@ -140,7 +140,7 @@
       <loc:location xsi:type="loc:SingleRoadLinearLocation">
         <loc:coordinatesForDisplay>
           <loc:latitude>49.06563</loc:latitude>
-          <loc:longitude>14.90968</loc:longitude>
+          <loc:longitude>14.90967</loc:longitude>
         </loc:coordinatesForDisplay>
         <!-- OpenLR -->
         <loc:openlrLinear>
@@ -206,11 +206,11 @@
           <loc:directionRelativeOnLinearSection>both</loc:directionRelativeOnLinearSection>
           <loc:linearElement xsi:type="loc:LinearElementByCode">
             <loc:linearElementReferenceModel>CZ-RSD-GlobalNetwork</loc:linearElementReferenceModel>
-            <loc:linearElementReferenceModelVersion>25.06</loc:linearElementReferenceModelVersion>
+            <loc:linearElementReferenceModelVersion>25.12</loc:linearElementReferenceModelVersion>
             <loc:linearElementIdentifier>2205709</loc:linearElementIdentifier>
           </loc:linearElement>
           <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
-            <loc:percentageDistanceAlong>50.47</loc:percentageDistanceAlong>
+            <loc:percentageDistanceAlong>49.65</loc:percentageDistanceAlong>
           </loc:fromPoint>
           <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
             <loc:percentageDistanceAlong>100</loc:percentageDistanceAlong>
@@ -220,14 +220,14 @@
           <loc:directionRelativeOnLinearSection>both</loc:directionRelativeOnLinearSection>
           <loc:linearElement xsi:type="loc:LinearElementByCode">
             <loc:linearElementReferenceModel>CZ-RSD-GlobalNetwork</loc:linearElementReferenceModel>
-            <loc:linearElementReferenceModelVersion>25.06</loc:linearElementReferenceModelVersion>
+            <loc:linearElementReferenceModelVersion>25.12</loc:linearElementReferenceModelVersion>
             <loc:linearElementIdentifier>2205774</loc:linearElementIdentifier>
           </loc:linearElement>
           <loc:fromPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
             <loc:percentageDistanceAlong>0</loc:percentageDistanceAlong>
           </loc:fromPoint>
           <loc:toPoint xsi:type="loc:PercentageDistanceAlongLinearElement">
-            <loc:percentageDistanceAlong>17.03</loc:percentageDistanceAlong>
+            <loc:percentageDistanceAlong>16.99</loc:percentageDistanceAlong>
           </loc:toPoint>
         </loc:linearWithinLinearElement>
       </loc:location>

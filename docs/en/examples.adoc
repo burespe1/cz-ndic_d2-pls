@@ -10,8 +10,9 @@ readers only.
 
 === predefined_location_set-fcd.xml – FCD sections
 
-Two sections of the FCD set between ALERT-C locations 2125 and 15781, each direction as a separate
-location (GN network 26.06). The section `TS02125T15781` is also used in the samples of the format `cz-ndic_d2-fcd-status`.
+Four sections of the FCD set – between ALERT-C locations 2125 and 15781 and between locations 25575 and
+1325 (motorway), each direction as a separate location (GN network 26.06). The sections `TS02125T15781` and
+`TS25575T01325` are also used in the samples of the format `cz-ndic_d2-fcd-status`.
 
 [source,xml]
 ----
@@ -36,8 +37,9 @@ bidirectional location (<<smer>>).
 
 === predefined_location_set-weather.xml – road weather station sections
 
-Two sections of the weather set (GN network 25.06); the first is the location referenced by the sample
-`aquaplaning.xml` of the `cz-ndic_d2-weather` format.
+Three road weather station sections of the weather set (GN network 26.06, data of 30{nbsp}September 2026). The
+first section (7 83.427) is referenced by the sample `aquaplaning.xml`, the second (Cínovec 2) by the sample
+`strong-wind.xml` of the `cz-ndic_d2-weather` format.
 
 [source,xml]
 ----
@@ -45,9 +47,10 @@ include::{samplesdir}/predefined_location_set-weather.xml[tags=**]
 ----
 
 Location::
-Road weather station sections are valid in both directions (`alertCAffectedDirection` = `both`). In both
+Road weather station sections are valid in both directions (`alertCAffectedDirection` = `both`). In all three
 locations the same GN sections serve both directions (`directionRelativeOnLinearSection` = `both`). The location path in
-WGS-84 is carried by `gmlLineString`.
+WGS-84 is carried by `gmlLineString`. The excerpts used in the chapter on location referencing (ALERT-C, location
+path) are marked in the first location.
 
 === predefined_location_both-directions.xml – bidirectional locations
 
@@ -69,17 +72,6 @@ first direction (three sections) is followed by the whole route of the opposite 
 all as `linearWithinLinearElement`. Each route is preceded by the comment `<!-- GN firstDirection -->` or
 `<!-- GN oppositeDirection -->`; `gmlLineString` runs along the
 carriageway of the first direction.
-
-=== predefined_location_samples_set.xml – examples of referencing methods
-
-The publication contains four predefined locations, each described by one method: Global Network sections,
-ALERT-C, road chainage and OpenLR. The location described by Global Network sections also carries its
-path (`gmlLineString`, `coordinatesForDisplay`).
-
-[source,xml]
-----
-include::{samplesdir}/predefined_location_samples_set.xml[tags=**]
-----
 
 === predefined_location_loc_group.xml – location group
 
