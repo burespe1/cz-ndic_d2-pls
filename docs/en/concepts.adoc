@@ -9,22 +9,24 @@ A set contains locations of one kind, for example:
 * road weather station sections – road sections at road weather stations, valid in both directions of travel.
 
 The format is based on the
-`PredefinedLocationsPublication` publication <<EN16157-2>>.
+`loc:PredefinedLocationsPublication` publication <<EN16157-2>>.
 
 [[obalka]]
 === Envelope and publication header
 
 A message is a DATEX II 3 document with the root element `d2:payload` of type
-`loc:PredefinedLocationsPublication`. The format is identified by the root attributes `profileName`
-(`cz-ndic_d2-pls`) and `profileVersion` (`2.0`).
+`loc:PredefinedLocationsPublication`. The format is identified by the root attributes `@profileName`
+(`cz-ndic_d2-pls`) and `@profileVersion` (`2.0`).
 
 The header contains:
 
-* `feedType` – identifier of the data source the message comes from. The format of the message is
-  identified by the `profileName` and `profileVersion` attributes, not by `feedType`,
+* `feedType` – identifier of the data source the message comes from; the format of the message is identified
+  by the `@profileName` and `@profileVersion` attributes, not by `feedType`,
 * `publicationTime` – time the content was created; if the content has not changed, the original time is kept,
 * `publicationCreator` – `cz` and `NDIC`,
-* `headerInformation` – always `confidentiality` = `noRestriction` and `informationStatus` = `real`.
+* `headerInformation` – always:
+** `confidentiality` = `noRestriction`,
+** `informationStatus` = `real`.
 
 .Root element and publication header (sample `predefined_location_set-fcd.xml`)
 [source,xml]
@@ -47,10 +49,11 @@ description (`location`, always linear – see <<polohy>>).
   station sections carry the station name (`I/43 Černá Hora`, `D0 15.742`); FCD sections and groups have
   no name.
 * The *version* (`@version`) corresponds to the Global Network release the set is derived from, in the form
-  `YYMM01` (network 25.06 → `250601`). With each network release *all* locations of the set get a new
-  version, including those where only the network version label (`linearElementReferenceModelVersion`)
-  changed; the identifier stays. A new location gets a new identifier. Messages always reference the
-  version of the current set.
+  `YYMM01` (network 25.06 → `250601`):
+** with each network release *all* locations of the set get a new version, including those where only the
+   network version label (`linearElementReferenceModelVersion`) changed; the identifier stays,
+** a new location gets a new identifier,
+** messages always reference the version of the current set.
 
 The publication always contains all valid locations, including those published earlier. No time is given
 inside the locations.
@@ -122,7 +125,7 @@ opposite direction follows the route of the first direction (<<gn>>)
 |===
 
 Location groups are not used for bidirectionality. A pair of one-directional locations combined in a group
-would require a different reference type (`LocationGroupByReference`), would lose the link between the
+would require a different reference type (`loc:LocationGroupByReference`), would lose the link between the
 directions, and OpenLR and ALERT-C would express bidirectionality twice. Groups are reserved for areas.
 
 [[polohy]]
@@ -143,7 +146,7 @@ non-zero length around the place (OpenLR does not allow zero length). Point loca
 |Method |Element |For whom
 |ALERT-C |`alertCLinear` |navigation with the RDS-TMC location table
 |OpenLR |`openlrLinear` |matching to any map
-|Global Network |`linearWithinLinearElement` (`LinearElementByCode`) |users of the GN network
+|Global Network |`linearWithinLinearElement` (`loc:LinearElementByCode`) |users of the GN network
 |Location path |`gmlLineString`, `coordinatesForDisplay` |display on a map without further data (<<prubeh>>)
 |Road chainage |`linearWithinLinearElement` with `roadNumber` |not used yet
 |===

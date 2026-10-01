@@ -20,7 +20,7 @@ include::{samplesdir}/predefined_location_set-fcd.xml[tags=**]
 ----
 
 Envelope and header::
-Root `d2:payload` of type `loc:PredefinedLocationsPublication` with the `profileName` and `profileVersion`
+Root `d2:payload` of type `loc:PredefinedLocationsPublication` with the `@profileName` and `@profileVersion`
 attributes; `feedType` refers to the data source.
 
 Location::

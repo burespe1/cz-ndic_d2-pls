@@ -7,7 +7,7 @@
   of the cz-ndic_d2-predefined-location-set-v1.2 format (DATEX II 2.3).
 * Changes compared to version 1.2 (DATEX II 2.3):
 ** The `d2LogicalModel` and `exchange` envelopes are not used; the root is `d2:payload`, the format is
-   identified by the `profileName` and `profileVersion` attributes, `feedType` references the
+   identified by the `@profileName` and `@profileVersion` attributes, `feedType` references the
    distribution, `feedDescription` is not used.
 ** A location is `predefinedLocationReference` of type `loc:PredefinedLocation` (formerly
    `predefinedLocationContainer`), a group is of type `loc:PredefinedLocationGroup` (formerly
@@ -15,7 +15,7 @@
 ** Location identifiers and versions do not change; references in existing data remain valid.
 ** The national location extensions (`linearExtension`, `globalNetworkLinear`, `openlrExtendedLinear`) were
    replaced by elements of the 3.7 model: OpenLR in `openlrLinear` (`firstDirection`, `oppositeDirection`),
-   Global Network sections in `linearWithinLinearElement` with `LinearElementByCode`.
+   Global Network sections in `linearWithinLinearElement` with `loc:LinearElementByCode`.
 ** The start and end of a GN location (`startPoint`, `endPoint` in S-JTSK) are replaced by the location path
    in ETRS89 (`gmlLineString`) and a display point (`coordinatesForDisplay`); GN edge sections use percentages.
 ** Percentages of the GN section length are in the range 0–100 (formerly 0–1).

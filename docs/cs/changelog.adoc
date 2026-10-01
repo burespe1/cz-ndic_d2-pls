@@ -6,13 +6,13 @@
 * Nová dokumentace formátu `cz-ndic_d2-pls` verze 2.0 (DATEX II 3.7); nahrazuje dokumentaci formátu cz-ndic_d2-predefined-location-set-v1.2 (DATEX II 2.3).
 * Změny oproti verzi 1.2 (DATEX II 2.3):
 ** Obálky `d2LogicalModel` a `exchange` se nepoužívají; kořen je `d2:payload`, formát určují atributy
-   `profileName` a `profileVersion`, `feedType` odkazuje na distribuci, `feedDescription` se nepoužívá.
+   `@profileName` a `@profileVersion`, `feedType` odkazuje na distribuci, `feedDescription` se nepoužívá.
 ** Poloha je `predefinedLocationReference` typu `loc:PredefinedLocation` (dříve `predefinedLocationContainer`),
    skupina typu `loc:PredefinedLocationGroup` (dříve `PredefinedNonOrderedLocationGroup`).
 ** Identifikátory a verze poloh se nemění; odkazy ve stávajících datech zůstávají platné.
 ** Národní rozšíření polohy (`linearExtension`, `globalNetworkLinear`, `openlrExtendedLinear`) nahradily
    prvky modelu 3.7: OpenLR v `openlrLinear` (`firstDirection`, `oppositeDirection`), úseky Global Network
-   v `linearWithinLinearElement` s `LinearElementByCode`.
+   v `linearWithinLinearElement` s `loc:LinearElementByCode`.
 ** Počátek a konec polohy GN (`startPoint`, `endPoint` v S-JTSK) nahradil průběh polohy v ETRS89
    (`gmlLineString`) a bod pro zobrazení (`coordinatesForDisplay`); krajní úseky GN mají procenta.
 ** Procenta délky úseku GN jsou v rozsahu 0–100 (dříve 0–1).
