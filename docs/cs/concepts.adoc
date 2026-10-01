@@ -39,8 +39,8 @@ include::{samplesdir}/predefined_location_set-fcd.xml[tag=header,indent=2]
 Každá poloha je element `predefinedLocationReference` typu `loc:PredefinedLocation` s popisem polohy
 (`location`, vždy liniová – viz <<polohy>>).
 
-* *Identifikátor* (`@id`) je stálý. Úseky FCD ho mají složený z lokací ALERT-C: `TS25760T25761` je úsek
-  z lokace 25760 do lokace 25761, opačný směr je `TS25761T25760`.
+* *Identifikátor* (`@id`) je stálý. Úseky FCD ho mají složený z lokací ALERT-C: `TS02125T15781` je úsek
+  z lokace 2125 do lokace 15781 (čísla lokací doplněná nulami na pět číslic), opačný směr je `TS15781T02125`.
 * *Název* (`predefinedLocationName`) se uvádí, jen má-li ho poloha ve zdroji: úseky meteohlásek mají název
   meteohlásky (`I/43 Černá Hora`, `D0 15.742`), úseky FCD a skupiny název nemají.
 * *Verze* (`@version`) odpovídá vydání sítě Global Network, ze kterého je sada odvozena, ve tvaru
@@ -96,7 +96,7 @@ include::{samplesdir}/predefined_location_loc_group.xml[tag=group-head,indent=0]
 
 Poloha je buď jednosměrná, nebo platí pro oba směry jízdy:
 
-* *Úseky FCD* jsou jednosměrné; každý směr je samostatná poloha (`TS25760T25761`, `TS25761T25760`).
+* *Úseky FCD* jsou jednosměrné; každý směr je samostatná poloha (`TS02125T15781`, `TS15781T02125`).
 * *Úseky meteohlásek* a další obousměrné polohy popisuje *jedna* poloha pro oba směry. Každá metoda
   vyjadřuje obousměrnost po svém:
 

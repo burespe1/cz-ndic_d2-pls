@@ -9,7 +9,7 @@ názvy z modelu, jsou nezávislé na jazyce a slouží jen ke čtení člověkem
 
 === predefined_location_set-fcd.xml – úseky FCD
 
-Dva úseky sady FCD mezi lokacemi ALERT-C 25760 a 25761, každý směr jako samostatná poloha (síť GN 22.12).
+Dva úseky sady FCD mezi lokacemi ALERT-C 2125 a 15781, každý směr jako samostatná poloha (síť GN 26.06). Úsek `TS02125T15781` je i ve vzorcích formátu `cz-ndic_d2-fcd-status`.
 
 [source,xml]
 ----
@@ -22,12 +22,13 @@ a `profileVersion`; `feedType` odkazuje na zdroj dat.
 
 Poloha::
 Jednosměrná liniová poloha bez názvu, popsaná OpenLR (jen `firstDirection`), ALERT-C (`alertCAffectedDirection` =
-`aligned`) a úseky Global Network. Úseky střídají směr vůči svému kódování. Průběh
-polohy nese `gmlLineString` a `coordinatesForDisplay`. Druhá poloha je tentýž úsek v opačném směru.
+`aligned`) a úseky Global Network v pořadí jízdy. Průběh
+polohy nese `gmlLineString` a `coordinatesForDisplay`. Druhá poloha je tentýž úsek v opačném směru; komunikace má
+zde oddělené jízdní pásy, takže protisměr tvoří jiné úseky Global Network.
 +
 Úseky FCD jsou vždy jednosměrné: rychlost a dojezdová doba se vyhodnocují pro každý směr jízdy zvlášť,
-proto je každý směr téhož úseku samostatnou polohou s vlastním identifikátorem (`TS25760T25761`
-a `TS25761T25760`) a vlastním popisem všemi metodami. To je specifické pro úseky FCD; ostatní polohy, např.
+proto je každý směr téhož úseku samostatnou polohou s vlastním identifikátorem (`TS02125T15781`
+a `TS15781T02125`) a vlastním popisem všemi metodami. To je specifické pro úseky FCD; ostatní polohy, např.
 úseky meteohlásek, popisují oba směry jednou obousměrnou polohou (<<smer>>).
 
 === predefined_location_set-weather.xml – úseky meteohlásek

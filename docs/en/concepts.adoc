@@ -41,8 +41,8 @@ Each location is a `predefinedLocationReference` element of type `loc:Predefined
 description (`location`, always linear – see <<polohy>>).
 
 * The *identifier* (`@id`) is stable. FCD sections have it composed of ALERT-C locations:
-  `TS25760T25761` is the section from location 25760 to location 25761, the opposite direction is
-  `TS25761T25760`.
+  `TS02125T15781` is the section from location 2125 to location 15781 (location codes padded with zeros to five digits), the opposite direction is
+  `TS15781T02125`.
 * The *name* (`predefinedLocationName`) is given only if the location has one in the source: road weather
   station sections carry the station name (`I/43 Černá Hora`, `D0 15.742`); FCD sections and groups have
   no name.
@@ -105,8 +105,8 @@ include::{samplesdir}/predefined_location_loc_group.xml[tag=group-head,indent=0]
 
 A location is either one-directional or valid for both directions of travel:
 
-* *FCD sections* are one-directional; each direction is a separate location (`TS25760T25761`,
-  `TS25761T25760`).
+* *FCD sections* are one-directional; each direction is a separate location (`TS02125T15781`,
+  `TS15781T02125`).
 * *Road weather station sections* and other bidirectional locations are described by *one* location for
   both directions. Each method expresses this in its own way:
 

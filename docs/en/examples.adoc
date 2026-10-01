@@ -10,8 +10,8 @@ readers only.
 
 === predefined_location_set-fcd.xml – FCD sections
 
-Two sections of the FCD set between ALERT-C locations 25760 and 25761, each direction as a separate
-location (GN network 22.12).
+Two sections of the FCD set between ALERT-C locations 2125 and 15781, each direction as a separate
+location (GN network 26.06). The section `TS02125T15781` is also used in the samples of the format `cz-ndic_d2-fcd-status`.
 
 [source,xml]
 ----
@@ -24,13 +24,13 @@ attributes; `feedType` refers to the data source.
 
 Location::
 One-directional linear location without a name, described by OpenLR (`firstDirection` only), ALERT-C
-(`alertCAffectedDirection` = `aligned`) and Global Network sections. The sections alternate their
-direction relative to their coding. The location path is carried by `gmlLineString` and
-`coordinatesForDisplay`. The second location is the same section in the opposite direction.
+(`alertCAffectedDirection` = `aligned`) and Global Network sections in the order of travel. The location path is carried by `gmlLineString` and
+`coordinatesForDisplay`. The second location is the same section in the opposite direction; the road has
+separate carriageways here, so the opposite direction consists of other Global Network sections.
 +
 FCD sections are always one-directional: speed and travel time are evaluated for each direction of travel
 separately, so each direction of the same section is a separate location with its own identifier
-(`TS25760T25761` and `TS25761T25760`) and its own description by all methods. This is specific to FCD
+(`TS02125T15781` and `TS15781T02125`) and its own description by all methods. This is specific to FCD
 sections; other locations, e.g. road weather station sections, describe both directions by one
 bidirectional location (<<smer>>).
 
