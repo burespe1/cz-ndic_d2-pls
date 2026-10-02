@@ -1,5 +1,5 @@
 # Metadata formátu – součást vydání specifikace (tag v2.0).
-uri: cz-ndic_d2-pls
+id: x-format:cz-ndic_d2-pls-v2.0
 version: '2.0'
 name:
   cs: DATEX II Predefined Locations Publication – Sady předdefinovaných poloh
@@ -20,12 +20,6 @@ schema:
   entry: DATEXII_3_D2Payload.xsd
 selection: sel/cz-ndic_d2-pls.sel
 samples: samples
-ndic:
-  action: upgrade
-  previous: cz-ndic_d2-predefined-location-set-v1.2 (DATEX II 2.3)
-  profiles: []
-  profileName: cz-ndic_d2-pls
-  profileVersion: '2.0'
 maintainer:
   name: Petr Bureš
   company: TamTam Research s.r.o.
