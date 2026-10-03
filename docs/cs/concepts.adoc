@@ -138,7 +138,7 @@ délky nepřipouští). Bodové polohy (`loc:PointLocation`) sady poloh nepouž�
 |OpenLR |`openlrLinear` |napojení na libovolnou mapu
 |Global Network |`linearWithinLinearElement` (`loc:LinearElementByCode`) |uživatelé sítě GN
 |Průběh polohy |`gmlLineString`, `coordinatesForDisplay` |zobrazení v mapě bez dalších podkladů (<<prubeh>>)
-|Staničení |`linearWithinLinearElement` s `roadNumber` |zatím se nepoužívá
+|Staničení |`linearWithinLinearElement` s `roadNumber` |sady NDIC ho neobsahují (nepovinné)
 |===
 
 [[alertc]]
@@ -172,7 +172,7 @@ include::../ilustrace/predefined_location_both-directions.xml[tag=openlr-both,in
 [[staniceni]]
 === Popis polohy pomocí staničení
 
-NOTE: Staničení je v profilu pro budoucí použití; sady poloh NDIC je zatím neobsahují.
+NOTE: Staničení je součástí profilu; sady poloh NDIC ho neobsahují – odběratel s ním má počítat jako s nepovinným.
 
 include::{kitdir}/shared/cs/poloha/staniceni.adoc[]
 

@@ -148,7 +148,7 @@ non-zero length around the place (OpenLR does not allow zero length). Point loca
 |OpenLR |`openlrLinear` |matching to any map
 |Global Network |`linearWithinLinearElement` (`loc:LinearElementByCode`) |users of the GN network
 |Location path |`gmlLineString`, `coordinatesForDisplay` |display on a map without further data (<<prubeh>>)
-|Road chainage |`linearWithinLinearElement` with `roadNumber` |not used yet
+|Road chainage |`linearWithinLinearElement` with `roadNumber` |not contained in the NDIC sets (optional)
 |===
 
 [[alertc]]
@@ -182,7 +182,7 @@ include::../ilustrace/predefined_location_both-directions.xml[tag=openlr-both,in
 [[staniceni]]
 === Road chainage location referencing
 
-NOTE: Road chainage is in the profile for future use; the NDIC location sets do not contain it yet.
+NOTE: Road chainage is part of the profile; the NDIC location sets do not contain it – consumers shall treat it as optional.
 
 include::{kitdir}/shared/en/poloha/staniceni.adoc[]
 
