@@ -118,7 +118,7 @@ A location is either one-directional or valid for both directions of travel:
 |Method |Bidirectional location
 |ALERT-C |`alertCAffectedDirection` = `both` (one-directional `aligned`)
 |OpenLR |`firstDirection` for the location direction and `oppositeDirection` for the opposite direction –
-each with its own reference points and offsets (<<openlr>>)
+each with its own reference points and offsets; if the opposite direction is not encoded, see <<openlr>>
 |Global Network |sections shared by both directions once with `directionRelativeOnLinearSection` = `both`;
 if the opposite direction runs elsewhere (separate carriageways, one-way sections), the whole route of the
 opposite direction follows the route of the first direction (<<gn>>)

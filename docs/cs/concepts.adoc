@@ -109,7 +109,7 @@ Poloha je buď jednosměrná, nebo platí pro oba směry jízdy:
 |Metoda |Obousměrná poloha
 |ALERT-C |`alertCAffectedDirection` = `both` (jednosměrná `aligned`)
 |OpenLR |`firstDirection` pro směr polohy a `oppositeDirection` pro protisměr – každý s vlastními
-referenčními body a ofsety (<<openlr>>)
+referenčními body a ofsety; není-li protisměr zakódován, viz <<openlr>>
 |Global Network |úseky společné oběma směrům jednou s `directionRelativeOnLinearSection` = `both`; vede-li
 protisměr jinudy (oddělené jízdní pásy, jednosměrné úseky), následuje za trasou prvního směru celá trasa
 protisměru (<<gn>>)
