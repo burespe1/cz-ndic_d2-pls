@@ -133,7 +133,7 @@ directions, and OpenLR and ALERT-C would express bidirectionality twice. Groups 
 
 A location is linear (`loc:SingleRoadLinearLocation`) – always a contiguous section of one road – and is usually described by several methods depending
 on their availability; all describe the same section and at least one must be given. FCD and road weather
-station sections carry all three main methods and the location path.
+station sections are described by at least one method; the location path is given if the location contains GN sections.
 
 A physically point-like place – a road weather station, a bridge, a tunnel entrance – is described as a
 short road section on which it lies, in all methods alike: in ALERT-C as a section between two locations,

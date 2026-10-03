@@ -123,8 +123,8 @@ OpenLR a ALERT-C by obousměrnost vyjadřovaly dvakrát. Skupina je vyhrazena pr
 == Popisování poloh
 
 Poloha je liniová (`loc:SingleRoadLinearLocation`) – vždy souvislý úsek jedné komunikace – a bývá popsána několika metodami podle jejich
-dostupnosti; všechny popisují tentýž úsek a alespoň jedna musí být uvedena. Úseky FCD i meteohlásek mají
-všechny tři hlavní metody a průběh polohy.
+dostupnosti; všechny popisují tentýž úsek a alespoň jedna musí být uvedena. Úseky FCD i meteohlásek jsou
+popsány alespoň jednou metodou; průběh polohy se uvádí, obsahuje-li poloha úseky GN.
 
 Fyzicky bodové místo – meteohláska, most, vjezd do tunelu – se popisuje jako krátký úsek komunikace,
 na kterém leží, a to ve všech metodách stejně: v ALERT-C úsek mezi dvěma lokacemi, případně se shodnou
