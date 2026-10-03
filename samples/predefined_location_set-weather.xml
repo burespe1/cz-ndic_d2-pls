@@ -20,7 +20,6 @@
       </com:values>
     </loc:predefinedLocationName>
     <loc:location xsi:type="loc:SingleRoadLinearLocation">
-      <!-- tag::loc-gml[] -->
       <loc:coordinatesForDisplay>
         <loc:latitude>50.47075</loc:latitude>
         <loc:longitude>13.37187</loc:longitude>
@@ -64,9 +63,7 @@
       <loc:gmlLineString srsName="urn:ogc:def:crs:EPSG::4258" srsDimension="2">
         <loc:posList>50.46959 13.37355 50.47069 13.37200 50.47108 13.37092 50.47131 13.36955</loc:posList>
       </loc:gmlLineString>
-      <!-- end::loc-gml[] -->
       <!-- ALERT-C -->
-      <!-- tag::loc-alertc[] -->
       <loc:alertCLinear xsi:type="loc:AlertCMethod2Linear">
         <loc:alertCLocationCountryCode>2</loc:alertCLocationCountryCode>
         <loc:alertCLocationTableNumber>25</loc:alertCLocationTableNumber>
@@ -86,7 +83,6 @@
           </loc:alertCLocation>
         </loc:alertCMethod2SecondaryPointLocation>
       </loc:alertCLinear>
-      <!-- end::loc-alertc[] -->
       <!-- GN -->
       <loc:linearWithinLinearElement>
         <loc:directionRelativeOnLinearSection>both</loc:directionRelativeOnLinearSection>
@@ -127,6 +123,7 @@
       </com:values>
     </loc:predefinedLocationName>
     <loc:location xsi:type="loc:SingleRoadLinearLocation">
+      <!-- tag::loc-gml[] -->
       <loc:coordinatesForDisplay>
         <loc:latitude>50.73167</loc:latitude>
         <loc:longitude>13.76304</loc:longitude>
@@ -170,7 +167,9 @@
       <loc:gmlLineString srsName="urn:ogc:def:crs:EPSG::4258" srsDimension="2">
         <loc:posList>50.73094 13.76375 50.73235 13.76223</loc:posList>
       </loc:gmlLineString>
+      <!-- end::loc-gml[] -->
       <!-- ALERT-C -->
+      <!-- tag::loc-alertc[] -->
       <loc:alertCLinear xsi:type="loc:AlertCMethod2Linear">
         <loc:alertCLocationCountryCode>2</loc:alertCLocationCountryCode>
         <loc:alertCLocationTableNumber>25</loc:alertCLocationTableNumber>
@@ -190,6 +189,7 @@
           </loc:alertCLocation>
         </loc:alertCMethod2SecondaryPointLocation>
       </loc:alertCLinear>
+      <!-- end::loc-alertc[] -->
       <!-- GN -->
       <loc:linearWithinLinearElement>
         <loc:directionRelativeOnLinearSection>both</loc:directionRelativeOnLinearSection>
