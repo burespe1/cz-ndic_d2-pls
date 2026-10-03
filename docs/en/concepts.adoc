@@ -22,7 +22,7 @@ The header contains:
 
 * `feedType` – identifier of the data source (distribution) in the register of the national access point <<nap>>; the format of the message is identified
   by the `@profileName` and `@profileVersion` attributes, not by `feedType`; the `feedDescription` element is not used,
-* `publicationTime` – time the content was created; if the content has not changed, the original time is kept,
+* `publicationTime` – time the publication was generated; it changes with every generated publication, even if the content has not changed,
 * `publicationCreator` – `cz` and `NDIC`,
 * `headerInformation` – always:
 ** `confidentiality` = `noRestriction`,

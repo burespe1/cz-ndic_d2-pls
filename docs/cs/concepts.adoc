@@ -21,7 +21,7 @@ Hlavička obsahuje:
 
 * `feedType` – identifikátor zdroje dat (distribuce) v registru národního přístupového bodu <<nap>>; formát zprávy určují atributy
   `@profileName` a `@profileVersion`, nikoli `feedType`; element `feedDescription` se nepoužívá,
-* `publicationTime` – čas vytvoření obsahu; nezměnil-li se obsah, zůstává čas původní,
+* `publicationTime` – čas vygenerování publikace; mění se s každým vygenerováním, i když se obsah nezměnil,
 * `publicationCreator` – `cz` a `NDIC`,
 * `headerInformation` – vždy:
 ** `confidentiality` = `noRestriction`,
