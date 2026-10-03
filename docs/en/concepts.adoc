@@ -91,10 +91,10 @@ A message references the whole group with the type `loc:LocationGroupByReference
 `loc:PredefinedLocationGroup`). Predefined groups are created only for areas that recur; one-off area
 events are described by the event formats with a group of sections directly in the message.
 
-.Location group (sample `predefined_location_loc_group.xml`, shortened)
+.Location group (illustrative example `predefined_location_loc_group.xml`, shortened)
 [source,xml]
 ----
-include::{samplesdir}/predefined_location_loc_group.xml[tag=group-head,indent=0]
+include::../ilustrace/predefined_location_loc_group.xml[tag=group-head,indent=0]
     ...
   </loc:predefinedLocation>
   <loc:predefinedLocation id="…" version="…">
@@ -173,10 +173,10 @@ include::{kitdir}/shared/en/poloha/openlr.adoc[]
 .Bidirectional location in OpenLR on a road with separate carriageways
 image::openlr-obousmerne-en.svg[OpenLR – firstDirection and oppositeDirection,width=680,align="center"]
 
-.Bidirectional location in OpenLR (sample `predefined_location_both-directions.xml`)
+.Bidirectional location in OpenLR (illustrative example `predefined_location_both-directions.xml`)
 [source,xml]
 ----
-include::{samplesdir}/predefined_location_both-directions.xml[tag=openlr-both,indent=0]
+include::../ilustrace/predefined_location_both-directions.xml[tag=openlr-both,indent=0]
 ----
 
 [[staniceni]]
@@ -201,10 +201,10 @@ image::gn-obousmerne-en.svg[GN – bidirectional location,width=680,align="cente
 
 include::{kitdir}/shared/en/poloha/gn-obousmerne-spolecne.adoc[]
 
-.Global Network sections – sections shared by both directions (sample `predefined_location_both-directions.xml`)
+.Global Network sections – sections shared by both directions (illustrative example `predefined_location_both-directions.xml`)
 [source,xml]
 ----
-include::{samplesdir}/predefined_location_both-directions.xml[tag=gn-both,indent=0]
+include::../ilustrace/predefined_location_both-directions.xml[tag=gn-both,indent=0]
 ----
 
 The first section (3663224) runs from 30.47{nbsp}% to 0{nbsp}% and the last section (901099) from 100{nbsp}% to 12.58{nbsp}%; on both the first direction therefore runs against the
@@ -215,10 +215,10 @@ include::{kitdir}/shared/en/poloha/gn-obousmerne-oddelene.adoc[]
 
 In the sample all sections of both routes are one-way (`aligned`).
 
-.Global Network sections – separate carriageways (sample `predefined_location_both-directions.xml`)
+.Global Network sections – separate carriageways (illustrative example `predefined_location_both-directions.xml`)
 [source,xml]
 ----
-include::{samplesdir}/predefined_location_both-directions.xml[tag=gn-separate,indent=0]
+include::../ilustrace/predefined_location_both-directions.xml[tag=gn-separate,indent=0]
 ----
 
 [[prubeh]]

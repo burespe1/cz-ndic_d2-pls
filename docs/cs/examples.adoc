@@ -46,13 +46,13 @@ Poloha::
 úseky GN oběma směrům (`directionRelativeOnLinearSection` = `both`). Průběh polohy v ETRS89 nese `gmlLineString`. U první polohy jsou
 vyznačeny výřezy použité v kapitole o popisu poloh (ALERT-C, průběh polohy).
 
-=== predefined_location_both-directions.xml – obousměrné polohy
+=== predefined_location_both-directions.xml – obousměrné polohy (ilustrační příklad, nejde o vzorek dat)
 
 Dvě obousměrné polohy (síť GN 25.12) s popisem obou směrů v OpenLR (`firstDirection`, `oppositeDirection`).
 
 [source,xml]
 ----
-include::{samplesdir}/predefined_location_both-directions.xml[tags=**]
+include::../ilustrace/predefined_location_both-directions.xml[tags=**]
 ----
 
 Úseky slouží oběma směrům::
@@ -65,12 +65,12 @@ I/30 v Ústí nad Labem: protisměr vede po jiných, jednosměrných úsecích; 
 trasu uvozuje komentář `<!-- GN firstDirection -->`, resp. `<!-- GN oppositeDirection -->`; `gmlLineString` vede po pásu
 prvního směru.
 
-=== predefined_location_loc_group.xml – skupina poloh
+=== predefined_location_loc_group.xml – skupina poloh (ilustrační příklad, nejde o vzorek dat)
 
 Předdefinovaná skupina (`loc:PredefinedLocationGroup`) dvou úseků meteohlásek na silnici I/34 u Stráže
 nad Nežárkou; každý úsek je vnořená poloha `predefinedLocation` s vlastním identifikátorem a verzí.
 
 [source,xml]
 ----
-include::{samplesdir}/predefined_location_loc_group.xml[tags=**]
+include::../ilustrace/predefined_location_loc_group.xml[tags=**]
 ----

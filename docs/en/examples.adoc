@@ -52,14 +52,14 @@ locations the same GN sections serve both directions (`directionRelativeOnLinear
 ETRS89 is carried by `gmlLineString`. The excerpts used in the chapter on location referencing (ALERT-C, location
 path) are marked in the first location.
 
-=== predefined_location_both-directions.xml – bidirectional locations
+=== predefined_location_both-directions.xml – bidirectional locations (illustrative example, not a data sample)
 
 Two bidirectional locations (GN network 25.12) with both directions described in OpenLR
 (`firstDirection`, `oppositeDirection`).
 
 [source,xml]
 ----
-include::{samplesdir}/predefined_location_both-directions.xml[tags=**]
+include::../ilustrace/predefined_location_both-directions.xml[tags=**]
 ----
 
 Sections serving both directions::
@@ -73,12 +73,12 @@ all as `linearWithinLinearElement`. Each route is preceded by the comment `<!-- 
 `<!-- GN oppositeDirection -->`; `gmlLineString` runs along the
 carriageway of the first direction.
 
-=== predefined_location_loc_group.xml – location group
+=== predefined_location_loc_group.xml – location group (illustrative example, not a data sample)
 
 A predefined group (`loc:PredefinedLocationGroup`) of two road weather station sections on road I/34 near
 Stráž nad Nežárkou; each section is a nested `predefinedLocation` with its own identifier and version.
 
 [source,xml]
 ----
-include::{samplesdir}/predefined_location_loc_group.xml[tags=**]
+include::../ilustrace/predefined_location_loc_group.xml[tags=**]
 ----
