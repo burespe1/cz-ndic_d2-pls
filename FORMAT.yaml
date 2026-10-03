@@ -5,8 +5,8 @@ name:
   cs: DATEX II Predefined Locations Publication – Sady předdefinovaných poloh
   en: DATEX II Predefined Locations Publication – Predefined location sets
 description:
-  cs: Sady předdefinovaných poloh (segmenty FCD, meteostanice) s popisem GlobalNetwork, ALERT-C a OpenLR.
-  en: Predefined location sets (FCD segments, weather stations) with GlobalNetwork, ALERT-C and OpenLR.
+  cs: Sady předdefinovaných poloh (segmenty FCD, úseky meteohlásek) s popisem Global Network, ALERT-C a OpenLR.
+  en: Predefined location sets (FCD segments, road weather station sections) with Global Network, ALERT-C and OpenLR.
 publisher:
   cs: Národní dopravní informační centrum
   en: National Traffic Information Centre
