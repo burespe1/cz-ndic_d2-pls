@@ -4,7 +4,7 @@ The samples are part of the specification package `{schema-uri}.zip` (directory 
 
 Within a location, the description by each method is preceded by an XML comment with its name: `<!-- OpenLR -->`,
 `<!-- ALERT-C -->`, `<!-- GN -->`,
-`<!-- gmlLineString -->` (location path), `<!-- roadNumber -->` (road chainage), and for separate carriageways `<!-- GN firstDirection -->` and
+`<!-- gmlLineString -->` (location path), and for separate carriageways `<!-- GN firstDirection -->` and
 `<!-- GN oppositeDirection -->`. The comments use model names, are language-neutral and are meant for human
 readers only.
 

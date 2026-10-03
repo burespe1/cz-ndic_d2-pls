@@ -3,7 +3,7 @@
 Vzorky jsou součástí balíčku specifikace `{schema-uri}.zip` (adresář `samples`).
 
 V poloze uvozuje popis každou metodou komentář XML s jejím názvem: `<!-- OpenLR -->`, `<!-- ALERT-C -->`,
-`<!-- GN -->`, `<!-- gmlLineString -->` (průběh polohy), `<!-- roadNumber -->` (staničení),
+`<!-- GN -->`, `<!-- gmlLineString -->` (průběh polohy),
 u oddělených jízdních pásů `<!-- GN firstDirection -->` a `<!-- GN oppositeDirection -->`. Komentáře používají
 názvy z modelu, jsou nezávislé na jazyce a slouží jen ke čtení člověkem.
 
