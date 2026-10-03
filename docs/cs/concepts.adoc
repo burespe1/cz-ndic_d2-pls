@@ -19,8 +19,8 @@ Formát identifikují atributy kořene `@profileName` (`cz-ndic_d2-pls`) a `@pro
 
 Hlavička obsahuje:
 
-* `feedType` – identifikátor zdroje dat, ze kterého zpráva pochází; formát zprávy určují atributy
-  `@profileName` a `@profileVersion`, nikoli `feedType`,
+* `feedType` – identifikátor zdroje dat (distribuce) v registru národního přístupového bodu <<nap>>; formát zprávy určují atributy
+  `@profileName` a `@profileVersion`, nikoli `feedType`; element `feedDescription` se nepoužívá,
 * `publicationTime` – čas vytvoření obsahu; nezměnil-li se obsah, zůstává čas původní,
 * `publicationCreator` – `cz` a `NDIC`,
 * `headerInformation` – vždy:
@@ -79,7 +79,7 @@ Skupina je element `predefinedLocationReference` typu `loc:PredefinedLocationGro
   neopakuje.
 . Změní-li se úsek, dostane novou verzi on i skupina; přidání nebo odebrání úseku mění verzi skupiny.
 
-Zpráva odkazuje na celou skupinu typem `loc:LocationGroupByReference` (`targetClass` =
+Zpráva odkazuje na celou skupinu typem `loc:LocationGroupByReference` (`@targetClass` =
 `loc:PredefinedLocationGroup`). Předdefinované skupiny se zakládají jen pro oblasti, které se opakují;
 jednorázové oblastní jevy popisují formáty událostí skupinou úseků přímo ve zprávě.
 
@@ -109,7 +109,7 @@ Poloha je buď jednosměrná, nebo platí pro oba směry jízdy:
 |Metoda |Obousměrná poloha
 |ALERT-C |`alertCAffectedDirection` = `both` (jednosměrná `aligned`)
 |OpenLR |`firstDirection` pro směr polohy a `oppositeDirection` pro protisměr – každý s vlastními
-referenčními body a ofsety (<<openlr>>)
+referenčními body a ofsety; není-li protisměr zakódován, viz <<openlr>>
 |Global Network |úseky společné oběma směrům jednou s `directionRelativeOnLinearSection` = `both`; vede-li
 protisměr jinudy (oddělené jízdní pásy, jednosměrné úseky), následuje za trasou prvního směru celá trasa
 protisměru (<<gn>>)
@@ -123,8 +123,8 @@ OpenLR a ALERT-C by obousměrnost vyjadřovaly dvakrát. Skupina je vyhrazena pr
 == Popisování poloh
 
 Poloha je liniová (`loc:SingleRoadLinearLocation`) – vždy souvislý úsek jedné komunikace – a bývá popsána několika metodami podle jejich
-dostupnosti; všechny popisují tentýž úsek a alespoň jedna musí být uvedena. Úseky FCD i meteohlásek mají
-všechny tři hlavní metody a průběh polohy.
+dostupnosti; všechny popisují tentýž úsek a alespoň jedna musí být uvedena. Úseky FCD i meteohlásek jsou
+popsány alespoň jednou metodou; průběh polohy se uvádí, obsahuje-li poloha úseky GN.
 
 Fyzicky bodové místo – meteohláska, most, vjezd do tunelu – se popisuje jako krátký úsek komunikace,
 na kterém leží, a to ve všech metodách stejně: v ALERT-C úsek mezi dvěma lokacemi, případně se shodnou
@@ -138,7 +138,7 @@ délky nepřipouští). Bodové polohy (`loc:PointLocation`) sady poloh nepouž�
 |OpenLR |`openlrLinear` |napojení na libovolnou mapu
 |Global Network |`linearWithinLinearElement` (`loc:LinearElementByCode`) |uživatelé sítě GN
 |Průběh polohy |`gmlLineString`, `coordinatesForDisplay` |zobrazení v mapě bez dalších podkladů (<<prubeh>>)
-|Staničení |`linearWithinLinearElement` s `roadNumber` |zatím se nepoužívá
+|Staničení |`linearWithinLinearElement` s `roadNumber` |sady NDIC ho neobsahují (nepovinné)
 |===
 
 [[alertc]]
@@ -172,7 +172,7 @@ include::{samplesdir}/predefined_location_both-directions.xml[tag=openlr-both,in
 [[staniceni]]
 === Popis polohy pomocí staničení
 
-NOTE: Staničení je v profilu pro budoucí použití; sady poloh NDIC je zatím neobsahují.
+NOTE: Staničení je součástí profilu; sady poloh NDIC ho neobsahují – odběratel s ním má počítat jako s nepovinným.
 
 include::{kitdir}/shared/cs/poloha/staniceni.adoc[]
 

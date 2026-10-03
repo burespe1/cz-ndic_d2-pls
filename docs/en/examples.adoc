@@ -4,7 +4,7 @@ The samples are part of the specification package `{schema-uri}.zip` (directory 
 
 Within a location, the description by each method is preceded by an XML comment with its name: `<!-- OpenLR -->`,
 `<!-- ALERT-C -->`, `<!-- GN -->`,
-`<!-- gmlLineString -->` (location path), `<!-- roadNumber -->` (road chainage), and for separate carriageways `<!-- GN firstDirection -->` and
+`<!-- gmlLineString -->` (location path), and for separate carriageways `<!-- GN firstDirection -->` and
 `<!-- GN oppositeDirection -->`. The comments use model names, are language-neutral and are meant for human
 readers only.
 
@@ -21,7 +21,7 @@ include::{samplesdir}/predefined_location_set-fcd.xml[tags=**]
 
 Envelope and header::
 Root `d2:payload` of type `loc:PredefinedLocationsPublication` with the `@profileName` and `@profileVersion`
-attributes; `feedType` refers to the data source.
+attributes; `feedType` refers to the distribution (data source).
 
 Location::
 One-directional linear location without a name, described by OpenLR (`firstDirection` only), ALERT-C
@@ -37,7 +37,7 @@ bidirectional location (<<smer>>).
 
 === predefined_location_set-weather.xml – road weather station sections
 
-Three road weather station sections of the weather set (GN network 26.06, data of 30{nbsp}September 2026). The
+Three road weather station sections of the weather set (GN network 25.12, data of 30{nbsp}September 2026). The
 first section (7 83.427) is referenced by the sample `aquaplaning.xml`, the second (Cínovec 2) by the sample
 `strong-wind.xml` of the `cz-ndic_d2-weather` format.
 

@@ -20,8 +20,8 @@ A message is a DATEX II 3 document with the root element `d2:payload` of type
 
 The header contains:
 
-* `feedType` – identifier of the data source the message comes from; the format of the message is identified
-  by the `@profileName` and `@profileVersion` attributes, not by `feedType`,
+* `feedType` – identifier of the data source (distribution) in the register of the national access point <<nap>>; the format of the message is identified
+  by the `@profileName` and `@profileVersion` attributes, not by `feedType`; the `feedDescription` element is not used,
 * `publicationTime` – time the content was created; if the content has not changed, the original time is kept,
 * `publicationCreator` – `cz` and `NDIC`,
 * `headerInformation` – always:
@@ -87,7 +87,7 @@ follows:
 . If a section changes, both the section and the group get a new version; adding or removing a section
   changes the group version.
 
-A message references the whole group with the type `loc:LocationGroupByReference` (`targetClass` =
+A message references the whole group with the type `loc:LocationGroupByReference` (`@targetClass` =
 `loc:PredefinedLocationGroup`). Predefined groups are created only for areas that recur; one-off area
 events are described by the event formats with a group of sections directly in the message.
 
@@ -118,7 +118,7 @@ A location is either one-directional or valid for both directions of travel:
 |Method |Bidirectional location
 |ALERT-C |`alertCAffectedDirection` = `both` (one-directional `aligned`)
 |OpenLR |`firstDirection` for the location direction and `oppositeDirection` for the opposite direction –
-each with its own reference points and offsets (<<openlr>>)
+each with its own reference points and offsets; if the opposite direction is not encoded, see <<openlr>>
 |Global Network |sections shared by both directions once with `directionRelativeOnLinearSection` = `both`;
 if the opposite direction runs elsewhere (separate carriageways, one-way sections), the whole route of the
 opposite direction follows the route of the first direction (<<gn>>)
@@ -133,7 +133,7 @@ directions, and OpenLR and ALERT-C would express bidirectionality twice. Groups 
 
 A location is linear (`loc:SingleRoadLinearLocation`) – always a contiguous section of one road – and is usually described by several methods depending
 on their availability; all describe the same section and at least one must be given. FCD and road weather
-station sections carry all three main methods and the location path.
+station sections are described by at least one method; the location path is given if the location contains GN sections.
 
 A physically point-like place – a road weather station, a bridge, a tunnel entrance – is described as a
 short road section on which it lies, in all methods alike: in ALERT-C as a section between two locations,
@@ -148,7 +148,7 @@ non-zero length around the place (OpenLR does not allow zero length). Point loca
 |OpenLR |`openlrLinear` |matching to any map
 |Global Network |`linearWithinLinearElement` (`loc:LinearElementByCode`) |users of the GN network
 |Location path |`gmlLineString`, `coordinatesForDisplay` |display on a map without further data (<<prubeh>>)
-|Road chainage |`linearWithinLinearElement` with `roadNumber` |not used yet
+|Road chainage |`linearWithinLinearElement` with `roadNumber` |not contained in the NDIC sets (optional)
 |===
 
 [[alertc]]
@@ -182,7 +182,7 @@ include::{samplesdir}/predefined_location_both-directions.xml[tag=openlr-both,in
 [[staniceni]]
 === Road chainage location referencing
 
-NOTE: Road chainage is in the profile for future use; the NDIC location sets do not contain it yet.
+NOTE: Road chainage is part of the profile; the NDIC location sets do not contain it – consumers shall treat it as optional.
 
 include::{kitdir}/shared/en/poloha/staniceni.adoc[]
 

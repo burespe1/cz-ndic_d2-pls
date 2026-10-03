@@ -26,9 +26,14 @@ PredefinedLocation:
     ndic: "Only where the source provides a name: road weather station sections (station name); FCD sections have no name."
 
 GmlLineString:
+  _: Location path; always given where it can be created from the geometry of the GN sections.
   posList:
     ndic: "Line in the direction of travel from the start to the end of the location (for a bidirectional location in the first direction). The start and end are exact, intermediate points are simplified with a deviation of at most 10 m from the GN section geometry; at least two points (start and end); ETRS89 coordinates (`@srsName` = `urn:ogc:def:crs:EPSG::4258`) to 5 decimal places (≈ 1 m)."
 
 PercentageDistanceAlongLinearElement:
   percentageDistanceAlong:
     ndic: "Percent of the section length 0–100, at most 2 decimal places."
+SingleRoadLinearLocation:
+  alertCLinear:
+    card: 0..1
+    ndic: "At most one ALERT-C path along one road."

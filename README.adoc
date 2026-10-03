@@ -1,7 +1,7 @@
 = cz-ndic_d2-pls
 :toc: macro
 
-DATEX II Predefined Locations Publication – Sady předdefinovaných poloh. Sady předdefinovaných poloh (segmenty FCD, meteostanice) s popisem GlobalNetwork, ALERT-C a OpenLR.
+DATEX II Predefined Locations Publication – Sady předdefinovaných poloh. Sady předdefinovaných poloh (segmenty FCD, úseky meteohlásek) s popisem Global Network, ALERT-C a OpenLR.
 
 Repozitář formátu Národního dopravního informačního centra (NDIC) – specifikace datového profilu
 DATEX II 3.7 a jeho dokumentace. Aktuální verze formátu: *2.0*.
@@ -30,4 +30,4 @@ Vydání jsou v sekci *Releases* tohoto repozitáře:
 |`docs-<jazyk>-vX.Y.N` |dokumentace formátu v jazyce `cs`/`en` (PDF, HTML); `X.Y` = verze formátu, `N` = revize textu dané jazykové varianty
 |===
 
-Registr zdrojů dat a distribucí: https://registr.dopravniinfo.cz/[Národní přístupový bod].
+Registr distribucí (zdrojů dat): https://registr.dopravniinfo.cz/[Národní přístupový bod].

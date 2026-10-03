@@ -3,7 +3,7 @@
 Vzorky jsou součástí balíčku specifikace `{schema-uri}.zip` (adresář `samples`).
 
 V poloze uvozuje popis každou metodou komentář XML s jejím názvem: `<!-- OpenLR -->`, `<!-- ALERT-C -->`,
-`<!-- GN -->`, `<!-- gmlLineString -->` (průběh polohy), `<!-- roadNumber -->` (staničení),
+`<!-- GN -->`, `<!-- gmlLineString -->` (průběh polohy),
 u oddělených jízdních pásů `<!-- GN firstDirection -->` a `<!-- GN oppositeDirection -->`. Komentáře používají
 názvy z modelu, jsou nezávislé na jazyce a slouží jen ke čtení člověkem.
 
@@ -18,7 +18,7 @@ include::{samplesdir}/predefined_location_set-fcd.xml[tags=**]
 
 Obálka a hlavička::
 Kořen `d2:payload` typu `loc:PredefinedLocationsPublication` s atributy `@profileName`
-a `@profileVersion`; `feedType` odkazuje na zdroj dat.
+a `@profileVersion`; `feedType` odkazuje na distribuci (zdroj dat).
 
 Poloha::
 Jednosměrná liniová poloha bez názvu, popsaná OpenLR (jen `firstDirection`), ALERT-C (`alertCAffectedDirection` =
@@ -33,7 +33,7 @@ a `TS15781T02125`) a vlastním popisem všemi metodami. To je specifické pro ú
 
 === predefined_location_set-weather.xml – úseky meteohlásek
 
-Tři úseky meteohlásek ze sady weather (síť GN 26.06, data 30.{nbsp}9.{nbsp}2026). Na první úsek (7 83.427) odkazuje
+Tři úseky meteohlásek ze sady weather (síť GN 25.12, data 30.{nbsp}9.{nbsp}2026). Na první úsek (7 83.427) odkazuje
 vzorek `aquaplaning.xml`, na druhý (Cínovec 2) vzorek `strong-wind.xml` formátu `cz-ndic_d2-weather`.
 
 [source,xml]
