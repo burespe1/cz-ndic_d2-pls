@@ -19,8 +19,8 @@ Formát identifikují atributy kořene `@profileName` (`cz-ndic_d2-pls`) a `@pro
 
 Hlavička obsahuje:
 
-* `feedType` – identifikátor zdroje dat, ze kterého zpráva pochází; formát zprávy určují atributy
-  `@profileName` a `@profileVersion`, nikoli `feedType`,
+* `feedType` – identifikátor zdroje dat (distribuce) v registru národního přístupového bodu <<nap>>; formát zprávy určují atributy
+  `@profileName` a `@profileVersion`, nikoli `feedType`; element `feedDescription` se nepoužívá,
 * `publicationTime` – čas vytvoření obsahu; nezměnil-li se obsah, zůstává čas původní,
 * `publicationCreator` – `cz` a `NDIC`,
 * `headerInformation` – vždy:

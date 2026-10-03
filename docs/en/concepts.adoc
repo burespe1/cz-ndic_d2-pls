@@ -20,8 +20,8 @@ A message is a DATEX II 3 document with the root element `d2:payload` of type
 
 The header contains:
 
-* `feedType` – identifier of the data source the message comes from; the format of the message is identified
-  by the `@profileName` and `@profileVersion` attributes, not by `feedType`,
+* `feedType` – identifier of the data source (distribution) in the register of the national access point <<nap>>; the format of the message is identified
+  by the `@profileName` and `@profileVersion` attributes, not by `feedType`; the `feedDescription` element is not used,
 * `publicationTime` – time the content was created; if the content has not changed, the original time is kept,
 * `publicationCreator` – `cz` and `NDIC`,
 * `headerInformation` – always:
