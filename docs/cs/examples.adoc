@@ -33,7 +33,7 @@ a `TS15781T02125`) a vlastním popisem všemi metodami. To je specifické pro ú
 
 === predefined_location_set-weather.xml – úseky meteohlásek
 
-Tři úseky meteohlásek ze sady weather (síť GN 26.06, data 30.{nbsp}9.{nbsp}2026). Na první úsek (7 83.427) odkazuje
+Tři úseky meteohlásek ze sady weather (síť GN 25.12, data 30.{nbsp}9.{nbsp}2026). Na první úsek (7 83.427) odkazuje
 vzorek `aquaplaning.xml`, na druhý (Cínovec 2) vzorek `strong-wind.xml` formátu `cz-ndic_d2-weather`.
 
 [source,xml]
