@@ -26,9 +26,14 @@ PredefinedLocation:
     ndic: "Jen je-li název ve zdroji: úseky meteohlásek (název meteohlásky); úseky FCD název nemají."
 
 GmlLineString:
+  _: Průběh polohy; uvádí se vždy, lze-li ho vytvořit z geometrie úseků GN.
   posList:
     ndic: "Linie ve směru jízdy od počátku ke konci polohy (u obousměrné polohy v prvním směru). Počátek a konec jsou přesné, mezilehlé body zjednodušené s odchylkou nejvýše 10 m od geometrie úseků GN; alespoň dva body (počátek a konec); souřadnice ETRS89 (`@srsName` = `urn:ogc:def:crs:EPSG::4258`) na 5 desetinných míst (≈ 1 m)."
 
 PercentageDistanceAlongLinearElement:
   percentageDistanceAlong:
     ndic: "Procenta délky úseku 0–100, nejvýše 2 desetinná místa."
+SingleRoadLinearLocation:
+  alertCLinear:
+    card: 0..1
+    ndic: "Nejvýše jedna cesta ALERT-C po jedné komunikaci."
