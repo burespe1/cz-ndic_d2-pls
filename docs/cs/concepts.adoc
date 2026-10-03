@@ -83,10 +83,10 @@ Zpráva odkazuje na celou skupinu typem `loc:LocationGroupByReference` (`@target
 `loc:PredefinedLocationGroup`). Předdefinované skupiny se zakládají jen pro oblasti, které se opakují;
 jednorázové oblastní jevy popisují formáty událostí skupinou úseků přímo ve zprávě.
 
-.Skupina poloh (ilustrační příklad `predefined_location_loc_group.xml`, zkráceno)
+.Skupina poloh (vzorek `predefined_location_loc_group.xml`, zkráceno)
 [source,xml]
 ----
-include::../ilustrace/predefined_location_loc_group.xml[tag=group-head,indent=0]
+include::{samplesdir}/predefined_location_loc_group.xml[tag=group-head,indent=0]
     ...
   </loc:predefinedLocation>
   <loc:predefinedLocation id="…" version="…">
@@ -163,10 +163,10 @@ include::{kitdir}/shared/cs/poloha/openlr.adoc[]
 .Obousměrná poloha v OpenLR na komunikaci s oddělenými pásy
 image::openlr-obousmerne.svg[OpenLR – firstDirection a oppositeDirection,width=680,align="center"]
 
-.Obousměrná poloha v OpenLR (ilustrační příklad `predefined_location_both-directions.xml`)
+.Obousměrná poloha v OpenLR (vzorek `predefined_location_both-directions.xml`)
 [source,xml]
 ----
-include::../ilustrace/predefined_location_both-directions.xml[tag=openlr-both,indent=0]
+include::{samplesdir}/predefined_location_both-directions.xml[tag=openlr-both,indent=0]
 ----
 
 [[staniceni]]
@@ -191,10 +191,10 @@ image::gn-obousmerne.svg[GN – obousměrná poloha,width=680,align="center"]
 
 include::{kitdir}/shared/cs/poloha/gn-obousmerne-spolecne.adoc[]
 
-.Úseky Global Network – úseky společné oběma směrům (ilustrační příklad `predefined_location_both-directions.xml`)
+.Úseky Global Network – úseky společné oběma směrům (vzorek `predefined_location_both-directions.xml`)
 [source,xml]
 ----
-include::../ilustrace/predefined_location_both-directions.xml[tag=gn-both,indent=0]
+include::{samplesdir}/predefined_location_both-directions.xml[tag=gn-both,indent=0]
 ----
 
 První úsek (3663224) vede od 30,47{nbsp}% k 0{nbsp}% a poslední úsek (901099) od 100{nbsp}% k 12,58{nbsp}%; první směr tedy na obou vede proti směru kódování. Celé vnitřní úseky 1327329 a
@@ -204,10 +204,10 @@ include::{kitdir}/shared/cs/poloha/gn-obousmerne-oddelene.adoc[]
 
 V ukázce jsou všechny úseky obou tras jednosměrné (`aligned`).
 
-.Úseky Global Network – oddělené jízdní pásy (ilustrační příklad `predefined_location_both-directions.xml`)
+.Úseky Global Network – oddělené jízdní pásy (vzorek `predefined_location_both-directions.xml`)
 [source,xml]
 ----
-include::../ilustrace/predefined_location_both-directions.xml[tag=gn-separate,indent=0]
+include::{samplesdir}/predefined_location_both-directions.xml[tag=gn-separate,indent=0]
 ----
 
 [[prubeh]]
