@@ -87,7 +87,7 @@ follows:
 . If a section changes, both the section and the group get a new version; adding or removing a section
   changes the group version.
 
-A message references the whole group with the type `loc:LocationGroupByReference` (`targetClass` =
+A message references the whole group with the type `loc:LocationGroupByReference` (`@targetClass` =
 `loc:PredefinedLocationGroup`). Predefined groups are created only for areas that recur; one-off area
 events are described by the event formats with a group of sections directly in the message.
 

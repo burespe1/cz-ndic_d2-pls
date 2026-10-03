@@ -79,7 +79,7 @@ Skupina je element `predefinedLocationReference` typu `loc:PredefinedLocationGro
   neopakuje.
 . Změní-li se úsek, dostane novou verzi on i skupina; přidání nebo odebrání úseku mění verzi skupiny.
 
-Zpráva odkazuje na celou skupinu typem `loc:LocationGroupByReference` (`targetClass` =
+Zpráva odkazuje na celou skupinu typem `loc:LocationGroupByReference` (`@targetClass` =
 `loc:PredefinedLocationGroup`). Předdefinované skupiny se zakládají jen pro oblasti, které se opakují;
 jednorázové oblastní jevy popisují formáty událostí skupinou úseků přímo ve zprávě.
 
